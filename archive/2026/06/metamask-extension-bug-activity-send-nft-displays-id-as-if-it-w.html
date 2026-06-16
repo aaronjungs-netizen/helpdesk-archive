@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: sans-serif;
-        background: #1a1a24;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #ff7b2c;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,33 +42,44 @@
 <h1>Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users observe that when sending NFTs using the Metamask extension, the activity display shows the NFT's ID as if it were the amount being sent, rather than the actual amount.</li>
+<li>The Metamask extension displays the NFT ID as if it were the amount when attempting to send an NFT, showing -(#id) instead of the actual NFT details.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a bug in the Metamask extension's activity display logic, where it incorrectly interprets and displays the NFT's ID as the transaction amount.</li>
+<li>This error occurs due to a bug in the Metamask extension's handling of NFT transactions, where it incorrectly interprets the NFT ID as a numerical value.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Check the transaction details on the Ethereum blockchain explorer to verify the correct amount.</li>
-<li>Use the Metamask extension's debug mode to inspect the transaction payload and identify any discrepancies.</li>
-<li>Override the display logic using the following JSON configuration:</li>
+<li>To resolve this issue, try the following manual overrides:</li>
+<li>Check the transaction details on the Ethereum blockchain explorer to verify the NFT ID.</li>
+<li>Use the <code>eth_getTransactionByHash</code> RPC method to retrieve the transaction details.</li>
+<li>Override the transaction encoding using the following JSON payload:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;nft_display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;id_as_amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_sendTransaction&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x0&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;gas&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;gasPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;input&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider using an external console for further debugging and configuration. </p>
+<p>Consider using an external console for more advanced transaction debugging.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension version 10.2.3 or later</li>
-<li>Ethereum blockchain explorer account</li>
-<li>Basic understanding of JSON configuration files</li>
+<li>Metamask extension installed and configured</li>
+<li>Ethereum wallet with sufficient balance</li>
+<li>NFT token to be sent</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-importing-a-custom-token-does-not-work.html">Metamask Extension Bug Importing A Custom Token Does Not Work</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/go-ethereum-evmone-t8n-rejects-transactions-with-chainid-0xff-p.html">Go Ethereum Evmone T8N Rejects Transactions With Chainid 0Xff P</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/go-ethereum-evmone-t8n-rejects-transactions-with-chainid-0xff-p.html">Go Ethereum Evmone T8N Rejects Transactions With Chainid 0Xff P</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
